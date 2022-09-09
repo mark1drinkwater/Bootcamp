@@ -76,6 +76,7 @@ public class ActorFilms extends Application {
 
     public void btnOK_Click() {
         String errorMessage = "";
+
         if (txtNoFilms.getText().isEmpty()) {
             errorMessage += "\nCharacter is a required field.";
         }
