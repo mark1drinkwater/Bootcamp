@@ -125,3 +125,101 @@ var codeWord3 = "unsafe";
 var codeWord4 = "?!";
 console.log('\n Secret code word' + codeWord1[1] + codeWord2[1] + codeWord3[1] + codeWord4[1]);
 
+// Cutting up strings
+var longString = "My long string is long";
+// The string gets sliced starting from position 3 to position 13, excluding position 14
+console.log('\nSliced string' + longString.slice(3, 14));
+
+console.log('\n2nd Sliced string' + longString.slice(3));
+
+// ------- Changing all characters to capital or lower case --------
+console.log('\nAll capital letters: ' + "Hello there, how are you doing?".toUpperCase());
+console.log('All lower case: ' + "hELlo THERE, hOW ARE yOu doINg?".toLowerCase());
+
+
+// Challenge
+var sillyString = "hELlo THERE, hOW ARE yOu doINg?";
+var lowerString = sillyString.toLowerCase();
+var firstCharacter = lowerString[0];
+var firstCharacterUpper = firstCharacter.toUpperCase();
+var restOfString = lowerString.slice(1);
+console.log('\nChallenge: ' + firstCharacterUpper + restOfString);
+
+console.log('Do it in one line ' + sillyString[0].toUpperCase() + sillyString.slice(1).toLowerCase());
+
+// ------------------------------------------- Booleans -------------------------------------------------------
+var hadShower = true;
+var hasBackpack = false;
+console.log('\nAND Operator: ' + (hadShower && hasBackpack));
+
+hadShower = true;
+hasBackpack = true;
+console.log('AND Operator: ' + (hadShower && hasBackpack));
+
+var hasApple = true;
+var hasOrange = false;
+console.log('OR Operator: ' + (hasApple || hasOrange));
+
+var isWeekend = true;
+var needToShowerToday = !isWeekend;
+console.log('NOT Operator: ' + needToShowerToday);
+
+isWeekend = false;
+hadShower = true;
+hasApple = false;
+hasOrange = true;
+var shouldGoToSchool = !isWeekend && hadShower && (hasApple || hasOrange);
+console.log('Multiple Operators: ' + shouldGoToSchool);
+
+// ------ Comparing numbers with boolean ------
+// Greater than
+var height = 65;
+var heightRestriction = 60;
+console.log('\nGreater than: ' + (height > heightRestriction));
+
+console.log('Greater than: ' + (height > heightRestriction));
+
+console.log('Greater than or equal to: ' + (height >= heightRestriction));
+
+// Less than
+height = 60;
+heightRestriction = 48;
+console.log('\nLess than: ' + (height < heightRestriction));
+
+// Less than or equal to
+height = 48;
+heightRestriction = 48;
+height <= heightRestriction;
+console.log('Less than or equal to: ' + (height <= heightRestriction));
+
+// Equal to (===)
+var mySecretNumber = 5;
+var chicoGuess = 3;
+console.log('\nEqual to: ' + (mySecretNumber === chicoGuess));
+
+var harpoGuess = 7;
+console.log('\nEqual to: ' + (mySecretNumber === harpoGuess));
+
+var grouchoGuess = 5;
+console.log('\nEqual to: ' + (mySecretNumber === grouchoGuess));
+
+// Equal-ish (==)
+var stringNumber = "5";
+var actualNumber = 5;
+console.log('\nExactly equal to: ' + (stringNumber === actualNumber));
+console.log('Equal-ish: ' + (stringNumber === actualNumber));
+
+console.log('Equal-ish: ' + (0 === false));
+console.log('Equal-ish: ' + (false === "false"));
+
+//Try it out
+var age = 12;
+var accompanied = true;
+console.log('\nAllowed to watch PG-13 movie: ' + ((age >= 13) || (accompanied)));
+
+// --------- Undefined and Null ------------
+var myVariable;
+console.log('Undefined: ' + myVariable);
+
+var myNullVariable = null;
+console.log('Null: ' + myNullVariable);
