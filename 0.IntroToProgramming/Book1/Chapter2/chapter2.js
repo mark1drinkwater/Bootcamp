@@ -198,16 +198,16 @@ var chicoGuess = 3;
 console.log('\nEqual to: ' + (mySecretNumber === chicoGuess));
 
 var harpoGuess = 7;
-console.log('\nEqual to: ' + (mySecretNumber === harpoGuess));
+console.log('Equal to: ' + (mySecretNumber === harpoGuess));
 
 var grouchoGuess = 5;
-console.log('\nEqual to: ' + (mySecretNumber === grouchoGuess));
+console.log('Equal to: ' + (mySecretNumber === grouchoGuess));
 
 // Equal-ish (==)
 var stringNumber = "5";
 var actualNumber = 5;
 console.log('\nExactly equal to: ' + (stringNumber === actualNumber));
-console.log('Equal-ish: ' + (stringNumber === actualNumber));
+console.log('\nEqual-ish: ' + (stringNumber === actualNumber));
 
 console.log('Equal-ish: ' + (0 === false));
 console.log('Equal-ish: ' + (false === "false"));
@@ -219,7 +219,7 @@ console.log('\nAllowed to watch PG-13 movie: ' + ((age >= 13) || (accompanied)))
 
 // --------- Undefined and Null ------------
 var myVariable;
-console.log('Undefined: ' + myVariable);
+console.log('\nUndefined: ' + myVariable);
 
 var myNullVariable = null;
 console.log('Null: ' + myNullVariable);
