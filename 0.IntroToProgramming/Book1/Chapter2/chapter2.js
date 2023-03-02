@@ -55,7 +55,7 @@ console.log('\n Seconds in a year: ' + secondsInAYear);
 
 var age = 29;
 age * secondsInAYear;
-console.log('\n Age: ' + age + ' in seconds');
+console.log('\n Age: ' + age + ' in seconds' + age * secondsInAYear);
 
 // Incrementing & Decrementing
 var highFives = 0;
@@ -207,10 +207,10 @@ console.log('Equal to: ' + (mySecretNumber === grouchoGuess));
 var stringNumber = "5";
 var actualNumber = 5;
 console.log('\nExactly equal to: ' + (stringNumber === actualNumber));
-console.log('\nEqual-ish: ' + (stringNumber === actualNumber));
+console.log('\nEqual-ish: ' + (stringNumber == actualNumber));
 
-console.log('Equal-ish: ' + (0 === false));
-console.log('Equal-ish: ' + (false === "false"));
+console.log('Equal-ish: ' + (0 == false));
+console.log('Equal-ish: ' + (false == "false"));
 
 //Try it out
 var age = 12;
