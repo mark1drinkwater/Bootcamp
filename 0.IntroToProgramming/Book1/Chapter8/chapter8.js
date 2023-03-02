@@ -3,6 +3,8 @@ var ourFirstFunction = function () {
     console.log("Hello world!");
 };
 
+
+
 // Calling a function
 ourFirstFunction();
 
@@ -101,31 +103,33 @@ console.log(multiply(5,3));
 
 // #2 Are these arrays the same?
 function areArraysSame(arr1, arr2) {
-    let arr1_length = arr1.length;
-    let arr2_length = arr2.length;    
-    let len = 0;
-
-    if (arr1_length !== arr2_length) {
+/*
+    if (arr1.length !== arr2.length) {
         return false;
     }
 
-    if (arr1_length >= arr2_length) {
-        len = arr1_length;
-    } else {
-        len = arr2_length;
-    }
-
-    for (let i = 0; i < len; i++) {
+    for (let i = 0; i < arr1.length; i++) {
         if (arr1[i] !== arr2[i]) {
             return false;
         }
     }
     return true;
+*/
+
+    // Another way to do it
+    if (arr1.join() === arr2.join())
+    {
+        return true;
+    } else {
+        return false;
+    }
 }
 
 console.log(areArraysSame([1, 2, 3], [1, 2, 3]));
 console.log(areArraysSame([1, 2, 3], [1, 2, 3, 4]));
+console.log(areArraysSame([1, 5, 3], [1, 2, 3]));
 
+/*
 // #3 Hangman with functions
 // Write your functions here
 var words = [
@@ -204,4 +208,4 @@ while (remainingLetters > 0) {
         remainingLetters -= correctGuesses;
     }
 }
-showAnswerAndCongratulatePlayer(answerArray);
+showAnswerAndCongratulatePlayer(answerArray);*/
