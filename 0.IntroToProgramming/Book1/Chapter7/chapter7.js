@@ -6,7 +6,7 @@ var words = [
 ];
 // Pick a random word
 var word = words[Math.floor(Math.random() * words.length)];
-var noGuesses = 10;
+var noGuesses = word.length * 2;
 
 // Set up the answer array
 var answerArray = [];
