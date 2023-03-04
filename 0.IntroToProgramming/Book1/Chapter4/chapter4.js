@@ -129,6 +129,8 @@ var scores = {
 scores.John++;
 scores.Piet++;
 
+console.log(scores.John);
+
 // ---------------- Digging into objects and arrays ---------
 var myCrazyObject = {
     "name": "A ridiculous object",
