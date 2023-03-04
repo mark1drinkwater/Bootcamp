@@ -36,7 +36,7 @@ function displayActivity() {
         youShould = "Don't forget to eat breakfast!";
         break;
     case 4:
-        youShould = "";
+        youShould = "Learn something new.";
         break;
     case 5:
         youShould = "Make a list of things you like to do.";
