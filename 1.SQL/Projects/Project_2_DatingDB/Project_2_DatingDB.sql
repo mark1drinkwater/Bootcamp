@@ -10,7 +10,8 @@ DROP TABLE IF EXISTS interests;
 CREATE TABLE zip_codes (
 	zip_code CHAR(4) PRIMARY KEY CHECK(LENGTH(zip_code) <= 4),
 	city VARCHAR(30) NOT NULL,
-	province VARCHAR(30) NOT NULL
+	province VARCHAR(30) NOT NULL,
+	CONSTRAINT city_province_unique UNIQUE (city, province)
 );	
 
 INSERT INTO zip_codes
