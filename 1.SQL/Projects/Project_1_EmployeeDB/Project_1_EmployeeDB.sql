@@ -1,9 +1,3 @@
-DROP TABLE IF EXISTS Employees;
-DROP TABLE IF EXISTS Department;
-DROP TABLE IF EXISTS Roles;
-DROP TABLE IF EXISTS Salaries;
-DROP TABLE IF EXISTS Overtime_Hours;
-
 CREATE TABLE Department (
 	depart_id bigserial,
 	depart_name varchar(40) NOT NULL,
@@ -99,28 +93,23 @@ VALUES
 ('Sofia', 'Peterson', 'F', '1321 Mosman Rd', 'sofpeterson@gmail.com', 7, 9, 9, 2),
 ('Murphy', 'Marcelyn', 'M', '2 Akasia Street', 'mmarcelyn@yahoo.com', 4, 6, 6, 4),
 ('Taylor', 'Ansley', 'F', '7 Oxford Street', 'taylorans@gmail.com', 2, 3, 3, 2),
-('Bheka', 'Dlamini', 'M', '50 Roger Road', 'bhkdlamini@yahoo.com', 7, 9, 9, 3),
+('Bheka', 'Dlamini', 'M', '50 Roger Road', 'bhkdlamini@yahoo.com', NULL, NULL, 9, 1),  -- NULL to showcase purpose of LEFT JOIN
 ('Thandeka', 'Khumalo', 'F', '1773 Daffodil Drive', 'thandeka@hotmail.com', 5, 7, 7, 4),
 ('Slindile', 'Sithole', 'F', '12 Marconi Street', 'slindsithole@aol.com', 6, 8, 8, 1),
-('Elizabeth', 'Smith', 'F', '1908 Nelson Mandela Drive', 'lizsmith@outlook.com', 1, 2, 2, 2);
-
-/*
-SELECT * FROM Department;
-SELECT * FROM Roles;
-SELECT * FROM Salaries;
-SELECT * FROM Overtime_Hours;
-SELECT * FROM Employees;
-*/
+('Elizabeth', 'Smith', 'F', '1908 Nelson Mandela Drive', 'lizsmith@outlook.com', 1, 2, 2, 2),
+('Jason', 'Miltenberger', 'M', '19 Prospect Street', 'jasonmilt@gmail.com', 2, 3, 3, 1),
+('Amy', 'Sparks', 'F', '2 Akasia Street', 'amsprks@gmail.com', 1, 2, 2, 3),
+('Wanda', 'Ibarra', 'F', '1 Albert Street', 'wandamagic@gmail.com', 3, 5, 5, 3),
+('Nancy', 'Ruggles', 'F', '9 Glyn Street', 'nancyruggles@gmail.com', 3, 5, NULL, 3); -- NULL to showcase purpose of LEFT JOIN
 
 -- LEFT JOIN query that will display the department name, job title, salary figure and overtime hours worked. --
-SELECT depart_name, role, salary_pa, overtime_hours
+SELECT depart_name AS department_name, role AS job_title, salary_pa AS salary_figure, overtime_hours
 FROM Employees emp
 LEFT JOIN Department dep
 ON emp.depart_id = dep.depart_id
-JOIN Roles rol
+LEFT JOIN Roles rol
 ON emp.role_id = rol.role_id
-JOIN Salaries sal
-ON emp.role_id = sal.salary_id
-JOIN Overtime_Hours ove
-ON emp.overtime_id = ove.overtime_id
-ORDER BY depart_name;
+LEFT JOIN Salaries sal
+ON emp.salary_id = sal.salary_id
+LEFT JOIN Overtime_Hours ove
+ON emp.overtime_id = ove.overtime_id;
