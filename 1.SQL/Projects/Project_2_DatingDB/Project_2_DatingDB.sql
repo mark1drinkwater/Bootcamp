@@ -1,12 +1,3 @@
-DROP TABLE IF EXISTS contact_seeking;
-DROP TABLE IF EXISTS contact_interest;
-DROP TABLE IF EXISTS my_contacts;
-DROP TABLE IF EXISTS zip_codes;
-DROP TABLE IF EXISTS professions;
-DROP TABLE IF EXISTS statuses;
-DROP TABLE IF EXISTS seekings;
-DROP TABLE IF EXISTS interests;
-	
 CREATE TABLE zip_codes (
 	zip_code CHAR(4) PRIMARY KEY CHECK(LENGTH(zip_code) <= 4),
 	city VARCHAR(30) NOT NULL,
@@ -110,7 +101,7 @@ INSERT INTO my_contacts (
 	prof_id
 ) VALUES 
 	('Tom','Smith','0780615009','tom@gmail.com', 'F',  '1973-09-29', '7103',1,1), 
-    ('Gugu','Ndaba','0780615012','gugu@gmail.com', 'F', '1941-10-26', '4000',2,2),
+    ('Gugu','Ndaba','0780615012','gugu@gmail.com', 'F', '1941-10-26', NULL,2,2), -- NULL to showcase purpose of LEFT JOIN
     ('Jo','Nala','0780615078','jo@gmail.com', 'M', '1986-07-24', '1911',1,3),
     ('Mary','Smith','0610615009','mary@gmail.com', 'F', '1993-09-05', '0699',2,4),
     ('Kyle','Koo','0710615009','kyle@gmail.com', 'M', '1997-03-04', '5605',2,1),
@@ -120,7 +111,7 @@ INSERT INTO my_contacts (
 	('Jeffrey', 'Reynolds', '0836591325', 'jefferymreynolds@gmail.com', 'M', '1974-01-17', '5200', 2,6),
 	('Alberto', 'Mooney', '0829729524', 'albertovmooney@yahoo.com', 'M', '1982-05-22', '4000', 1,3),
 	('Josephine', 'Montgomery', '0839939200', 'josiemont@gmail.com', 'F', '1992-08-20', '1447', 1,2),
-	('Henrietta', 'Reddington', '0842622947', 'henrietred@hotmail.com', 'F', '1981-06-19', '0699', 2, 7),
+	('Henrietta', 'Reddington', '0842622947', 'henrietred@hotmail.com', 'F', '1981-06-19', '0699', NULL, 7), -- NULL to showcase purpose of LEFT JOIN
 	('Linda', 'Lara', '0838160425', 'lindaglara@gmail.com', 'F', '1964-07-09', '2000', 1, 6),
 	('Yesenia', 'Messier', '0846620036', 'yesseniamss@mweb.co.za', 'F', '1976-08-03', '0480', 2, 1),
 	('Michael', 'Morrison', '0848741216', 'michaelmorris@outlook.com', 'M', '1988-12-12', '1200', 1, 8),
@@ -156,7 +147,7 @@ VALUES
 (6, 8),
 (7, 1),
 (7, 6),
-(7, 7),--
+(7, 7),
 (8, 1),
 (8, 3),
 (8, 7),
@@ -273,24 +264,19 @@ VALUES
 (17, 4);
 
 --------------------- LEFT JOIN query that will display the profession, zip_code (postal_code, city and province), status, interests and seeking -----------------------
-
--- Q: When adding constraints is it better to add a constraint with a name or is it acceptable to just add the constraint in the same line as the data type declaration?
-
--- Q: When doing a left join query, should only 1 or all the joins be a left join?
-		-- Left joins did not make any visible difference to the query....
 SELECT prof.profession, zc.zip_code, zc.city, zc.province, st.status, inte.interest, se.seeking
 FROM my_contacts mc
 LEFT JOIN professions prof
 ON mc.prof_id = prof.prof_id
-JOIN zip_codes zc
+LEFT JOIN zip_codes zc
 ON zc.zip_code = mc.zip_code
-JOIN statuses st
+LEFT JOIN statuses st
 ON st.status_id = mc.status_id
-JOIN contact_seeking cs
+LEFT JOIN contact_seeking cs
 ON cs.contact_id = mc.contact_id
-JOIN seekings se
+LEFT JOIN seekings se
 ON se.seeking_id = cs.seeking_id
-JOIN contact_interest ci
+LEFT JOIN contact_interest ci
 ON ci.contact_id = mc.contact_id
-JOIN interests inte
+LEFT JOIN interests inte
 ON ci.interest_id = inte.interest_id;
