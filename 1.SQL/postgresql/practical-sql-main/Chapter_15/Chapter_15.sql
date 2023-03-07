@@ -81,19 +81,19 @@ SELECT * FROM employees;
 
 UPDATE employees_tax_dept
 SET last_name = 'Le Gere'
-WHERE emp_id = 5;
+WHERE emp_id = 8;
 
 SELECT * FROM employees_tax_dept;
 
 -- Bonus: This will fail because the salary column is not in the view
 UPDATE employees_tax_dept
 SET salary = 100000
-WHERE emp_id = 5;
+WHERE emp_id = 8;
 
 -- Listing 15-8: Deleting a row via the employees_tax_dept view
 
 DELETE FROM employees_tax_dept
-WHERE emp_id = 5;
+WHERE emp_id = 8;
 
 
 -- FUNCTIONS

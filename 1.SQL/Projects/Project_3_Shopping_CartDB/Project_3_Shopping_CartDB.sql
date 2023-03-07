@@ -43,20 +43,6 @@ CREATE TABLE order_details (
 	qty bigint
 );
 
-/* Base Template
-CREATE OR REPLACE FUNCTION addProductToCart()
-RETURNS void AS $$
-BEGIN
-IF EXISTS (SELECT * FROM X_TABLE  WHERE X_id = 1)
-	THEN
-		UPDATE X_TABLE  SET qty = qty + 1  WHERE X_id = 1;
-	ELSE
-		INSERT INTO X_TABLE (X_id,qty) VALUES (1,1);
-	END IF; 
-END;
-$$ LANGUAGE plpgsql;
-*/
-
 -------------- Add to cart function ----------------
 CREATE OR REPLACE FUNCTION addProductToCart(prod_id bigint)
 RETURNS void AS $$
@@ -141,6 +127,11 @@ SELECT addProductToCart(2);
 SELECT addProductToCart(3);
 SELECT addProductToCart(5);
 
+-- TODO:
+-- SELECT createOrder();
+-- Takes all the orders for the cart adds to the order details
+-- Clears cart
+
 INSERT INTO order_header (user_id, order_date)
 VALUES
 (2, '2023-04-23 09:45:50');
@@ -152,11 +143,11 @@ VALUES
 (3, 3, 2),
 (3, 5, 6);
 
---- Done shoppping, so delete from cart ---
 DELETE FROM cart;
 
 ----------- Print the orders with select statements with inner joins --------
 ----------- Print a single order --------------------------------------------
+-- Show the user, and their order names, price, sum of all orders
 SELECT * 
 FROM order_header
 INNER JOIN order_details
@@ -169,4 +160,3 @@ FROM order_header
 INNER JOIN order_details
 ON order_header.order_id = order_details.order_header
 WHERE date_part('day', order_date) = '15';
-
