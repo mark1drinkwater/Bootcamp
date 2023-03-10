@@ -45,7 +45,7 @@ CREATE TABLE order_header (
 CREATE TABLE order_details (
 	order_header bigint REFERENCES order_header(order_id) ON DELETE CASCADE,
 	prod_id bigint REFERENCES products(id),
-	qty bigint
+	qty bigint NOT NULL
 );
 
 ------------------------ Add to cart function --------------------------
@@ -124,12 +124,12 @@ INSERT INTO order_details (order_header, prod_id, qty)
 VALUES
 (2, 2, 1),
 (2, 4, 5),
-(2, 4, 3);
+(2, 3, 3);
 
 --- Done shoppping, so delete from cart ---
 DELETE FROM cart;
 
------------------------- Customer #2 Add to cart -----------------------------
+------------------------ Customer #2 Add to cart & checkout-----------------------
 SELECT addProductToCart(1);
 SELECT addProductToCart(2);
 SELECT addProductToCart(3);
