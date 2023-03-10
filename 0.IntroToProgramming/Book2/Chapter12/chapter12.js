@@ -1,4 +1,4 @@
-let trainSpeed = 250;
+let trainSpeed = 170;
 let trainPosition = 0;
 let animation;
 let trackLength = 260;
