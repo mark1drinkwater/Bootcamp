@@ -102,8 +102,14 @@ VALUES
 ('Wanda', 'Ibarra', 'F', '1 Albert Street', 'wandamagic@gmail.com', 3, 5, 5, 3),
 ('Nancy', 'Ruggles', 'F', '9 Glyn Street', 'nancyruggles@gmail.com', 3, 5, NULL, 3); -- NULL to showcase purpose of LEFT JOIN
 
+SELECT * FROM overtime_hours;
+SELECT * FROM salaries;
+SELECT * FROM department;
+SELECT * FROM roles;
+SELECT * FROM employees;
+
 -- LEFT JOIN query that will display the department name, job title, salary figure and overtime hours worked. --
-SELECT depart_name AS department_name, role AS job_title, salary_pa AS salary_figure, overtime_hours
+SELECT first_name, surname, depart_name AS department_name, role AS job_title, salary_pa AS salary_figure, overtime_hours
 FROM Employees emp
 LEFT JOIN Department dep
 ON emp.depart_id = dep.depart_id
