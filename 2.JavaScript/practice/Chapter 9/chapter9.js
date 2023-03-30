@@ -29,6 +29,7 @@ const url = document.URL;
 console.log(url);
 page.textContent = url;
 
+console.log("\nSelf-check quiz")
 /////////////////////////////////////////////////////////////////////////////////////////////////
 // Self-check quiz
 // 1. Go to your favorite website and open the browser console. Type document.
