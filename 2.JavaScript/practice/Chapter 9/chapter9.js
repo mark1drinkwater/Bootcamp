@@ -43,18 +43,18 @@ console.log("\nSelf-check quiz")
 // 3. Use what we learned about objects to list out BOM object properties and
 // values. Try it on the document object.
     // Why does this not work????
-    // for (const value of document) {
-    //     console.log(`${value}`);
-    // }
+    for (const value of document) {
+        console.log(`${value}`);
+    }
     // Textbook answer
     for (const property in document) {
         console.log(`${property}: ${document[property]}`);
     }
 // 4. Now do the same for the window object.
     // Textbook answer
-    for (const property in window) {
-        console.log(`${property}: ${window[property]}`);
-    }
+    // for (const property in window) {
+    //     console.log(`${property}: ${window[property]}`);
+    // }
 // 5. Create an HTML file with an h1 tag. Use JavaScript and select the page
 // element with the h1 tag and assign the element into a variable. Update the
 // textContent property of the variable to Hello World.
