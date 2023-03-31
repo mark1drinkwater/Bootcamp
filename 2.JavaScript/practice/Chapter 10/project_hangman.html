@@ -1,0 +1,149 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>Hangman Game</title>
+    <style>
+        .gameArea {
+            text-align: center;
+            font-size: 2em;
+        }
+
+        .box,
+        .boxD {
+            display: inline-block;
+            padding: 5px;
+        }
+
+        .boxE {
+            display: inline-block;
+            width: 40px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1.5em;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="gameArea">
+        <div class="score"> </div>
+        <div class="puzzle"></div>
+        <div class="letters"></div>
+        <button>Start Game</button>
+    </div>
+    <script>
+        // No 1
+        words = ["tradition", "gingerbread", "knowledge", "trampoline", "dependent", "windmill", "volkswagon", "saxophone"];
+        // No 2
+        game =
+        {
+            currentWord: "",
+            solution: "",
+            letters: [],
+            puzzle: [],
+            noLettersLeft: 0,
+        };
+        // No 3
+        const gameArea = document.querySelector('.gameArea');
+        const score = document.querySelector('.score');
+        const puzzle = document.querySelector('.puzzle');
+        const letters = document.querySelector('.letters');
+        const startButton = document.querySelector('button');
+        // No 4
+        startButton.addEventListener("click", startGame);
+
+        // No 5
+        function startGame() {
+            if (words.length > 0) {
+                startButton.style.display = 'none';
+                game.solution = "";
+                game.letters = [];
+                game.puzzle = [];
+                game.noLettersLeft = 0;
+                game.currentWord = words.shift();
+                // No 6
+                game.solution = game.currentWord.split("");
+
+                builder();
+                updateScore();
+
+                // Output solution to console
+                console.log(game.solution.join(""));
+            } else {
+                score.textContent = 'Well done you completed all the words!';                
+            }
+        }
+
+        // No 7
+        function builder() {
+            // No 9
+            letters.innerHTML = "";
+            puzzle.innerHTML = "";
+            // No 10            
+            game.solution.forEach(letter => {
+                let element = generatePageElement("div", puzzle, "-", "boxE");
+                // No 11
+                if (letter === " ") {
+                    element.textContent = "";
+                    element.style.borderColor = "white";
+                } else {
+                    game.noLettersLeft++;
+                }
+                game.puzzle.push(element);
+            });
+            // No 13
+            for (let i = 0; i < 26; i++) {
+                let char = String.fromCharCode(65 + i);
+                // No 14
+                let charElement = generatePageElement("div", letters, char, "box");
+                charElement.addEventListener("click", checker);
+            }
+        }
+
+        // No 8
+        function generatePageElement(type, parent, output, className) {
+            let tempEl = document.createElement(type);
+            tempEl.classList.add(className);
+            tempEl.textContent = output;
+            parent.append(tempEl);
+            return tempEl;
+        }
+
+        // No 12
+        function updateScore() {
+            // No 18
+            score.textContent = `Your score is: ${game.solution.length - game.noLettersLeft}`;            
+            if (game.noLettersLeft <= 0) {
+                score.textContent = 'Well done, hit "Start Game" for another word!'
+                startButton.style.display = 'block';
+            }
+        }
+
+        // No 15
+        function checker(e) {            
+            this.classList.remove("box");
+            this.classList.add("boxD")
+            this.removeEventListener("click", checker);
+            this.style.backgroundColor = "purple";
+            checkLetter(this.textContent);
+        }
+
+        // No 16
+        function checkLetter(letter) {
+            game.solution.forEach( (char, index) => {
+                if (letter.toUpperCase() === char.toUpperCase() ) {
+                    game.puzzle[index].textContent = char;
+                    // No 17
+                    game.noLettersLeft--;
+                    // TODO
+                    puzzle.textContent[index] = char;                    
+                }
+            });
+            updateScore();
+        }
+
+    </script>
+</body>
+
+</html>
