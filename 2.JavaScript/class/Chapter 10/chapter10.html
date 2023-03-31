@@ -1,12 +1,38 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>JS Tester</title>
-  </head>
   <body>
-    <h1 class="output">Hello World</h1>
-    <div class="output">Test</div>
+    <h1>Let's find the treasure</h1>
+    <div id="forest">
+      <div id="tree1">
+        <div id="squirrel"></div>
+        <div id="flower"></div>
+      </div>
+      <div id="tree2">
+        <div id="shrubbery">
+          <div id="treasure"></div>
+        </div>
+        <div id="mushroom">
+          <div id="bug"></div>
+        </div>
+      </div>
+    </div>
+    <script>
+      // Finding the treasure using children
+      //console.dir(document.body.children.forest.children.tree2.children.shrubbery.children.treasure);
 
-    <script src="chapter10.js"></script>
+      // Finding the treasure using childNodes
+      // childNodes includes comments
+      console.dir(
+        document.body.childNodes[3].childNodes[3].childNodes[1].childNodes[1]
+      );
+
+      // Will show the forest since that is the parent of tree2
+      console.dir(document.body.children.forest.children.tree2.parentElement);
+
+      //Not only can we move up and down, we can also move sideways. For example, if we select tree2 like this:
+      document.body.children.forest.children.tree2;
+      document.body.children.forest.children.tree2.previousElementSibling;
+      document.body.children.forest.children.tree1.nextElementSibling;      
+    </script>
   </body>
 </html>
