@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Exercise 10.10</title>
+    <style>
+    </style>
+</head>
+
+<body>
+    <div id="message">Complete JavaScript Course</div>
+    <br>
+    <div>
+        <input type="text" id="addItem">
+        <input type="button" id="addNew" value="Add to List">
+    </div>
+    <div id="output">
+        <h1>Shopping List</h1>
+        <ol id="sList"> </ol>
+    </div>
+    <script>
+        const button = document.querySelector('#addNew');
+        const orderedList = document.querySelector('#sList');
+        const input = document.querySelector('#addItem');
+
+        button.addEventListener('click', function addOne() {
+            let listItem = document.createElement("li");
+            // Much easier to understand
+            //listItem.innerText = input.value;            
+
+            // Way textbook wants it
+            const textNode = document.createTextNode(input.value);
+            listItem.appendChild(textNode);
+
+            // Append list item to the unordered list
+            orderedList.appendChild(listItem);         
+            
+            input.value = "";
+        });
+    </script>
+</body>
+</html>

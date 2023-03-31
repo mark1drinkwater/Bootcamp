@@ -1,0 +1,25 @@
+<!-- Exercise 10.4 -->
+<!-- No 1 -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Exercise 10.4</title>
+  </head>
+  <body>
+    <!-- No 2 -->
+    <h2 class="planets">Earth</h2>
+    <h2 class="planets">Mars</h2>
+    <h2 class="planets">Saturn</h2>
+    <script>
+      // No 3
+      const planets = document.getElementsByClassName("planets");
+      // No 4
+      //console.log(planets.item(0));
+      // Bonus: How to loop through all elements, first convert the HTMLCollection to an array.
+      Array.from(planets).forEach((el) => console.log(el));
+    </script>
+  </body>
+</html>

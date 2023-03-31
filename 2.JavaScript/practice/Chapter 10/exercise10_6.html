@@ -1,0 +1,29 @@
+<!-- Exercise 10.6 -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Exercise 10.6</title>
+  </head>
+  <body>
+    <!-- No 1 & 2 -->
+    <h1 class="plant">Rose</h1>
+    <h2 class="plant">Cactus</h2>
+    <h3 class="plant">Lily</h3>
+    <h4 class="plant">Swiss Cheese Plant</h4>
+
+    <script>
+      // No 3
+      const plants = document.querySelectorAll(".plant");
+      // No 4
+      console.log(plants);
+      for (let i = 0; i < plants.length; i++) {
+        console.log(plants[i]);
+      }
+      //Or
+      //plants.forEach(el => console.log(el));
+    </script>
+  </body>
+</html>

@@ -1,0 +1,51 @@
+<!-- Exercise 10.8 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise 10.8</title>
+</head>
+
+<body>
+    <h1>My Friends Table</h1>
+    <div id="message"></div>
+    <div id="output"></div>
+</body>
+<script>
+    // No 1
+    names = ["John", "Jane", "Amahle", "Annika", "Maria", "Precious", "Aron", "Abigail"];
+    // No 2
+    const msg = document.querySelector('#message');
+    const out = document.querySelector('#output');
+    build();
+
+    // No 3
+    function build() {
+        // No 4
+        var html = "<table>";
+        for (i = 0; i < names.length; i++) {
+            // Tables are cumbersome to work with...
+            html += `<tr data-row="${i+1}" data-name="${names[i]}" onclick='getData(this)'>`;
+            html +=  `<td style="width: 100px;"> ${names[i]}</td>`;
+            html += `<td class="box" style="width: 100px;"> ${i+1}</td>`;
+            html += "</tr>";
+        }
+
+        html += "</table>";
+        out.innerHTML = html;
+    }
+
+    // No 9
+    function getData(el) {
+        const name = el.getAttribute("data-name");
+        const rowNo = el.getAttribute("data-row");
+        // No 10
+        msg.innerHTML = `Name:   ${name} on Row:   ${rowNo}`;
+        
+    }
+</script>
+
+</html>
