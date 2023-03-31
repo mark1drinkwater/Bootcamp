@@ -1,0 +1,58 @@
+Self-check quiz
+1. What output will the following code produce?
+Hello <br> World
+<div id="output">Complete JavaScript Course </div>
+<script>
+    var output = document.getElementById('output');
+    output.innerText = "Hello <br> World";
+</script>
+
+2. What output will be seen within the browser page?
+Hello
+World
+
+<div id="output">Complete JavaScript Course </div>
+<script>
+    document.getElementById('output').innerHTML = "Hello <br> World";
+</script>
+
+3. What will be seen in the input field from the following code?
+<!-- Hello World -->
+<div id="output">Hello World</div>
+<input type="text" id="val" value="JavaScript">
+<script>
+    document.getElementById('val').value = document.
+        getElementById('output').innerHTML;
+</script
+
+4. In the following code, what is output into the console when the element with
+the word three gets clicked? What is the output when the element with the word one gets clicked?
+Clicking three results in 'three'
+Clicking one results in 'one two three'
+
+<div class="holder">
+<div onclick="output('three')">Three
+<div onclick="output('two')">Two
+<div onclick="output('one')">One</div>
+</div>
+</div>
+</div>
+<script>
+    function
+        output(val) {
+        console.log(val);
+    }
+</script>
+
+5. What line of code needs to be added to remove the event listener when the
+button is clicked in the following code?
+btn.removeEventListener("click", myFun);
+
+<div class="btn">Click Me</div>
+<script>
+    const btn = document.querySelector(".btn");
+    btn.addEventListener("click", myFun);
+    function myFun() {
+        console.log("clicked");
+    }
+</script>
