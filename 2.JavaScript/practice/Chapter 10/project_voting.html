@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Complete JavaScript Course</title>
+</head>
+
+<body>
+    <div id="message">Complete JavaScript Course</div>
+    <div>
+        <input type="text" id="addFriend">
+        <input type="button" id="addNew" value="Add Friend">
+    </div>
+    <table id="output"></table>
+    <script>
+        // No 1
+        const myFriends = ["Laurence", "Mike", "John", "Larry"];
+        // No 2
+        const textFriendField = document.querySelector('#addFriend');
+        const addFriendButton = document.querySelector('#addNew');
+        const output = document.querySelector('#output');
+        // No 3
+        addFriendButton.addEventListener("click", function () {
+            const newFriend = textFriendField.value;
+            if (newFriend)
+                addFriend(newFriend);
+            else
+                alert("Friend field is blank.")
+        });
+
+        build();
+
+        function addFriend(name) {
+            myFriends.push(name);
+            const tableRows = output.rows;
+            const lastRow = tableRows[tableRows.length - 1];
+            const tdIndex = lastRow.firstChild;
+            let noIndex = Number(tdIndex.innerText);
+            noIndex++;
+            let html = `<td>${noIndex}</td>`;
+                html += `<td>${name}</td>`;
+                html += `<td>0</td>`;
+            let rowEl = document.createElement("tr");                     
+            rowEl.innerHTML = html;
+            rowEl.setAttribute("onclick", "addVote(this)")
+            const tbody = output.childNodes[0];
+            tbody.appendChild(rowEl);
+            console.log(output)
+        }
+
+        function build() {
+            let html = "";
+            myFriends.forEach((friend, index) => {
+                html += `<tr onclick='addVote(this)'><td>${index + 1}</td>`;
+                html += `<td>${friend}</td>`;
+                html += `<td>0</td></tr>`;
+            });
+            output.innerHTML = html;
+        }
+
+        function addVote(e) {
+            let voteElement = e.childNodes[2];
+            let noVotes = Number(voteElement.textContent);
+            noVotes++;
+            voteElement.textContent = noVotes;
+        }
+    </script>
+</body>
+
+</html>
