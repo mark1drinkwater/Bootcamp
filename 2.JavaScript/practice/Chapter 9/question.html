@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // Does not work
+      //   for (const value of document) {
+      //     console.log(`${value}`);
+      //   }
+
+      // Works
+      for (const property in document) {
+        console.log(`${property}: ${document[property]}`);
+      }
+
+      // Does not work
+      // for (let index = 0; index < document.length; index++) {
+      // console.log(document[index]);
+      // }
+
+      // Does not work
+      // for ([value, key] of Object.entries(document)) {
+      //     console.log(`${key}: ${value}`);
+      // }
+    </script>
+  </body>
+</html>
