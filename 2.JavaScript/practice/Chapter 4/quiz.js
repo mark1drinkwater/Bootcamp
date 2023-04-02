@@ -1,4 +1,4 @@
-Self - check quiz:
+//Self - check quiz:
 
 // 1. What will be outputted to the console in this instance ?
 // one
