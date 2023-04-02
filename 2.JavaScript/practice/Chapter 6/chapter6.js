@@ -142,6 +142,7 @@ function countTillTen(counter) {
 countTillTen(3);
 
 /////////////////////////////////////////////////////////////////////////////////////////////////
+// PROJECTS
 // Project: Set timeout order
 console.log("\nProject: Set timeout order");
 const one = () => console.log("one");
