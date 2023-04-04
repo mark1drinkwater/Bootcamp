@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise 11.2</title>
+</head>
+<body>
+    <style>
+        div {
+            padding: 20px;
+        }
+    </style>
+
+    <div>blue</div>
+    <div>red</div>
+    <div>green</div>
+    <div>purple</div>
+    <div>yellow</div>
+    <div>black</div>
+    <div>brown</div>
+
+    <script>
+        const divs = document.querySelectorAll('div');
+        for (let i = 0; i < divs.length; i++) {
+            let div = divs[i];
+            div.addEventListener("click", function() {
+                console.log(event.target)
+                event.target.style.backgroundColor = event.target.textContent;
+            })
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,344 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 11</title>
+</head>
+<body onload="unique()">
+    1st Method to add an onclick event
+    <p id="unique" onclick="magic()">Click here for magic!</p>
+    <p id="unique">Click here for magic!</p>
+
+    <script>
+        // 2nd Method
+        // document.getElementById("unique").onclick = magic;
+        // 3rd method
+        // document.getElementById("unique").addEventListener("click", magic);
+        // 4th Method
+        // document.getElementById("unique").addEventListener("click", function() { magic() })
+        // function magic() {
+        //     console.log("I'm in magic");
+        // }
+
+        // window.onload = function() {
+        //     alert("window loaded");
+        // }        
+
+        // document.addEventListener("DOMContentLoaded", (e) => {
+        //     alert("DOM Loaded");
+        // })
+
+        function unique() {
+            alert("body has loaded");
+        }
+    </script>
+</body>
+</html> -->
+
+<!-- <!DOCTYPE html>
+<html>
+    <body>
+        <div id="divvy" onmouseover="changeColor()" style="width: 100px; height: 100px; background-color: pink;"></div>
+        <script>
+            function changeColor() {
+                document.getElementById("divvy").style.backgroundColor = "purple";
+            }
+        </script>
+    </body>
+</html> -->
+
+<!-- <!DOCTYPE html>
+<html>
+<body>
+    <div id="divvy" style="width: 100px; height: 100px; background-color: pink;">
+        <script>
+            window.onload = function donenow() {
+                const divvy = document.getElementById("divvy");
+                console.log("hi");
+                divvy.addEventListener("mousedown",
+                    function () { changeColor(this, "green"); });
+                divvy.addEventListener("mouseup",
+                    function () { changeColor(this, "yellow"); });
+                divvy.addEventListener("dblclick",
+                    function () { changeColor(this, "black"); });
+                divvy.addEventListener("mouseout",
+                    function () { changeColor(this, "blue"); });
+
+                // divvy.addEventListener("mousedown", changeColor(this, "green"));
+                // divvy.addEventListener("mouseup", changeColor(this, "yellow"));
+                // divvy.addEventListener("dblclick", changeColor(this, "black"));
+                // divvy.addEventListener("mouseout", changeColor(this, "blue"));
+            }
+            console.log("hi2");
+            function changeColor(el, color) {
+                el.style.backgroundColor = color;
+            }
+        </script>
+</body>
+</html> -->
+
+<!-- <!doctype html>
+<html>
+
+<body>
+    <button type="button" onclick="triggerSomething()">Click</button>
+    <script>
+        // With the html onclick it automatically passes the event
+        function triggerSomething() {
+            console.dir(event.target);
+            console.log(event.target);
+            console.log("event type:", event.type);
+        }
+    </script>
+</body>
+
+</html> -->
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<body>
+    <div id="welcome">Hi there!</div>
+    <form>
+        <input type="text" name="firstname" placeholder="First name"/>
+        <input type="text" name="lastname" placeholder="Last name"/>
+        <input type="button" onclick="sendInfo()" value="Submit"/>
+    </form>
+    
+    <script>
+        function sendInfo() {
+            let p = event.target.parentElement;
+            message(`Welcome ${p.firstname.value} ${p.lastname.value}`);
+        }
+
+        function message(m) {
+            document.getElementById("welcome").innerHTML = m;
+        }
+    </script>
+</body>
+</html> -->
+
+<!-- <!DOCTYPE html>
+<html>
+<body>
+    <style>
+        div {
+            border: 1px solid black;
+            margin-left: 5px;
+        }
+    </style>
+    <div id="message">Bubbling events</div>
+    <div id="output">
+        1
+        <div>
+            2
+            <div>
+                3
+                <div>
+                    4
+                    <div>5</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        function bubble() {
+            console.log(this.innerText);
+        }
+        let divs = document.getElementsByTagName("div");
+        for (let i = 0; i < divs.length; i++) {
+            // Event bubbling: starts from child and bubbles upwards to parent
+            //divs[i].addEventListener("click", bubble);
+            // Event capturing: starts from parents and goes downward from the parent to child
+            divs[i].addEventListener("click", bubble, true);
+        }
+    </script>
+</body>
+</html> -->
+
+<!-- <!DOCTYPE html>
+<html>
+
+<body>
+    <div id="welcome">Hi there!</div>
+    <form>
+        <input type="text" name="firstname" placeholder="First name" onchange="logEvent()" />
+        <input type="text" name="lastname" placeholder="Last name" onblur="logEvent()" />
+        <input type="button" onclick="sendInfo()" value="Submit" />
+    </form>
+    <script>
+        function logEvent() {
+            let p = event.target;
+            if (p.name == "firstname") {
+                message("First Name Changed to " + p.value);
+            } else {
+                message("Last Name Changed to " + p.value);
+            }
+        }
+        function sendInfo() {
+            let p = event.target.parentElement;
+            message("Welcome " + p.firstname.value + " " + p.lastname.
+                value);
+        }
+        function message(m) {
+            document.getElementById("welcome").innerHTML = m;
+        }
+    </script>
+</body>
+</html> -->
+
+<!-- <!doctype html>
+<html>
+
+<body>
+
+    <body>
+        <div id="wrapper">JavaScript is fun!</div>
+        <input type="text" name="myNum1" onkeypress="numCheck()">
+        <input type="text" name="myNum2" onkeypress="numCheck2()">
+        <script>
+            function numCheck() {
+                message("Number: " + !isNaN(event.key));
+                return !isNaN(event.key);
+            }
+            function numCheck2() {
+                message("Not a number: " + isNaN(event.key));
+                return isNaN(event.key);
+            }
+            function message(m) {
+                document.getElementById('wrapper').innerHTML = m;
+            }
+        </script>
+    </body>
+
+</html> -->
+
+<!-- <!doctype>
+<html>
+
+<head>
+    <style>
+        .box {
+            height: 200px;
+            width: 200px;
+            padding: 20px;
+            margin: 0 50px;
+            /* display: inline-block; */
+            /* To prevent a space between the top.*/ 
+            float:left;
+            border: 1px solid black;
+        }
+
+        #dragme {
+            background-color: red;
+            font-size: 1.5rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box" ondrop="dDrop()" ondragover="nDrop()">
+        1
+        <div id="dragme" ondragstart="dStart()" draggable="true">
+            Drag Me Please!
+        </div>
+    </div>
+    <div class="box" ondrop="dDrop()" ondragover="nDrop()">2</div>
+
+    <script>
+        let holderItem;
+        function dStart() {
+            holderItem = event.target;
+        }
+        function nDrop() {
+            event.preventDefault();
+        }
+        function dDrop() {
+            event.preventDefault();
+            if (event.target.className == "box") {
+                event.target.appendChild(holderItem);
+            }
+        }
+    </script>
+</body>
+
+</html> -->
+
+<!-- <!doctype html>
+<html>
+
+<body>
+    <form action="anotherpage.html" method="get">
+        <input type="text" placeholder="name" name="name" />
+        <input type="submit" value="send" />
+    </form>
+</body>
+
+</html> -->
+
+<!-- <!doctype html>
+<html>
+
+<body>
+    <div id="wrapper"></div>
+    <form action="anotherpage.html" method="get" onsubmit="return valForm()">
+        <input type="text" id="firstName" name="firstName" placeholder="First name" />
+        <input type="text" id="lastName" name="lastName" placeholder="Last name" />
+        <input type="text" id="age" name="age" placeholder="Age" />
+        <input type="submit" value="submit" />
+    </form>
+    <script>
+        function valForm() {
+            var p = event.target.children;
+            if (p.firstName.value == "") {
+                message("Need a first name!!");
+                return false;
+            }
+            if (p.lastName.value == "") {
+                message("Need a last name!!");
+                return false;
+            }
+            if (p.age.value == "") {
+                message("Need an age!!");
+                return false;
+            }
+            return true;
+        }
+        function message(m) {
+            document.getElementById("wrapper").innerHTML = m;
+        }
+    </script>
+</body>
+
+</html> -->
+
+<!doctype html>
+<html>
+<style>
+    div {
+        background-color: purple;
+        width: 100px;
+        height: 100px;
+        position: absolute;
+    }
+</style>
+<body>
+    <button onclick="toTheRight()">Go right</button>
+    <div id="block"></div>
+    <script>
+        function toTheRight() {
+            let b = document.getElementById("block");
+            let x = 0;
+            setInterval(function () {
+                if (x === 600) {
+                    clearInterval();
+                } else {
+                    x++;
+                    b.style.left = x + "px";
+                }
+            }, 2);
+        }
+    </script>
+</body>
+</html>
