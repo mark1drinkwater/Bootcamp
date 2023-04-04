@@ -104,7 +104,28 @@
         // let x;
 
         "use strict";
+        
+        try {
+            somethingVeryDangerous();
+        } catch(e) {
+            if (e instanceof TypeError) {
+                console.log("oops reference error");
+            } else if (e instanceof RangeError) {
+                console.log("oops range error");
+            } else if (e instanceof EvalError) {
+                console.log("oops eval error");
+            } else if (e instanceof ReferenceError){
+                console.log("oops reference error")
+            } else {
+                console.log("oops other error: " + e)
+                throw e;
+            }
+        }
 
+        function somethingVeryDangerous() {
+            greeting = "Hello";
+            console.log("hello")
+        }
         
     </script>
 </body>
