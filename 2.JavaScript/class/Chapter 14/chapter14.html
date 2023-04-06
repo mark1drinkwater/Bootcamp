@@ -1,0 +1,353 @@
+<!--DOCTYPE html>
+<html>
+
+<body>
+    <div id="message"></div>
+    <script>
+        let message = document.getElementById("message");
+        if (window.FileReader) {
+            message.innerText = "Good to go!";
+        } else {
+            message.innerText = "No FileReader :(";
+        }
+    </script>
+</body>
+
+</html-->
+
+<!DOCTYPE html>
+<html>
+
+<body>
+    <!--input type="file" onchange="uploadFile(this.files)"/>
+    <div id="message"></div>
+    <script>
+        let message = document.getElementById("message");
+
+        function uploadFile(files) {
+            console.log(files[0]);
+            message.innerText = files[0].name;
+        }
+    </script-->
+
+    <!--input type="file" multiple onchange="uploadFile(this.files)"/>
+    <div id="message"></div>
+    <script>
+        let message = document.getElementById("message");
+
+        function uploadFile(files) {
+            for (file of files) {
+                console.log(file);
+                message.innerHTML += file.name + "<br>";
+            }
+        }
+    </script-->
+
+    <!--input type="file" onchange="uploadAndReadFile(this.files)" />
+    <div id="message"></div>
+    <script>
+        let message = document.getElementById("message");
+
+        function uploadAndReadFile(files) {
+            let fr = new FileReader();
+            fr.onload = function(e) {
+                message.innerHTML = e.target.result;
+            }
+            fr.readAsText(files[0]);
+        }
+    </script-->
+
+    <!--script>
+        window.onload = init;
+        function init() {
+            navigator.geolocation.getCurrentPosition(showGeoPosition);
+        }
+        function showGeoPosition(data) {
+            console.dir(data);
+        }
+    </script-->
+
+    <!--style>
+        canvas {
+            border: 1px solid black;
+        }
+    </style>
+
+    <canvas id="c1"></canvas>
+    <script>
+        let canvas = document.getElementById("c1");
+        let ctx = canvas.getContext("2d");
+        canvas.width = 500; //px
+        canvas.height = 500; //px
+        ctx.fillStyle = "pink";
+        ctx.fillRect(20, 40, 100, 100);
+    </script-->
+
+    <!--style>
+        #canvas1 {
+            border: 1px solid black;
+        }
+    </style>
+
+    <canvas id="canvas1"></canvas>
+    <script>
+        let canvas = document.getElementById("canvas1");
+        let ctx = canvas.getContext("2d");
+        canvas.width = 100;
+        canvas.height = 100;
+        // ctx.moveTo(0, 20);
+        // ctx.lineTo(50, 100);
+        // ctx.stroke();
+        // ctx.lineTo(100, 20);
+        // ctx.stroke();
+        // ctx.lineTo(0, 20);
+        // ctx.stroke();
+        
+        // ctx.moveTo(75,0);
+        // ctx.lineTo(75,100);
+        // ctx.stroke();
+        
+        ctx.lineWidth = 10;
+        ctx.moveTo(90,0);
+        ctx.lineTo(10,100);
+        ctx.stroke();
+        
+        ctx.lineWidth = 10;
+        ctx.moveTo(10,0);
+        ctx.lineTo(90,100);
+        ctx.stroke();
+    </script-->
+
+    <!-- <style>
+        #canvas1 {
+            border: 1px solid black;
+        }
+    </style>
+        <canvas id="canvas1"></canvas>
+        <script>
+            let canvas = document.getElementById("canvas1");
+            let ctx = canvas.getContext("2d");
+            canvas.width = 150;
+            canvas.height = 200;
+            ctx.beginPath();
+            ctx.arc(100, 50, 50, 0, Math.PI * 2);
+            ctx.stroke();
+        </script> -->
+
+    <!--style>
+        #canvas1 {
+            border: 1px solid black;
+        }
+    </style>
+    <canvas id="canvas1"></canvas>
+    <script>
+        let canvas = document.getElementById("canvas1");
+        let ctx = canvas.getContext("2d");
+        canvas.width = 200;
+        canvas.height = 200;
+        ctx.font = "24px Arial";
+        let txt = "Hi canvas!";
+        ctx.textAlign = "center";
+        ctx.fillText(txt, 100, 100);
+    </script-->
+
+    <!--style>
+        canvas {
+            border: 2px solid black;
+        }
+    </style>
+
+    <body>
+        <canvas id="c1"></canvas>
+        <img id="flower" src="flower.jpg" style="display: none"/>
+        <script>
+            window.onload = function () {
+                let canvas = document.getElementById("c1");
+                let myImage = document.getElementById("flower");
+                canvas.height = myImage.height;
+                canvas.width = myImage.width;
+                let ctx = canvas.getContext("2d");
+                ctx.drawImage(myImage, 10, 10);
+            };
+        </script-->
+
+    <!--style>
+        canvas {
+            border: 1px solid black;
+        }
+    </style>
+    <canvas id="canvas1"></canvas>
+    <canvas id="canvas2"></canvas>
+    <canvas id="canvas3"></canvas>
+    <script>
+        let canvas1 = document.getElementById("canvas1");
+        let ctx1 = canvas1.getContext("2d");
+        ctx1.strokeRect(5, 5, 150, 100);
+        let canvas2 = document.getElementById("canvas2");
+        let ctx2 = canvas2.getContext("2d");
+        ctx2.beginPath();
+        ctx2.arc(60, 60, 20, 0, 2 * Math.PI);
+        ctx2.stroke();
+        let canvas3 = document.getElementById("canvas3");
+        let ctx3 = canvas3.getContext("2d");
+        ctx3.drawImage(canvas1, 10, 10);
+        ctx3.drawImage(canvas2, 10, 10);
+    </script-->
+
+    <!--style>
+        canvas {
+            border: 1px solid black;
+        }
+    </style>
+    <input type="file" id="imgLoader" />
+    <br>
+    <canvas id="canvas"></canvas>
+    <script>
+        let canvas = document.getElementById("canvas");
+        let ctx = canvas.getContext("2d");
+        let imgLoader = document.getElementById("imgLoader");
+        imgLoader.addEventListener("change", upImage, false);
+        function upImage() {
+            let fr = new FileReader();
+            fr.readAsDataURL(event.target.files[0]);
+            fr.onload = function (e) {
+                let img = new Image();
+                img.src = event.target.result;
+                img.onload = function () {
+                    canvas.width = img.width;
+                    canvas.height = img.height;
+                    ctx.drawImage(img, 0, 0);
+                };
+                console.log(fr);
+            };
+        }
+    </script-->
+
+    <!--style>
+        canvas {
+            border: 1px solid black;
+        }
+    </style>
+    </head>
+
+    <canvas id="canvas"></canvas>
+    <script>
+        window.onload = init;
+        var canvas = document.getElementById("canvas");
+        var ctx = canvas.getContext("2d");
+        canvas.height = 500;
+        canvas.width = 500;
+        var pos = {
+            x: 0,
+            y: 50,
+        };
+        function init() {
+            draw();
+        }
+        function draw() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            pos.x = pos.x + 5;
+            if (pos.x > canvas.width) {
+                pos.x = 0;
+            }
+            if (pos.y > canvas.height) {
+                pos.y = 0;
+            }
+            ctx.fillRect(pos.x, pos.y+200, 100, 100);
+            ctx.fillRect(0, pos.y, pos.x, 100);
+            window.setTimeout(draw, 50);
+        }
+    </script-->
+
+    <!--style>
+        canvas {
+            border: 1px solid black;
+        }
+    </style>
+    <canvas id="canvas"></canvas>
+    <input type="color" id="bgColor" />
+    <script>
+        let bgColor = "pink";
+        let bgC = document.getElementById("bgColor");
+        bgC.addEventListener("change", function () {
+            bgColor = event.target.value;
+        });
+        let pos = {
+            x: 0,
+            y: 0,
+        };
+        let canvas = document.getElementById("canvas");
+        let ctx = canvas.getContext("2d");
+        canvas.width = 700;
+        canvas.height = 700;
+
+        window.onload = init; // add this line to the start of the script
+        function init() {
+            canvas.addEventListener("mousemove", draw);
+            canvas.addEventListener("mousemove", setPosition);
+            canvas.addEventListener("mouseenter", setPosition);
+        }
+        function setPosition(e) {
+            pos.x = e.pageX;
+            pos.y = e.pageY;
+        }
+        function draw(e) {
+            if (e.buttons !== 1) return;
+            ctx.strokeStyle = bgColor;
+            ctx.beginPath();
+            ctx.moveTo(pos.x, pos.y);
+            setPosition(e);
+            ctx.lineTo(pos.x, pos.y);
+            ctx.lineWidth = 10;
+            ctx.lineCap = "round";
+            ctx.stroke();
+        }
+    </script-->
+
+    <!--style>
+        canvas {
+            border: 1px solid black;
+        }
+    </style>
+    <canvas id="canvas"></canvas>
+    <input type="color" id="squareColor" />
+    <br>
+    <img src="" width="200" height="200" id="holder" />
+    <input type="button" id="save" value="save" />
+    <script>
+        const canvas = document.getElementById("canvas");
+        const ctx = canvas.getContext("2d");
+        canvas.width = 200;
+        canvas.height = 200;
+        const penColor = document.getElementById("squareColor");
+        penColor.addEventListener("change", function () {
+            color = event.target.value;
+            draw(color);
+        });
+        document.getElementById("save").addEventListener("click",
+            function () {
+                let dataURL = canvas.toDataURL();
+                document.getElementById("holder").src = dataURL;
+            });
+        function draw(color) {
+            ctx.fillStyle = color;
+            ctx.fillRect(70, 70, 100, 100);
+        }
+    </script-->
+
+    <!--audio controls>
+        <source src="sound.ogg" type="audio/ogg">
+        <source src="sound.mp3" type="audio/mpeg">
+    </audio-->
+
+    <!--video width="1024" height="576" controls>
+        <source src="movie.mp4" type="video/mp4">
+        <source src="movie.ogg" type="video/ogg">
+    </video-->
+
+    <!--iframe width="1024" height="576" src="https://www.youtube.com/embed/v6VTv7czb1Y">
+    </iframe-->
+
+    
+
+</html>

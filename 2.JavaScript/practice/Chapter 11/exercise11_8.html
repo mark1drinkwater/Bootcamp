@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise 11.8</title>
+</head>
+<body>
+    <div class="output"></div>
+    <input type="text" name="inp1" id="inp1">
+    <input type="text" name="inp2" id="inp2">
+
+    <script>
+        const output = document.querySelector('.output');
+        const eles = document.querySelectorAll('input');
+
+        eles.forEach(el => {
+            el.addEventListener("keydown", e => {
+                if (!isNaN(e.key)) {
+                    output.textContent += e.key;
+                }
+            });
+            el.addEventListener("keyup", e => {
+                console.log(e.key);
+            });
+            el.addEventListener("paste", e => {
+                console.log("paste");
+            })
+        })
+    </script>
+</body>
+</html>

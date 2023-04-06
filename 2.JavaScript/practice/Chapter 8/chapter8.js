@@ -104,7 +104,7 @@ function randomNumber(min, max) {
 
 console.log("\n100 Random Numbers:");
 for (let i = 0; i < 100; i++) {
-    //console.log(randomNumber(1, 100));
+    console.log(randomNumber(1, 100));
 }
 
 /////////////////////////////////////////////////////////////////////////////////////////////////

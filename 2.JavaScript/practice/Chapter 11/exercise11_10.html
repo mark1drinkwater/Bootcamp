@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise 10.10</title>
+</head>
+
+<body>
+    <form>
+        <input type="text" name="first" id="first">
+        <input type="text" name="last" id="last">
+        <input type="text" name="age" id="age">
+        <button type="submit">Submit!</button>
+    </form>
+
+    <script>
+        const form = document.querySelector('form');
+        form.addEventListener("submit", e => {
+            console.clear();
+            let error = false;
+            if (!checker(form.first.value)) {
+                console.log("First name missing.");
+                error = true;
+            }
+            if (!checker(form.first.value)) {
+                console.log("Last name missing.");
+                error = true;
+            }
+            if (!checker(form.age.value)) {
+                console.log("Age missing.");
+                error = true;
+            }
+            if (isNaN(form.age.value)) {
+                console.log("Age is not a number.");
+                error = true;
+            }
+            if (Number(form.age.value) < 19) {
+                console.log("Age too young.");
+                error = true;
+            }                   
+            if (error) {
+                alert("Error, please check the console for more information.")
+                e.preventDefault();
+            } else {
+                alert("Information has been submitted");
+            }
+        });
+
+        function checker(str) {
+            console.log("length:", str.length)
+            if (str === "") {
+                return false;
+            }
+            return true;
+        }
+    </script>
+</body>
+
+</html>

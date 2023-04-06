@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise 12.5</title>
+</head>
+
+<body>
+    <script>
+        function convertToNumber(val) {
+            try {
+                if (isNaN(val)) {
+                    throw "This value is not a valid number.";
+                } else {
+                    console.log("Got a number");
+                }
+            } catch (e) {
+                console.log(e);
+            } finally {
+                console.log("Test value:", val);
+            }
+        }
+
+        convertToNumber("12345");
+        convertToNumber("12345ABCDE")
+    </script>
+</body>
+
+</html>

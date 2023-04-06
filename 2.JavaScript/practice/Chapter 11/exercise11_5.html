@@ -1,0 +1,46 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>JS Tester</title>
+</head>
+
+<body>
+    <div class="output"></div>
+    <input type="text" name="message" placeholder="Your Message">
+    <button class="btn1">Button 1</button>
+    <button class="btn2">Button 2</button>
+    <div>
+        <button class="btn3">Log</button>
+    </div>
+    <script>
+        const div = document.querySelector('.output');
+        const input = document.querySelector('input');
+        const button1 = document.querySelector('.btn1');
+        const button2 = document.querySelector('.btn2');
+        const button3 = document.querySelector('.btn3');
+
+        const log = [];
+
+        button1.addEventListener("click", captureEvent);
+        button2.addEventListener("click", captureEvent);
+        button3.addEventListener("click", function() {
+            console.log(log);
+        });
+
+        function captureEvent(e) {
+            const el = e.target;
+            
+            let tempObj = {
+                input: input.value,
+                type: el.type,
+                className: e.className,
+                tag: el.tagName,
+            };
+            log.push(tempObj);
+            input.textContent = "";
+        }
+    </script>
+</body>
+
+</html>

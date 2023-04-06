@@ -133,7 +133,7 @@ func("hello world");
 console.log("\nProject: Recursive function");
 function countTillTen(counter) {
     console.log(counter);
-    if (counter > 10) {
+    if (counter > 9) {
         return counter;
     } else {
         return countTillTen(counter + 1);

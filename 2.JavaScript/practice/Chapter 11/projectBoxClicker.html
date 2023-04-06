@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Click Me Game</title>
+    <style>
+        .output {
+            width: 500px;
+            height: 500px;
+            border: 1px solid black;
+            margin: auto;
+            text-align: center;
+        }
+
+        .box {
+            width: 50px;
+            height: 50px;
+            position: relative;
+            top: 50px;
+            left: 20%;
+            background-color: red;
+        }
+
+        .message {
+            text-align: center;
+            padding: 10px;
+            font-size: 1.3em;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="output"></div>
+    <div class="message"></div>
+    <script>
+        const output = document.querySelector('.output');
+        const message = document.querySelector('.message');
+        const box = document.createElement("div");
+        box.classList.add('box');
+        output.appendChild(box);
+
+        message.textContent = "Press to Start";
+
+        const game = {
+            timer: 0,
+            start: null,
+        };        
+
+        function randomNumber(max) {
+            return Math.floor(Math.random() * max);
+        }
+
+        box.addEventListener("click", e => {
+            box.style.display = "none";
+            game.timer = setTimeout(addBox, randomNumber(2000));
+            if (game.start == null) {
+                message.textContent = "Loading..............";
+            } else {
+                const date = new Date();
+                const timeDif = (date.getTime() - game.start)/1000;
+                message.textContent = `It took you ${timeDif} seconds to click the square.`;
+            };
+
+            function addBox() {
+                message.textContent = "Click me if you can.";
+                game.start = new Date().getTime();
+                box.style.display = "block";
+                box.style.left = randomNumber(500-50) + 'px';
+                box.style.top = randomNumber(500-50) + 'px';
+            }
+        });
+    </script>
+</body>
+
+</html>

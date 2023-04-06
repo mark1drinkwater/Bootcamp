@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>Exercise 12.1</title>
+</head>
+
+<body>
+    <div id="output">Complete JavaScript Course</div>
+    Search for:
+    <input id="sText" type="text">
+    <br> Replace with:
+    <input id="rText" type="text">
+    <br>
+    <button>Replace</button>
+    <script>
+        const output = document.querySelector('#output');
+        const sIn = document.querySelector('#sText');
+        const rIn = document.querySelector('#rText');
+        const button = document.querySelector('button');
+
+        button.addEventListener("click", lookup)
+
+        function lookup() {
+            let s = output.textContent;
+            let find = sIn.value;
+            let rt = rIn.value;
+
+            // When you want to use a variable inside a regular expression.
+            // Then you need to create a RegExp object and input the variable inside the constructor.
+            const regex = new RegExp(find);
+            if (s.match(regex)) {
+                output.textContent = s.replace(regex, rt);
+            }
+        }
+    </script>
+</body>
+
+</html>

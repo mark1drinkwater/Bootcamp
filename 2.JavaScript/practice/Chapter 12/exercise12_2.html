@@ -1,0 +1,34 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>JavaScript Course</title>
+</head>
+
+<body>
+    <div class="output"></div>
+    <input type="text" placeholder="Enter Email">
+    <button>Check</button>
+    <script>
+        const input = document.querySelector('input');
+        const output = document.querySelector('.output');
+        const button = document.querySelector('button');
+
+        button.addEventListener("click", e => {
+            let msg = "";
+            let email =  input.value;
+
+            const regMatch = email.match(/([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9._-]+)/g);
+
+            if (regMatch) {
+                msg = "Valid email address";
+            } else {
+                msg = "Invalid email address";
+            }
+
+            output.textContent = msg;
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+<style>
+    div {
+        background-color: purple;
+        width: 100px;
+        height: 100px;
+        position: absolute;
+    }
+</style>
+
+<body>
+    <div id="block"></div>
+    <script>
+        let b = document.getElementById("block");
+        const blockObj = {
+            speed: 50,
+            direction: 1,
+            position: 0,
+        };
+
+        let interval = 30;
+
+        b.addEventListener("click", function () {
+            interval = 30;
+            setInterval(function () {
+                if (interval < 1) {
+                    clearInterval();                    
+                } else {
+                    if (blockObj.position > 800 || blockObj.position < 0) {
+                        blockObj.direction *= -1;
+                    }
+                    blockObj.position += blockObj.direction;
+                    b.style.left = blockObj.position + "px";
+                    console.log(blockObj);
+                    interval--;
+                }
+            })
+        });
+    </script>
+</body>
+
+</html>

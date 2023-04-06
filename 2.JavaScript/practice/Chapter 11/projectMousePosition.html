@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project: Mouse position tracker</title>
+</head>
+<body>
+    <div class="container active"></div>
+    <div class="output"></div>
+    <style>
+        .container {
+            height: 800px;
+            width: 800px;
+        }
+        .active {
+            background-color: red;
+        }
+    </style>
+
+    <script>
+        const container = document.querySelector('.container');
+        const output = document.querySelector('.output');
+
+        container.addEventListener("mouseover", e => {
+            e.target.classList.add('active');
+        });
+        container.addEventListener("mouseout", e => {
+            e.target.classList.remove('active');
+        })
+        container.addEventListener("mousemove", track);
+
+        function track(e) {
+            const x = e.clientX;
+            const y = e.clientY;
+            output.innerText = `The x position of the mouse is: ${x} and the y position is ${y}`;
+        }
+    </script>
+</body>
+</html>

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -105,28 +105,72 @@
 
         "use strict";
         
+        // try {
+        //     somethingVeryDangerous();
+        // } catch(e) {
+        //     if (e instanceof TypeError) {
+        //         console.log("oops reference error");
+        //     } else if (e instanceof RangeError) {
+        //         console.log("oops range error");
+        //     } else if (e instanceof EvalError) {
+        //         console.log("oops eval error");
+        //     } else if (e instanceof ReferenceError){
+        //         console.log("oops reference error" + e.stack)
+        //     } else {
+        //         console.log("oops other error: " + e)
+        //         throw e;
+        //     }
+        // }
+
         try {
             somethingVeryDangerous();
         } catch(e) {
-            if (e instanceof TypeError) {
-                console.log("oops reference error");
-            } else if (e instanceof RangeError) {
-                console.log("oops range error");
-            } else if (e instanceof EvalError) {
-                console.log("oops eval error");
-            } else if (e instanceof ReferenceError){
-                console.log("oops reference error")
-            } else {
-                console.log("oops other error: " + e)
-                throw e;
-            }
-        }
+            console.log("Oh oh");
+        } finally {
+            console.log("Error or no error, I will be used");
+        } 
 
         function somethingVeryDangerous() {
             greeting = "Hello";
-            console.log("hello")
+            //if (greeting.length < 2)
+                //throw "Greeting is too short";
         }
         
+    </script>
+</body>
+
+</html> -->
+
+<!DOCTYPE html>
+<html>
+
+<body>
+    <div id="stored"></div>
+    <script>
+        // let message = "Hello storage!";
+        // localStorage.setItem("example", message);
+        // if (localStorage.getItem("example")) {
+        //     document.getElementById("stored").innerHTML = localStorage.getItem("example");
+        // }
+        // document.getElementById("stored").innerHTML = localStorage.getItem("example");
+        // console.log(window.localStorage.key(0));
+        // console.log(window.localStorage.getItem(window.localStorage.key(0)));
+        // window.localStorage.removeItem("example");
+        // console.log(localStorage.getItem("example"))
+
+        //let str = "{\"name\": \"Maaike\", \"age\": 30}";
+        // let str = '{"name": "Maaike", "age": 30}';
+
+        // let obj = JSON.parse(str);
+        // console.log(obj.name, "is", obj.age);
+
+        let dog = {
+            "name": "wiesje",
+            "breed": "dachshund"
+        };
+        let strdog = JSON.stringify(dog);
+        console.log(typeof strdog);
+        console.log(strdog);
     </script>
 </body>
 

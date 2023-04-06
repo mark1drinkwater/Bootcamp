@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise 12.3</title>
+</head>
+
+<body>
+    <script>
+        function argumentsTest() {
+            let lastOne = "";
+            for (let i = 0; i < arguments.length; i++) {
+                lastOne = arguments[i];
+            }
+            return lastOne;
+        }
+
+        console.log(argumentsTest("first", "second", "third", "fourth", "fifth"));
+    </script>
+</body>
+
+</html>
