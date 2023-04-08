@@ -1,0 +1,60 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>Complete JavaScript Course</title>
+</head>
+
+<body>
+    <span class="val1"></span>
+    <span>+</span>
+    <span class="val2"></span>
+    <span>=</span>
+    <input type="text" name="answer"></span>
+    <button>Check</button>
+    <div class="output"></div>
+</body>
+
+<script>
+    document.addEventListener("DOMContentLoaded", app);
+    const random = (min, max) => Math.floor(Math.random() * (max - min)) + min;
+
+    function app() {
+        const val1el = document.querySelector('.val1');
+        const val2el = document.querySelector('.val2');
+        const input = document.querySelector('input[name="answer"]');
+        const button = document.querySelector('button');
+        const out = document.querySelector('.output');
+
+        const game = {};
+        init();
+
+
+        function init() {
+            button.addEventListener("click", checker);
+            loadQuestion();
+        }
+
+        function loadQuestion() {
+            const val1 = random(1, 10);
+            const val2 = random(1, 10);
+            const res = val1 + val2;
+
+            game["val1"] = val1;
+            game["val2"] = val2;
+            game["result"] = val1 + val2;
+
+            val1el.textContent = val1;
+            val2el.textContent = val2;
+        }
+
+        function checker() {
+            const colour = input.value == game.result ? "green" : "red";
+            out.innerHTML += `<div style="color:${colour}">${game.val1} + ${game.val2} = ${game.result}   (${input.value})</div>`;
+            loadQuestion();
+        }
+    }
+
+</script>
+
+</html>
