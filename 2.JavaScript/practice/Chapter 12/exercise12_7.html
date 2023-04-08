@@ -20,7 +20,59 @@
     <ul class="output">
     </ul>
     <script>
+        const main = document.querySelector('.main');
+        const input = document.querySelector('input');
+        const button = document.querySelector('button');
+        const output = document.querySelector('.output');
+
+        let tasks = [];
+
+        if (window.localStorage.getItem("tasklist")) {
+            tasks = JSON.parse(window.localStorage.getItem("tasklist"));
+        }
+
+        tasks.forEach(task => {
+            addListItem()            
+        });
+
+        button.addEventListener("click", e => {
+            addListItem(input.value)
+        });
+
+        function addListItem(text) {
+            const li = document.createElement("li");
+            const textNode = document.createTextNode(text);
+            li.append(textNode);
+            if (checked)
+                li.classList.add('ready');
+            li.addEventListener("click", e => {
+                e.target.classList.toggle('ready');
+                taskBuilder();
+            });
+
+            output.append(li);                        
+        }
         
+        function taskBuilder() {
+            tasks = [];
+            let checked = false;
+
+            const liAll = document.querySelectorAll('li');
+            liAll.forEach(li => {
+                const text = li.textContent;
+                if (li.classList.contains('ready')) {
+                    checked = true;
+                }
+                const obj = {text, checked};
+                tasks.push(obj);
+            });
+            saveTasks();
+        }
+
+        function saveTasks() {
+            window.localStorage.setItem("tasklist", JSON.stringify(tasks));
+        }
+
     </script>
 </body>
 
