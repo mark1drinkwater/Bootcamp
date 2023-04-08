@@ -1,0 +1,95 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>JavaScript Course</title>
+    <style>
+        .hide {
+            display: none;
+        }
+
+        .error {
+            color: red;
+            font-size: 0.8em;
+            font-family: sans-serif;
+            font-style: italic;
+        }
+
+        input {
+            border-color: #ddd;
+            width: 400px;
+            display: block;
+            font-size: 1.5em;
+        }
+    </style>
+</head>
+
+<body>
+    <form name="myform"> Email :
+        <input type="text" name="email">
+        <span class="error hide"></span>
+        <br> Password :
+        <input type="password" name="password"> <span class="error hide"></span>
+        <br> User Name :
+        <input type="text" name="userName"> <span class="error hide"></span>
+        <br>
+        <input type="submit" value="Sign Up">
+    </form>
+    <script>
+        const form = document.querySelector('form');
+        const email = document.querySelector('input[name="email"]');
+        const password = document.querySelector('input[name="password"]');
+        const userName = document.querySelector('input[name="userName"]');
+        const button = document.querySelector('input[type="submit"]');
+        const errorElements = document.querySelectorAll('.error');
+        const formData = {};
+
+        button.addEventListener("click", e => {
+            e.preventDefault();
+            let msg = "";
+            let emailText = email.value;
+            let error = false;
+            let regMatch = emailText.match(/([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9._-]+)/g);
+            if (!regMatch) {
+                error = true;
+                errorResponse(email, "Invalid Email");
+            }
+            regMatch = password.value.match(/[a-zA-Z0-9]{3,8}/g);
+            if (!regMatch) {
+                error = true;
+                errorResponse(password, "Password must be alphanumeric and 3 to 8 characters.");
+            }
+            regMatch = userName.value.match(/[a-zA-Z0-9]{3,8}/g);
+            if (!regMatch) {
+                error = true;
+                errorResponse(userName, )
+            }
+
+            const inputs = document.querySelectorAll('input');
+            inputs.forEach(input => {
+                if (input.getAttribute("type") !== "submit") {
+                    const name = input.getAttribute("name");
+                    const value = input.value;
+                    formData[name] = value;
+                }
+            });
+            console.dir(formData);
+            
+            if (!error) {
+                alert("Form successfully submitted.");
+                form.submit();
+            }
+        });
+
+        errorElements.forEach(el => el.addEventListener("click", e => el.classList.add('hide')));
+
+        function errorResponse(element, errorMsg) {
+            const nextEl = element.nextElementSibling;
+            element.classList.remove('hide');
+            nextEl.focus();
+            alert(errorMsg);
+        }
+    </script>
+</body>
+
+</html>

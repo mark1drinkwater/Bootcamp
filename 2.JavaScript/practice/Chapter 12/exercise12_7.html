@@ -15,14 +15,16 @@
 <body>
     <div class="main">
         <input placeholder="New Item" value="test item" maxlength="30">
-        <button>Add</button>
+        <button class="add">Add</button>
+        <button class="clear">Clear</button>
     </div>
     <ul class="output">
     </ul>
     <script>
         const main = document.querySelector('.main');
         const input = document.querySelector('input');
-        const button = document.querySelector('button');
+        const btnAdd = document.querySelector('.add');
+        const btnClear = document.querySelector('.clear');
         const output = document.querySelector('.output');
 
         let tasks = [];
@@ -32,25 +34,29 @@
         }
 
         tasks.forEach(task => {
-            addListItem()            
+            addListItem(task.text, task.checked)            
         });
 
-        button.addEventListener("click", e => {
+        btnAdd.addEventListener("click", e => {
             addListItem(input.value)
         });
 
-        function addListItem(text) {
+        btnClear.addEventListener("click", e => {
+            window.localStorage.removeItem("tasklist");
+            output.innerHTML = "";
+        })
+
+        function addListItem(text, checked) {
             const li = document.createElement("li");
             const textNode = document.createTextNode(text);
             li.append(textNode);
             if (checked)
                 li.classList.add('ready');
             li.addEventListener("click", e => {
-                e.target.classList.toggle('ready');
-                taskBuilder();
+                e.target.classList.toggle('ready');                
             });
-
             output.append(li);                        
+            taskBuilder();
         }
         
         function taskBuilder() {
@@ -60,10 +66,11 @@
             const liAll = document.querySelectorAll('li');
             liAll.forEach(li => {
                 const text = li.textContent;
+                let checked = false;
                 if (li.classList.contains('ready')) {
                     checked = true;
                 }
-                const obj = {text, checked};
+                const obj = {text:text, checked:checked};
                 tasks.push(obj);
             });
             saveTasks();

@@ -1,0 +1,34 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>Complete JavaScript Course</title>
+</head>
+
+<body>
+    <textarea name="txtarea" rows=2 cols=50></textarea> 
+    <button>Get Emails</button>
+    <textarea name="txtarea2" rows=2 cols=50></textarea>
+    <script>
+        const txt1 = document.querySelector('textarea[name="txtarea"]');
+        const txt2 = document.querySelector('textarea[name="txtarea2"]');
+        const button = document.querySelector('button');
+
+        button.addEventListener("click", e => {
+            filterEmails();
+        });
+
+        function filterEmails() {
+            const text = txt1.value;
+            const matches = text.match(/([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9._-]+)/g);
+            const holder = [];
+            matches.forEach(match => {
+                if (holder.indexOf(match) == -1)
+                    holder.push(match);
+            });
+            txt2.value = holder.join(" ");
+        };
+    </script>
+</body>
+
+</html>
