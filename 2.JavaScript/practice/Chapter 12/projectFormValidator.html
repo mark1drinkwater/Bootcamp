@@ -59,10 +59,10 @@
                 error = true;
                 errorResponse(password, "Password must be alphanumeric and 3 to 8 characters.");
             }
-            regMatch = userName.value.match(/[a-zA-Z0-9]{3,8}/g);
+            regMatch = userName.value.match(/[a-zA-Z0-9]/g);
             if (!regMatch) {
                 error = true;
-                errorResponse(userName, )
+                errorResponse(userName, "Please enter a alphanumeric username.")
             }
 
             const inputs = document.querySelectorAll('input');
