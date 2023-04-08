@@ -4,7 +4,7 @@ console.log("\nExercise 7.1");
 class Person {
     firstname;
     lastname;
-    constructor (firstname, lastname) {
+    constructor(firstname, lastname) {
         this.firstname = firstname;
         this.lastname = lastname;
     }
@@ -23,7 +23,7 @@ console.log("\nExercise 7.2");
 class Individual {
     firstname;
     lastname;
-    constructor (firstname, lastname) {
+    constructor(firstname, lastname) {
         this.firstname = firstname;
         this.lastname = lastname;
     }
@@ -47,7 +47,7 @@ class Animal {
     species;
     sound;
 
-    constructor (species, sound) {
+    constructor(species, sound) {
         this.species = species;
         this.sound = sound;
     }
@@ -57,7 +57,7 @@ class Animal {
     }
 }
 
-Animal.prototype.sleep = function() {
+Animal.prototype.sleep = function () {
     return "I am sleeping.";
 }
 
@@ -75,12 +75,12 @@ class Employee {
     lastname;
     yearsWorked;
 
-    constructor (firstname, lastname, yearsWorked) {
+    constructor(firstname, lastname, yearsWorked) {
         this.firstname = firstname;
         this.lastname = lastname;
         this.yearsWorked = yearsWorked;
-    }    
-}   
+    }
+}
 
 let emp1 = new Employee("Christiano", "Ronaldo", 10);
 let emp2 = new Employee("Britney", "Spears", 5);
@@ -88,7 +88,7 @@ let emp2 = new Employee("Britney", "Spears", 5);
 const employees = [];
 employees.push(emp1, emp2);
 
-Employee.prototype.toString = function() {
+Employee.prototype.toString = function () {
     return `${this.firstname} ${this.lastname} has worked for this company for ${this.yearsWorked} years.`;
 }
 
@@ -104,13 +104,13 @@ class Menu {
     #qty1;
     #qty2;
 
-    constructor (qty1, qty2) {
+    constructor(qty1, qty2) {
         this.#qty1 = qty1;
         this.#qty2 = qty2;
     }
 
     calculateCost() {
-        return (this.#qty1 * this.#price1) + (this.#qty2 + this.#price2);
+        return ((this.#qty1 * this.#price1) + (this.#qty2 + this.#price2)).toFixed(2);
     }
 
     get totalCost() {
@@ -122,6 +122,6 @@ const order1 = new Menu(1, 2);
 const order2 = new Menu(3, 5);
 const order3 = new Menu(0, 10);
 
-console.log(order1.totalCost());
-console.log(order2.totalCost());
-console.log(order3.totalCost());
+console.log("R"+order1.totalCost);
+console.log("R"+order2.totalCost);
+console.log("R"+order3.totalCost);
