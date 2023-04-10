@@ -1,0 +1,17 @@
+[
+    {
+        "first":"John",
+        "last":"Smith",
+        "topic":"Islands"
+    },
+    {
+        "first":"Jane",
+        "last":"Doe",
+        "topic":"Weather"
+    },
+    {
+        "first":"Bill",
+        "last":"Gates",
+        "topic":"Microsoft"
+    }        
+]

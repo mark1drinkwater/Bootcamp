@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise 15.1</title>
+</head>
+
+<body>
+    <script>
+        const url = 'list.json';
+        const response = fetch(url);
+
+        /*        
+            fetch() starts a request and returns a promise. 
+            When the request completes, the promise is resolved with the Response object. 
+            If the request fails due to some network problems, the promise is rejected.            
+
+            response.json() is asynchronous and returns a Promise object that resolves to a JavaScript object.
+            JSON.parse() is synchronous can parse a string and change the resulting returned JavaScript object.
+
+            Therefore, we need to use response.json()
+        */
+        response
+            .then(response => response.json())
+            .then(data => {
+                console.dir(data)
+                data.forEach(book => {
+                    // Need to use in loop, otherwise it says not iterable.
+                    for (attribute in book) {
+                        console.log(attribute, book[attribute]);
+                    }
+                });
+            })
+            .catch(error => console.error(error));
+    </script>
+</body>
+
+</html>
