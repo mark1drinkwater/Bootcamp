@@ -1,0 +1,18 @@
+Self-check quiz
+1. What are JavaScript libraries and frameworks?
+Libraries are basically pre-programmed JavaScript
+modules that you can use to speed up your development process. 
+They typically do one specific thing for you. Frameworks are very similar, they are also
+pre-programmed, but instead of doing only one thing for you, they arrange a whole
+list of things. This is why it is called a framework, it really is providing you a solid
+place to start from and usually demands a certain structure for your files in order to
+do so. A framework is often a bundle of libraries that provide an all-in-one solution.
+
+2. How can you tell if a webpage is using the jQuery library?
+If you type $ or jQuery into the console of the website, and it returns the jQuery object. 
+
+3. Which library contains a lot of functionality for manipulating data?
+D3
+
+4. When Node.js is installed, how can you run a Node.js file?
+Run the node nameOfFile.js command.
