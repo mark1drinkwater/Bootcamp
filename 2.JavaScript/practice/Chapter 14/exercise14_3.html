@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise 14.3</title>
+    <style>
+        #c1 {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="c1" height="640" width="640"></canvas>
+
+    <script>
+        let canvas = document.querySelector('#c1');
+        canvas.width = 640;
+        canvas.height = 640;
+        let ctx = canvas.getContext("2d");
+        ctx.fillStyle = "red";
+
+
+        //Face
+        const faceRadius = 100;
+        const faceCentre = (canvas.height - faceRadius) / 2;
+        ctx.arc(faceCentre, 130, faceRadius, 0, Math.PI * 2);
+        ctx.fill();
+
+        // Nose
+        ctx.strokeStyle = "black";
+        ctx.lineWidth = 2;
+        ctx.moveTo(faceCentre, 130);
+        ctx.lineTo(faceCentre, 155);
+        ctx.stroke();        
+        ctx.strokeStyle = "red";
+
+        //Eyes
+        ctx.fillStyle = "black";
+        // Left-eye
+        ctx.beginPath();
+        ctx.arc(faceCentre - faceRadius / 2, 130, 20, 0, Math.PI * 2);
+        ctx.fill();
+        // Right-eye
+        ctx.beginPath();
+        ctx.arc(faceCentre + faceRadius / 2, 130, 20, 0, Math.PI * 2);
+        ctx.fill();
+        // Mouth
+        ctx.moveTo(faceCentre, 170);
+        ctx.beginPath();
+        ctx.arc(faceCentre, 170, 50, 0, Math.PI);
+        ctx.fill();
+        ctx.stroke();
+
+        //Stick Body
+        ctx.strokeStyle = "black";
+        //Upper stick
+        ctx.moveTo(faceCentre, 230);
+        ctx.lineTo(faceCentre, 265);
+        //Left Arm
+        ctx.lineTo(faceCentre-100, 265);
+        ctx.stroke();
+        // Right Arm
+        ctx.beginPath();
+        ctx.moveTo(faceCentre, 265);
+        ctx.lineWidth = 4;
+        ctx.lineTo(faceCentre+100, 265);        
+        ctx.stroke();
+        // //Lower Stick
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        ctx.moveTo(faceCentre, 265);
+        ctx.lineTo(faceCentre, 380);
+        // Legs
+        ctx.lineTo(faceCentre-100, 500);
+        ctx.lineTo(faceCentre, 380);
+        ctx.lineTo(faceCentre+100, 500);
+        ctx.stroke();     
+        // Hat
+        ctx.beginPath();
+        ctx.fillStyle = "blue";
+        ctx.moveTo(faceCentre-100, 45);
+        ctx.lineTo(faceCentre+100, 45);
+        ctx.lineTo(faceCentre, 15);
+        ctx.fill();
+    </script>
+</body>
+
+</html>
