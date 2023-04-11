@@ -14,7 +14,7 @@
 
         function call(fullName, callback) {
             const arr = fullName.split(" ");
-            greet(arr);
+            callback(arr);
         }
 
         call("Mark Drinkwater", greet);
