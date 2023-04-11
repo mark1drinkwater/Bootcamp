@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        canvas {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="controls">
+        <button class="clear">Clear</button>
+        <span>Color
+            <input type="color" value="#ffff00" id="penColor">
+        </span>
+        <span>
+            <input type="range" min="1" max="20" value="10" id="penWidth">
+        </span>
+    </div>
+    <canvas id="canvas" width="1000" height="600"></canvas>
+
+    <script>
+            const controls = document.querySelector('.controls');
+            const userColor = document.querySelector('#penColor');
+            const penWidth = document.querySelector('#penWidth');
+            const button = document.querySelector('.clear');
+            const canvas = document.querySelector('#canvas');
+            const ctx = canvas.getContext("2d");
+
+            let x = 0;
+            let y = 0;
+
+            button.addEventListener("click", clear);
+
+            function clear(e) {
+                if (confirm("Are you sure you want to clear?")) {
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                }                
+            }
+
+            document.addEventListener("mousemove", draw);
+            document.addEventListener("mousemove", setPosition);
+            canvas.addEventListener("mouseenter", setPosition);
+
+            function setPosition(e) {
+                x = e.pageX;
+                y = e.pageY;                
+            }
+
+
+            function draw(e) {
+                if (e.buttons !== 1)
+                    return;
+                ctx.beginPath();
+                ctx.moveTo(x, y);
+                setPosition(e);
+                ctx.lineTo(x, y);
+                ctx.strokeStyle = userColor.value;
+                ctx.lineWidth = penWidth.value;
+                ctx.lineCap = "round";
+                ctx.stroke();
+            }
+        </script>
+
+</body>
+
+</html>
