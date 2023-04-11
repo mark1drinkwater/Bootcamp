@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>Complete JavaScript Course</title>
+    <style>
+        .thumb {
+            max-height: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <input type="file" multiple accept="image/*" />
+    <div class="output"></div>
+    <script>
+        const input = document.querySelector('input');
+        const output = document.querySelector('.output');
+
+        input.addEventListener("change", reader);
+
+        function reader(e) {
+            const files = e.target.files;
+            for (let i = 0; i < files.length; i++) {
+                let file = files[i];
+                let image = document.createElement("img");
+                image.file = file;
+                output.appendChild(image);
+                let fr = new FileReader();
+                fr.onload = (function (myImg) {
+                    return function (e) {
+                        myImg.src = e.target.result;
+                    };
+                })(image);
+                fr.readAsDataURL(file);
+            }
+        }
+
+
+    </script>
+</body>
+
+</html>
