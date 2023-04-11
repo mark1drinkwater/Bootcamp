@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise 14.2</title>
+    <style>
+        #c1 {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="c1" height="640" width="640"></canvas>
+
+    <script>
+        let canvas = document.querySelector('#c1');
+        canvas.width = 640;
+        canvas.height = 640;
+        let ctx = canvas.getContext("2d");
+        ctx.fillStyle = "red";
+        // ctx.fillRect(0, 0, 640, 640);
+        // ctx.fillStyle = "white";
+        // ctx.fillRect(100, 100, 440, 440);
+
+        ctx.fillRect(80, 100, 480, 300); //filled shape
+        ctx.strokeRect(70, 90, 500, 320); // outline
+        ctx.clearRect(130, 150, 380, 200); //transparent
+    </script>
+</body>
+
+</html>
