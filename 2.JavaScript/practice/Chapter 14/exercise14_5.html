@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise 14.4</title>
+    <style>
+        #c1 {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <input type="file" id="imgUpload" name="imgUpload">
+    <canvas id="c1" height="640" width="640"></canvas>
+
+    <script>
+        let canvas = document.querySelector('#c1');
+        let ctx = canvas.getContext("2d");
+        const imgUpload = document.querySelector('#imgUpload');
+        
+        imgUpload.addEventListener("change", upload);
+
+        function upload(e) {
+            let fr = new FileReader();
+            fr.readAsDataURL(e.target.files[0]);
+
+            fr.onload = function(e) {
+                let img = new Image();
+                img.src = e.target.result;
+                
+                img.onload = function() {
+                    canvas.height = img.height/2;
+                    canvas.width = img.width/2;
+                    ctx.drawImage(img, 0, 0, img.width/2, img.height/2);
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>
