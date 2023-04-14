@@ -6,7 +6,7 @@ response
     .then(data => {
         data.forEach(person => {
             for (attribute in person) {
-                console.log(attribute, ":", person[attribute]);
+                console.log(`${attribute} : ${person[attribute]}`);
             }
         });
     })
