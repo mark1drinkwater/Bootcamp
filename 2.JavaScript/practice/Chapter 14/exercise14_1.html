@@ -27,11 +27,15 @@
                 image.file = file;
                 output.appendChild(image);
                 let fr = new FileReader();
-                fr.onload = (function (myImg) {
-                    return function (e) {
-                        myImg.src = e.target.result;
-                    };
-                })(image);
+                // fr.onload = (function (myImg) {
+                //     return function (e) {
+                //         myImg.src = e.target.result;
+                //     };
+                // })(image);
+
+                fr.onload = (myImg => e => myImg.src = e.target.result)(image);
+
+
                 fr.readAsDataURL(file);
             }
         }
