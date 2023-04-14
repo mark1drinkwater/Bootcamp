@@ -50,7 +50,11 @@
             const target = e.target;
             console.log(target);
             const starRating = target.getAttribute("rating");
-            output.innerText = `${starRating} stars`;
+            if (starRating == 1) {
+                output.innerText = `${starRating} star`;
+            } else {
+                output.innerText = `${starRating} stars`;
+            }
 
             stars.forEach((star, index) => {
                 if (index < starRating) {
