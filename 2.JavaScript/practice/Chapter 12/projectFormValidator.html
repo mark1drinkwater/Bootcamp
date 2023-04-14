@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>JavaScript Course</title>
+    <title>Project: Form Validator</title>
     <style>
         .hide {
             display: none;
@@ -25,13 +25,16 @@
 </head>
 
 <body>
-    <form name="myform"> Email :
+    <form name="myform"> 
+        Email :
+        <span class="error hide">Invalid Email</span>
         <input type="text" name="email">
-        <span class="error hide"></span>
         <br> Password :
-        <input type="password" name="password"> <span class="error hide"></span>
+        <span class="error hide">Invalid Password</span>
+        <input type="password" name="password">
         <br> User Name :
-        <input type="text" name="userName"> <span class="error hide"></span>
+        <span class="error hide">Invalid Username</span>
+        <input type="text" name="userName">
         <br>
         <input type="submit" value="Sign Up">
     </form>
@@ -48,8 +51,12 @@
             e.preventDefault();
             let msg = "";
             let emailText = email.value;
-            let error = false;
+            let error = false;            
             let regMatch = emailText.match(/([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9._-]+)/g);
+            const inputs = document.querySelectorAll('input');
+
+            inputs.forEach(input => input.previousElementSibling.classList.add('hide'));
+
             if (!regMatch) {
                 error = true;
                 errorResponse(email, "Invalid Email");
@@ -65,7 +72,6 @@
                 errorResponse(userName, "Please enter a alphanumeric username.")
             }
 
-            const inputs = document.querySelectorAll('input');
             inputs.forEach(input => {
                 if (input.getAttribute("type") !== "submit") {
                     const name = input.getAttribute("name");
@@ -74,7 +80,7 @@
                 }
             });
             console.dir(formData);
-            
+
             if (!error) {
                 alert("Form successfully submitted.");
                 form.submit();
@@ -84,8 +90,10 @@
         errorElements.forEach(el => el.addEventListener("click", e => el.classList.add('hide')));
 
         function errorResponse(element, errorMsg) {
-            const nextEl = element.nextElementSibling;
-            element.classList.remove('hide');
+            const nextEl = element.previousElementSibling;
+            nextEl.classList.remove('hide');
+            nextEl.classList.add('error');
+            console.log(nextEl)
             nextEl.focus();
             alert(errorMsg);
         }
