@@ -1,4 +1,4 @@
-// console.log("Mark");
+console.log("Mark");
 
 /*
     Multi-line comment
