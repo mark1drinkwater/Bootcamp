@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>Complete JavaScript Course</title>
+    <title>Project: Math Quiz</title>
 </head>
 
 <body>
@@ -50,7 +50,11 @@
 
         function checker() {
             const colour = input.value == game.result ? "green" : "red";
-            out.innerHTML += `<div style="color:${colour}">${game.val1} + ${game.val2} = ${game.result}   (${input.value})</div>`;
+            const div = document.createElement("div");
+            div.style.color = colour;
+            div.innerText = `${game.val1} + ${game.val2} = ${game.result}   (${input.value})`;
+            out.appendChild(div);
+
             loadQuestion();
         }
     }
