@@ -27,9 +27,9 @@
             //     console.log(this.textContent);
             // })
 
-            // Arrow function -- Doesn't work
-            button.addEventListener("click", output => function () {
-                console.log(this.textContent);
+            // Arrow function -- Doesn't work (FIXED) (Only doesn't work with this keyword)
+            button.addEventListener("click", e => {
+                console.log(e.target.textContent);
             })
 
             // Arrow function with currentTarget -- Works (Google)        
