@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 14: Matrix Project</title>
+</head>
+
+<body>
+    <script>
+        const canvas = document.createElement("canvas");
+        canvas.width = "500";
+        canvas.height = "300";
+        const ctx = canvas.getContext("2d");
+        document.body.prepend(canvas)
+
+        const colVal = [];
+        const iterations = Math.floor(canvas.width / 10);
+
+        for (let i = 0; i < iterations; i++) {
+            colVal.push(0);
+        }
+
+        setInterval(matrix, 50);
+
+        function matrix() {
+            ctx.fillStyle = "rgba(0,0,0,0.05)";
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = "green";
+
+            colVal.map((posY, index) => {
+                const digit = Math.floor(Math.random() * 2);
+                const posX = index * 10;
+                ctx.fillText(digit, posX, posY);
+
+                if (posY > (100 + Math.floor(Math.random() * 301))) {
+                    colVal[index] = 0;
+                } else {
+                    colVal[index] = posY + 10;
+                }
+            })
+        }
+    </script>
+</body>
+
+</html>
