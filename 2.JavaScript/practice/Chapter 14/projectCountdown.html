@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>Project: Countdown</title>
+    <title>Chapter 14: Countdown Project</title>
     <style>
         .clock {
             background-color: blue;
@@ -97,15 +97,18 @@
         }
 
         function calcTimeLeft(date) {
-            let dateParsed = Date.parse(date);
-            let timeDiff = dateParsed - new Date();
+            let now = new Date();
+            let dateParsed = Date.parse(date) - 1000*60*60*2; // Subtract 2 hours to offset GMT+2
+            let timeDiff = dateParsed - now;
+
+            // console.log(now, new Date(dateParsed))
 
             // Time is in milliseconds
             // So to convert to days you have to convert milliseconds -> seconds -> minutes -> hours -> days
             let days = Math.floor(timeDiff / 1000 / 60 / 60 / 24);
             let hours = Math.floor(timeDiff / 1000 / 60 / 60 % 24);
             let minutes = Math.floor(timeDiff / 1000 / 60 % 60);
-            let seconds = Math.floor(timeDiff / 1000 % 60);
+            let seconds = Math.floor(timeDiff / 1000 % 60);            
 
             return {
                 days,
