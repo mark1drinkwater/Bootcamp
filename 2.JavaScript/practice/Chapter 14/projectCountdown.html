@@ -66,11 +66,17 @@
 
         userDateInput.addEventListener('change', e => {
             const dateObj = new Date(userDateInput.value);
+            
+            const correctDate = Date.parse(dateObj) + dateObj.getTimezoneOffset()*1000*60;
+            const correctDateObj = new Date(correctDate);
+
+            console.log("Wrong date: " + dateObj, "Correct date: " + new Date(correctDate));
+
             clearInterval(timeInterval);
-            localStorage.setItem('countdown', dateObj);
-            startClock(dateObj)
+            localStorage.setItem('countdown', correctDateObj);
+            startClock(correctDateObj)
             clockTicking = true;
-        });
+        });      
 
         function startClock(date) {
             function updateCounter() {
@@ -98,10 +104,8 @@
 
         function calcTimeLeft(date) {
             let now = new Date();
-            let dateParsed = Date.parse(date) - 1000*60*60*2; // Subtract 2 hours to offset GMT+2
+            let dateParsed = Date.parse(date);
             let timeDiff = dateParsed - now;
-
-            // console.log(now, new Date(dateParsed))
 
             // Time is in milliseconds
             // So to convert to days you have to convert milliseconds -> seconds -> minutes -> hours -> days
