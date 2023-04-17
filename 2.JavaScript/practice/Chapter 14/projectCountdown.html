@@ -1,0 +1,120 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>Project: Countdown</title>
+    <style>
+        .clock {
+            background-color: blue;
+            width: 400px;
+            text-align: center;
+            color: white;
+            font-size: 1em;
+        }
+
+        .clock>span {
+            padding: 10px;
+            border-radius: 10px;
+            background-color: black;
+        }
+
+        .clock>span>span {
+            padding: 5px;
+            border-radius: 10px;
+            background-color: red;
+        }
+
+        input {
+            padding: 15px;
+            margin: 20px;
+            font-size: 1.5em;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <input type="date" name="endDate">
+        <div class="clock"> <span><span class="days">0</span> Days</ span> <span><span class="hours">0</span>
+                    Hours</span> <span><span class="minutes">0</span>
+                    Minutes</span> <span><span class="seconds">0</span>
+                    Seconds</span>
+        </div>
+    </div>
+
+    <script>
+        "use strict";
+         
+        const userDateInput = document.querySelector('input[type="date"]');
+        const clock = document.querySelector('.clock');
+
+        const days = document.querySelector('.days');
+        const hours = document.querySelector('.hours');
+        const minutes = document.querySelector('.minutes');
+        const seconds = document.querySelector('.seconds');
+
+        const timeEls = [days, hours, minutes, seconds];
+
+        let timeInterval;
+        let clockTicking = true;
+        let storedDate = localStorage.getItem('countdown');
+        if (storedDate) {
+            const dateObj = new Date(storedDate);
+            startClock(dateObj);
+            userDateInput.valueAsDate = dateObj;
+        }
+
+        userDateInput.addEventListener('change', e => {
+            const dateObj = new Date(userDateInput.value);
+            clearInterval(timeInterval);
+            localStorage.setItem('countdown', dateObj);
+            startClock(dateObj)
+            clockTicking = true;
+        });
+
+        function startClock(date) {
+            function updateCounter() {
+                let timeLeftObj = calcTimeLeft(date);
+                let totalTimeLeft = timeLeftObj.days + timeLeftObj.hours + timeLeftObj.minutes + timeLeftObj.seconds;
+                if (totalTimeLeft < 0) {
+                    timeEls.forEach(el => el.textContent = '0');
+                    clockTicking = false;                    
+                } else {
+                    for (const [unit, value] of Object.entries(timeLeftObj)) {
+                        document.querySelector(`.${unit}`).textContent = value;
+                    }
+                }
+            }
+            updateCounter();
+            // If the clock is allowed to tick down then set the counter function to be called every second.
+            // If the clock isn't allowed to tick down then stop the counter function, by clearing the interval.
+            if (clockTicking) {
+                clearInterval(timeInterval);
+                timeInterval = setInterval(updateCounter, 1000);
+            } else {
+                clearInterval(timeInterval);
+            }
+        }
+
+        function calcTimeLeft(date) {
+            let dateParsed = Date.parse(date);
+            let timeDiff = dateParsed - new Date();
+
+            // Time is in milliseconds
+            // So to convert to days you have to convert milliseconds -> seconds -> minutes -> hours -> days
+            let days = Math.floor(timeDiff / 1000 / 60 / 60 / 24);
+            let hours = Math.floor(timeDiff / 1000 / 60 / 60 % 24);
+            let minutes = Math.floor(timeDiff / 1000 / 60 % 60);
+            let seconds = Math.floor(timeDiff / 1000 % 60);
+
+            return {
+                days,
+                hours,
+                minutes,
+                seconds
+            };
+        }
+    </script>
+</body>
+
+</html>
