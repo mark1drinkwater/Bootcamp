@@ -1,0 +1,93 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>Canvas HTML5</title>
+    <style>
+        #canvas {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="canvas" width="600" height="400"></canvas>
+    <div>
+        <button class="save">Save</button>
+        <button class="clear">clear</button>
+        <span>Color: <input type="color" value="#ffff00" id="penColor"></span>
+        <span>Width: <input type="range" min="1" max="20" value="10" id="penWidth"></span>
+    </div>
+    <div class="output"></div>
+
+    <script>
+        const btnSave = document.querySelector('.save');
+        const btnClear = document.querySelector('.clear');
+        const penColor = document.querySelector('#penColor');
+        const penWidth = document.querySelector('#penWidth');
+        const output = document.querySelector('.output');
+        const canvas = document.querySelector('#canvas');
+
+        const ctx = canvas.getContext("2d");
+
+        const penLoc = {
+            draw: false,
+            x: 0,
+            y: 0,
+            lastX: 0,
+            lastY: 0,
+        }
+
+        canvas.addEventListener('mousemove', e => {
+            penLoc.lastX = penLoc.x;
+            penLoc.lastY = penLoc.y;
+
+            penLoc.x = e.clientX;
+            penLoc.y = e.clientY;
+            draw();
+        });
+
+        canvas.addEventListener('mousedown', e => penLoc.draw = true);
+        canvas.addEventListener('mouseup', e => penLoc.draw = false);
+        canvas.addEventListener('mouseout', e => penLoc.draw = false);
+
+        btnClear.addEventListener('click', clear);
+        btnSave.addEventListener('click', saveImage)
+
+        function clear() {
+            if (confirm('Are you sure you want to clear the canvas?')) {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+            }
+        }
+
+        function saveImage() {
+            const canvasObj = canvas.toDataURL();
+            console.log(canvasObj);
+            const img = document.createElement('img');
+            img.src = canvasObj;
+            output.prepend(img);
+            // Download image
+            const anchor = document.createElement('a');
+            output.append(anchor);
+            const fileName = Math.random() * Number.MAX_SAFE_INTEGER + ".png";
+            anchor.setAttribute('download', fileName);
+            anchor.href = canvasObj;
+            anchor.click();
+            anchor.remove();
+        }
+
+        function draw() {
+            if (penLoc.draw) {
+                ctx.beginPath();
+                ctx.strokeStyle = penColor.value;
+                ctx.lineWidth = penWidth.value;
+                ctx.moveTo(penLoc.lastX, penLoc.lastY);
+                ctx.lineTo(penLoc.x, penLoc.y);
+                ctx.stroke();
+                ctx.closePath();
+            }
+        }
+    </script>
+</body>
+
+</html>
