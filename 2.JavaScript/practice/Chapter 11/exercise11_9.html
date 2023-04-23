@@ -18,6 +18,7 @@
 </head>
 
 <body>
+    <!-- Prepares the display of the game -->
     <div class="box">1
         <div id="dragme" draggable="true">
             Drag Me Please!
@@ -27,14 +28,20 @@
     <script>
         const draggable = document.querySelector('#dragme');
         draggable.addEventListener("dragstart", e => {
+            // Either one works
             draggable.style.opacity = 0.5;
+            // e.target.style.opacity = 0.5;
+
             console.log("dragstart");
         });
         draggable.addEventListener("dragend", e => {
+            // Either one works
             draggable.style.opacity = 1;
+            // e.target.style.opacity = 1;
             console.log("dragend");
         });
 
+        // When the drag is done the colour is swapped between the boxes.
         const boxes = document.querySelectorAll('.box');
         boxes.forEach(box => {
             box.addEventListener("dragenter", e => {
@@ -42,6 +49,9 @@
                 console.log("dragenter");
             });
             box.addEventListener("dragover", e => {
+                // By default, data/elements cannot be dropped in other elements. 
+                // To allow a drop, we must prevent the default handling of the element. 
+                // This is done by calling the event.preventDefault() method for the ondragover event.
                 e.preventDefault();
                 console.log("dragover");
             });
