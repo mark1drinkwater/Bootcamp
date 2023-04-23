@@ -1,180 +1,235 @@
+/* Common practice to set all padding and margin to 0 and box-sizing to border-box */
+/* Otherwise it uses default values. */
 * {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-    font-family: "Poppins", sans-serif;
-  }
-  body {
-    background-color: #f7f9fd;
-  }
-  .container {
-    width: 90vw;
-    max-width: 62.5em;
-    position: relative;
-    margin: auto;
-  }
-  .add-flashcard-con {
-    display: flex;
-    justify-content: flex-end;
-    padding: 1.2em 1em;
-  }
-  button {
-    border: none;
-    outline: none;
-    cursor: pointer;
-  }
-  .add-flashcard-con button {
-    font-size: 1em;
-    background-color: #587ef4;
-    color: #ffffff;
-    padding: 0.8em 1.2em;
-    font-weight: 500;
-    border-radius: 0.4em;
-  }
-  #card-con {
-    margin-top: 1em;
-  }
-  .question-container {
-    width: 90vw;
-    max-width: 34em;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    background-color: #ffffff;
-    position: absolute;
-    transform: translate(-50%, -50%);
-    top: 50%;
-    left: 50%;
-    padding: 3em 2em;
-    border-radius: 0.6em;
-    box-shadow: 0 1em 2em rgba(28, 0, 80, 0.1);
-  }
-  .question-container h2 {
-    font-size: 2.2em;
-    color: #363d55;
-    font-weight: 600;
-    text-align: center;
-    margin-bottom: 2em;
-  }
-  .wrapper {
-    display: grid;
-    grid-template-columns: 11fr 1fr;
-    gap: 1em;
-    margin-bottom: 1em;
-  }
-  .error-con {
-    align-self: center;
-  }
-  #error {
-    color: #ff5353;
-    font-weight: 400;
-  }
-  .fa-xmark {
-    font-size: 1.4em;
-    background-color: #587ef4;
-    height: 1.8em;
-    width: 1.8em;
-    display: grid;
-    place-items: center;
-    color: #ffffff;
-    border-radius: 50%;
-    cursor: pointer;
-    justify-self: flex-end;
-  }
-  label {
-    color: #363d55;
-    font-weight: 600;
-    margin-bottom: 0.3em;
-  }
-  textarea {
-    width: 100%;
-    padding: 0.7em 0.5em;
-    border: 1px solid #d0d0d0;
-    outline: none;
-    color: #414a67;
-    border-radius: 0.3em;
-    resize: none;
-  }
-  textarea:not(:last-child) {
-    margin-bottom: 1.2em;
-  }
-  textarea:focus {
-    border-color: #363d55;
-  }
-  #save-btn {
-    font-size: 1em;
-    background-color: #587ef4;
-    color: #ffffff;
-    padding: 0.6em 0;
-    border-radius: 0.3em;
-    font-weight: 600;
-  }
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+/* Set backround color to a light white */
+body {
+  background-color: #f7f9fd;
+}
+
+/* Main div that houses all the flashcards and flashcard button inside */
+.container {
+  width: 90vw;
+  max-width: 62.5em;
+  position: relative;
+  margin: auto;
+}
+
+/* The div that contains the add flashcard button */
+.add-flashcard-con {
+  display: flex;
+  justify-content: flex-end;
+  padding: 1.2em 1em;
+}
+
+/* Styling for all buttons */
+button {
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+/* Style the add flashcard button */
+.add-flashcard-con button {
+  font-size: 1em;
+  background-color: #587ef4;
+  color: #ffffff;
+  padding: 0.8em 1.2em;
+  font-weight: 500;
+  border-radius: 0.4em;
+}
+
+/* Main div that houses the flashcards */
+#card-con {
+  margin-top: 1em;
+}
+
+/* Input form that shows up, when user clicks the add flashcard button */
+.question-container {
+  width: 90vw;
+  max-width: 34em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: #ffffff;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+  padding: 3em 2em;
+  border-radius: 0.6em;
+  box-shadow: 0 1em 2em rgba(28, 0, 80, 0.1);
+}
+
+/* Style the h2 heading tag */
+.question-container h2 {
+  font-size: 2.2em;
+  color: #363d55;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 2em;
+}
+
+/* Houses the error message and close button components */
+.wrapper {
+  display: grid;
+  grid-template-columns: 11fr 1fr;
+  gap: 1em;
+  margin-bottom: 1em;
+}
+
+/* Error message container */
+.error-con {
+  align-self: center;
+}
+
+/* Actual error message text that gets displayed */
+#error {
+  color: #ff5353;
+  font-weight: 400;
+}
+
+/* Close button */
+.fa-xmark {
+  font-size: 1.4em;
+  background-color: #587ef4;
+  height: 1.8em;
+  width: 1.8em;
+  display: grid;
+  place-items: center;
+  color: #ffffff;
+  border-radius: 50%;
+  cursor: pointer;
+  justify-self: flex-end;
+}
+
+/* Default styling for the label elements */
+label {
+  color: #363d55;
+  font-weight: 600;
+  margin-bottom: 0.3em;
+}
+
+/* Default styling for the textarea elements */
+textarea {
+  width: 100%;
+  padding: 0.7em 0.5em;
+  border: 1px solid #d0d0d0;
+  outline: none;
+  color: #414a67;
+  border-radius: 0.3em;
+  resize: none;
+}
+
+/* Set the bottom margin for every element, except the last textarea element */
+textarea:not(:last-child) {
+  margin-bottom: 1.2em;
+}
+
+/* Change border-color when textarea is in focus */
+textarea:focus {
+  border-color: #363d55;
+}
+
+/* Save button styling */
+#save-btn {
+  font-size: 1em;
+  background-color: #587ef4;
+  color: #ffffff;
+  padding: 0.6em 0;
+  border-radius: 0.3em;
+  font-weight: 600;
+}
+
+/* Div Grid container that contains all the flashcards */
+/* NB: This is the element we want to insert our flashcards into. */
+.card-list-container {
+  display: grid;
+  padding: 0.2em;
+  gap: 1.5em;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+/* Flashcard */
+/* NB: This is the actual flashcard class that we will be using. */
+.card {
+  background-color: #ffffff;
+  box-shadow: 0 0.4em 1.2em rgba(28, 0, 80, 0.08);
+  padding: 1.2em;
+  border-radius: 0.4em;
+}
+
+.question-div,
+.answer-div {
+  text-align: justify;
+}
+
+.question-div {
+  margin-bottom: 0.5em;
+  font-weight: 500;
+  color: #363d55;
+}
+
+.answer-div {
+  margin-top: 1em;
+  font-weight: 400;
+  color: #414a67;
+}
+/* Show/Hide button styling */
+.show-hide-btn {
+  display: block;
+  background-color: #587ef4;
+  color: #ffffff;
+  text-decoration: none;
+  text-align: center;
+  padding: 0.6em 0;
+  border-radius: 0.3em;
+}
+
+.buttons-con {
+  display: flex;
+  justify-content: flex-end;
+}
+/* Edit & delete button icon stylings */
+.edit,
+.delete {
+  background-color: transparent;
+  padding: 0.5em;
+  font-size: 1.2em;
+}
+
+.edit {
+  color: #587ef4;
+}
+
+.delete {
+  color: #ff5353;
+}
+/* Add hide class to hide element from page */
+.hide {
+  display: none;
+}
+
+/* Support smaller screen sizes */
+@media screen and (max-width: 800px) {
   .card-list-container {
-    display: grid;
-    padding: 0.2em;
-    gap: 1.5em;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.8em;
   }
-  .card {
-    background-color: #ffffff;
-    box-shadow: 0 0.4em 1.2em rgba(28, 0, 80, 0.08);
-    padding: 1.2em;
-    border-radius: 0.4em;
+}
+
+@media screen and (max-width: 450px) {
+  body {
+    font-size: 14px;
   }
-  .question-div,
-  .answer-div {
-    text-align: justify;
+
+  .card-list-container {
+    grid-template-columns: 1fr;
+    gap: 1.2em;
   }
-  .question-div {
-    margin-bottom: 0.5em;
-    font-weight: 500;
-    color: #363d55;
-  }
-  .answer-div {
-    margin-top: 1em;
-    font-weight: 400;
-    color: #414a67;
-  }
-  .show-hide-btn {
-    display: block;
-    background-color: #587ef4;
-    color: #ffffff;
-    text-decoration: none;
-    text-align: center;
-    padding: 0.6em 0;
-    border-radius: 0.3em;
-  }
-  .buttons-con {
-    display: flex;
-    justify-content: flex-end;
-  }
-  .edit,
-  .delete {
-    background-color: transparent;
-    padding: 0.5em;
-    font-size: 1.2em;
-  }
-  .edit {
-    color: #587ef4;
-  }
-  .delete {
-    color: #ff5353;
-  }
-  .hide {
-    display: none;
-  }
-  @media screen and (max-width: 800px) {
-    .card-list-container {
-      grid-template-columns: 1fr 1fr;
-      gap: 0.8em;
-    }
-  }
-  @media screen and (max-width: 450px) {
-    body {
-      font-size: 14px;
-    }
-    .card-list-container {
-      grid-template-columns: 1fr;
-      gap: 1.2em;
-    }
-  }
+}
