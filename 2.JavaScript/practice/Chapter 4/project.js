@@ -35,7 +35,11 @@ outcomes = ["Rock", "Paper", "Scissors"];
 
 const generateRandomNumber = () => Math.floor(Math.random() * 3);
 
-let playerChoice = generateRandomNumber();
+//let playerChoice = generateRandomNumber();
+let playerRPS = prompt("Choose Rock, Paper, Scissors");
+let playerCapitalised = playerRPS[0].toUpperCase() + playerRPS.slice(1).toLowerCase();
+let playerChoice = outcomes.indexOf(playerCapitalised);
+
 let computerChoice = generateRandomNumber();
 
 let message3 = `Player choice: ${outcomes[playerChoice]} and Computer choice: ${outcomes[computerChoice]}\n`;
