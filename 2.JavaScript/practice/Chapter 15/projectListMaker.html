@@ -14,32 +14,37 @@
     <div class="output"></div>
 
     <script>
+        // Select the elements on the page
         const btn = document.querySelector('button');
         const nameIn = document.querySelector('input[name="name"]');
         const out = document.querySelector('.output');
 
+        // Initialise variables
         const url = "listmaker.json";
         const myList = [];
         const localDataStorage = [];
 
+        // Run program when DOM has loaded
         document.addEventListener("DOMContentLoaded", e => {
             // Loading data from local storage
             if (window.localStorage.getItem("myList")) {
                 out.innerHTML = "";
                 console.log("Items present in local storage.");
+                // To retrieve from the local storage use JSON.parse
                 const data = JSON.parse(localStorage.getItem("myList"));
                 for (item of data) {
                     maker(item.value);
                 }
-            } else { // Loading data from the JSON file
+            } else { // If data on local storage doesn't exist then load data from the JSON file.
                 console.log("myList does not exist on local storage.");
+                // To retrieve from a JSON file from the local computer use the fetch function.
                 const response = fetch(url);
-                response
+                response // Because the fetch function returns a promise object, need to use response.json() to convert it from a string to a JS object.
                     .then(response => response.json())
-                    .then(data => data.forEach(el => {
+                    .then(data => data.forEach(el => { // Loop through the data.
                         maker(el.value);
                     }))
-                    .catch(console.log("Fetch failed."));
+                    .catch(console.log("Fetch failed.")); // Display error if fetch failed.
                     savetoStorage();
             }
         })
@@ -48,7 +53,9 @@
             addToList();
         });
 
+        // Checks if input is valid, then ads it to page, and saves it to the storage.    
         function addToList() {
+            // Checks if the length is at least 3
             if (nameIn.value.length >= 3) {
                 const obj = {
                     value: nameIn.value,
@@ -61,6 +68,7 @@
             }
         }
 
+        // Creates the list element and adds it to the page
         function maker(msg) {
             const txtNode = document.createTextNode(msg);
             const div = document.createElement("div");
@@ -68,6 +76,7 @@
             out.appendChild(div);
         }
 
+        // Saves the list to the local storage
         function savetoStorage() {
             const strList = JSON.stringify(myList);
             window.localStorage.setItem("myList", strList);
