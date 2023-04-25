@@ -1,1 +1,7 @@
 /1.SQL/postgresql/practical-sql-main/
+node_modules
+.DS_Store
+node_modules/
+package-lock.json
+npm-debug.log
+.prettierrc.js
