@@ -1,5 +1,4 @@
-/1.SQL/postgresql/practical-sql-main/
-node_modules
+practical-sql-main/
 .DS_Store
 node_modules/
 package-lock.json
