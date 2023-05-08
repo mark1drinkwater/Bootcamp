@@ -157,6 +157,7 @@ module.exports = {
     });
   },
   logout: (req, res, next) => {
+    res.render("users/login");
     req.logout();
     req.flash("success", "You have been logged out!");
     res.locals.redirect = "/";
