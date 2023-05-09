@@ -5,7 +5,6 @@ const port = 3000,
 
 // Convert the object to a string    
 const getJSONString = obj => {
-
     return JSON.stringify(obj, null, 2);
 }
 

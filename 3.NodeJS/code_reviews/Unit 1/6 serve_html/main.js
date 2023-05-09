@@ -53,9 +53,11 @@ const sendErrorResponse = res => {
     res.write("<h1>File Not Found!</h1>");
     res.end();
 };
+
 http
     .createServer((req, res) => {
         let url = req.url;
+        
         if (url.indexOf(".html") !== -1) {
             res.writeHead(httpStatus.OK, {
                 "Content-Type": "text/html"
