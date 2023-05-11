@@ -1,9 +1,6 @@
 const subscriber = require("../models/subscriber");
 const Subscriber = require("../models/subscriber");
 
-// For the subscribers controller the new and create actions
-// Replace the getSubscriptionPage and saveSubscriber
-
 exports.getAllSubscribers = (req, res, next) => {
     Subscriber.find({})
         .exec()

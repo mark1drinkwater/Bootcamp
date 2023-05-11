@@ -39,17 +39,6 @@ userSchema.virtual("fullName")
         return `${this.name.first} ${this.name.last}`;
     });
 
-// Ideally, whenever a new user is created, you'd like to check for an existing subscriber with the same email address and associate the two.
-// You do so with a Mongoose pre("save") hook
-// Mongoose offers some methods, called hooks, that allow you to perform an operation before a database change, such as save, is run.
-// This hooks run right before a user is created or save
-// It takes the next middleware function as a parameter so that when this step is complete, it can call the next middleware function.
-
-// You perform this function only if the user doesn't already ahve an associated subscriber, which saves time
-// Search for one subscriber account, using the user's email address.
-// If a subscruber is found with a matching email adress, asign that subscriber to the user's subscribedAccount attribute
-// Unless an error occurs, continue saving the user in the next middleware function
-
 userSchema.pre("save", function (next) {
     let user = this;
     if (user.subscribedAccount === undefined) {
@@ -68,9 +57,5 @@ userSchema.pre("save", function (next) {
         next();
     }
 });
-
-// Create a new Subscriber using the repl.js
-// Then create a new user using the website.
-// The user should have a subscribedAccount attribute
 
 module.exports = mongoose.model("User", userSchema);

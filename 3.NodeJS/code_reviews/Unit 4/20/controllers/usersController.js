@@ -13,15 +13,10 @@ module.exports = {
                 res.redirect("/");
             });
     },
-    // BELOW IS THE NEW CODE:
-    // Add the new action to render the new.ejs form
     new: (req, res) => {
         res.render("users/new");
     },
-    // Add the create action to save the user to the database
     create: (req, res, next) => {
-        // Creates users with form parameters
-        // Assign userParams variable to the incoming data.
         let userParams = {
             name: {
                 first: req.body.first,
@@ -31,7 +26,6 @@ module.exports = {
             password: req.body.password,
             zipCode: req.body.zipCode
         };
-        // Then call this function, and pass the userParams
         User.create(userParams)
             .then(user => {
                 res.locals.redirect = "/users";
@@ -43,28 +37,18 @@ module.exports = {
                 next(error);
             });
     },
-    // Render the view in a separate redirectView action
-    // If user created successfully, redirect to index page
-    // Else redirect to error page in case of failure
     redirectView: (req, res, next) => {
         let redirectPath = res.locals.redirect;
         if (redirectPath) res.redirect(redirectPath);
         else next();
     },
-    // More new code
     show: (req, res, next) => {
-        // Collect the user's ID from the URL paramteters
-        // This code only works if you define your route by using :id
         let userId = req.params.id;
-        // Pass the user ID to the query
-        // Because each ID is unique, you should expect a single user in return
         User.findById(userId)
-            // If a user is found then add it as a local variable to the response object, and call the next middleware
             .then(user => {
                 res.locals.user = user;
                 next();
             })
-            // Error handling
             .catch(error => {
                 console.log(`Error fetching user by ID: ${error.message}`);
                 next(error);
@@ -72,5 +56,67 @@ module.exports = {
     },
     showView: (req, res) => {
         res.render("users/show");
-    }
+    },
+    //Gets a user from the DB by user's ID and loads a view to edit the user
+    edit: (req, res, next) => {
+        let userId = req.params.id;
+        // Locates a suer by their ID in the DB
+        User.findById(userId)
+            .then(user => {
+                // Render the user edit page for a specific user in the database
+                res.render("users/edit", {
+                    user: user
+                });
+            })
+            .catch(error => {
+                console.log(`Error fetching user by ID: ${error.message}`);
+                next(error);
+            });
+    },
+    // Called when the edit form is submitted
+    //It identifies the user's ID and userParams and passes those values into Mongoose
+    update: (req, res, next) => {
+        let userId = req.params.id,
+            // Collects the user parameters from the request
+            userParams = {
+                name: {
+                    first: req.body.first,
+                    last: req.body.last
+                },
+                email: req.body.email,
+                password: req.body.password,
+                zipCode: req.body.zipCode
+            };
+            //Use findByIdAndUpdate to locate a user by ID and update the document record in one command
+        User.findByIdAndUpdate(userId, {
+            $set: userParams
+        })
+            .then(user => {
+                // Add user to response as a local variable, and call the next middleware function.
+                // Why would we want to do that though?
+                res.locals.redirect = `/users/${userId}`;
+                res.locals.user = user;
+                next();
+            })
+            .catch(error => {
+                console.log(`Error updating user by ID: ${error.message}`);
+                next(error);
+            });
+    },
+    // Delete function
+    // Locates the record using Mongoose's findByIdAndRemove
+    // If successful it logs the deleted user to the console and redirects the nxt middleware function to the users index page
+    // Otherwise log error
+    delete: (req, res, next) => {
+        let userId = req.params.id;
+        User.findByIdAndRemove(userId) 
+       .then(() => {
+       res.locals.redirect = "/users";
+       next();
+       })
+       .catch(error => {
+       console.log(`Error deleting user by ID: ${error.message}`);
+       next();
+       });
+       }
 };                

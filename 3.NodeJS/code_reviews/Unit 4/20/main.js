@@ -1,11 +1,17 @@
 const mongoose = require("mongoose");
 const express = require("express");
 const app = express();
-// Added the Router module
 const router = express.Router()
 const Subscriber = require("./models/subscriber");
 const subscribersController = require("./controllers/subscribersController");
 const usersController = require("./controllers/usersController");
+
+// HTTP form element only supports GET and PUT requests.
+// It's important to use the intended HTTP method with your CRUD functions
+// A solution is to use the method -override package
+// It is a middleware that interprets requests according to a specific query paranetert and HTTP requests
+// You can interpret POST requests as PUT requests
+const methodOverride = require("method-override");
 
 mongoose.connect(
   "mongodb://127.0.0.1:27017/recipe_db",
@@ -28,19 +34,25 @@ app.get("/subscribers", subscribersController.getAllSubscribers, (req, res, next
   res.render("subscribers", {subscribers: req.data})
 });
 
-// Add Router middleware
 app.use("/", router);
 
+// Method ovveride
+router.use(methodOverride("_method", {
+  methods: ["POST", "GET"]
+ }));
+
 router.get("/users", usersController.index);
-// Renders the new.ejs file
 router.get("/users/new", usersController.new);
-// Accepts POST requests and passes that incoming body body data to the create action
-// Followed by a view redirect
-router.post("/users/create", usersController.create, usersController.redirectView)
 
-// This show route, uses the /users path and passes the :id parameter to the userController.show
 router.get("/users/:id", usersController.show, usersController.showView)
-
+// Add routes to handle editing
+router.get("/users/:id/edit", usersController.edit);
+// Process data from the edit form and then display the user show page
+router.put("/users/:id/update", usersController.update, usersController.redirectView);
+// Delete route
+router.delete("/users/:id/delete", usersController.delete, usersController.redirectView)
+////////////////////////////
+router.post("/users/create", usersController.create, usersController.redirectView)
 router.get("/contact", subscribersController.getSubscriptionPage);
 router.post("/subscribe", subscribersController.saveSubscriber);
 

@@ -3,18 +3,18 @@ const mongoose = require("mongoose")
 const subscriberSchema = new mongoose.Schema({
   name: {
     type: String,
-    required: true // New property
+    required: true
   },
   email: {
     type: String,
-    required: true, // New property
-    lowercase: true, // New property
-    unique: true // New property
+    required: true,
+    lowercase: true,
+    unique: true
   },
   zipCode: {
-    type: Number, // New property
-    min: [10000, "Zip code too short"], // New property
-    max: 99999 // New property
+    type: Number,
+    min: [10000, "Zip code too short"],
+    max: 99999
   },
   courses: [{ type: mongoose.Schema.Types.ObjectId, ref: "Course" }]
 });
