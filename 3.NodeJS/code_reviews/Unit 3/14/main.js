@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 const Subscriber = require("./models/subscriber");
 
+// Connect with mongoose instead of mongodb
 mongoose.connect(
     "mongodb://127.0.0.1:27017/recipe_db",
     { useNewUrlParser: true }
@@ -38,8 +39,8 @@ subscriber1.save()
 // Create and save a subscriber in a single step.
 Subscriber.create(
     {
-        name: "Jon Wexler",
-        email: "jon@jonwexler.com"
+        name: "Jon2 Wexler",
+        email: "jon2@jonwexler.com"
     }
 )
     .catch(err => console.log(err))
