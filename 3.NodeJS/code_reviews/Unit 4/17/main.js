@@ -3,6 +3,8 @@ const express = require("express");
 const app = express();
 const Subscriber = require("./models/subscriber");
 const subscribersController = require("./controllers/subscribersController");
+const homeController = require("./controllers/homeController");
+const layouts = require("express-ejs-layouts");
 
 mongoose.connect(
   "mongodb://127.0.0.1:27017/recipe_db",
@@ -19,6 +21,9 @@ app.set("view engine", "ejs");
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+app.use(layouts);
+app.use(express.static("public"));
 
 var subscriber1 = new Subscriber({
   name: "Jon Wexler",
@@ -57,6 +62,7 @@ app.get("/subscribers", subscribersController.getAllSubscribers, (req, res, next
   // This will load the subscriber.ejs file and pass it the subscribers data
   res.render("subscribers", {subscribers: req.data})
 });
+app.get("/", homeController.respondWithName);
 
 
 app.get("/contact", subscribersController.getSubscriptionPage);

@@ -18,6 +18,7 @@ module.exports = {
             // end function will inform client that no more data will be sent.
             // Necessary otherwise page will hang.
             res.end(data);
+            console.log(res);
         });
     }
 };

@@ -6,6 +6,8 @@ const router = express.Router()
 const Subscriber = require("./models/subscriber");
 const subscribersController = require("./controllers/subscribersController");
 const usersController = require("./controllers/usersController");
+const homeController = require("./controllers/homeController");
+const layouts = require("express-ejs-layouts");
 
 mongoose.connect(
   "mongodb://127.0.0.1:27017/recipe_db",
@@ -22,6 +24,9 @@ app.set("view engine", "ejs");
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+app.use(layouts);
+app.use(express.static("public"));
 
 app.get("/subscribers", subscribersController.getAllSubscribers, (req, res, next) => {
   console.log(req.data);
@@ -43,6 +48,7 @@ router.get("/users/:id", usersController.show, usersController.showView)
 
 router.get("/contact", subscribersController.getSubscriptionPage);
 router.post("/subscribe", subscribersController.saveSubscriber);
+app.get("/", homeController.respondWithName);
 
 app.listen(app.get("port"), () => {
   console.log(`Server running at http://localhost:${app.get("port")}`);

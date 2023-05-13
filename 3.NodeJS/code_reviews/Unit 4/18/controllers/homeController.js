@@ -10,10 +10,6 @@ exports.sendReqParam = (req, res) => {
   res.send(`This is the page for ${veg}`);
 };
 
-exports.respondWithName = (req, res) => {
-  res.render("index");
-};
-
 var courses = [
   {
     title: "Event Driven Cakes",
@@ -33,5 +29,8 @@ module.exports = {
     res.render("courses", {
       offeredCourses: courses
     });
+  },
+  respondWithName: (req, res) => {
+    res.render("index");
   }
 };

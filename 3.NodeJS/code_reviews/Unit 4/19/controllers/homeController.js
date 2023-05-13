@@ -19,5 +19,8 @@ module.exports = {
     res.render("courses", {
       offeredCourses: courses
     });
+  },
+  respondWithName: (req, res) => {
+    res.render("index");
   }
 };

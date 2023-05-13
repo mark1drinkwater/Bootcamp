@@ -60,7 +60,7 @@ module.exports = {
     //Gets a user from the DB by user's ID and loads a view to edit the user
     edit: (req, res, next) => {
         let userId = req.params.id;
-        // Locates a suer by their ID in the DB
+        // Locates a user by their ID in the DB
         User.findById(userId)
             .then(user => {
                 // Render the user edit page for a specific user in the database

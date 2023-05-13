@@ -29,6 +29,9 @@ app.use(express.json());
 app.use(layouts);
 app.use(express.static("public"));
 
+app.use(layouts);
+app.use(express.static("public"));
+
 app.use("/", router)
 
 router.get("/", (req, res) => {

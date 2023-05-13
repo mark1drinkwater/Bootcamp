@@ -48,9 +48,12 @@ module.exports = {
         else next();
     },
     show: (req, res, next) => {
+        var userId = req.params.id;
         User.findById(userId)
             .then(user => {
                 res.locals.user = user;
+                console.log('In the usersController show');
+                console.log(user);
                 next();
             })
             .catch(error => {
@@ -63,6 +66,8 @@ module.exports = {
     },
     edit: (req, res, next) => {
         var userId = req.params.id;
+        console.log("In the usersController edit")
+        console.log(userId);
         User.findById(userId)
             .then(user => {
                 res.render("users/edit", {
