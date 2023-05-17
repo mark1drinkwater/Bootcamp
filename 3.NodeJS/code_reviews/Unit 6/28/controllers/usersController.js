@@ -21,12 +21,24 @@ function isSubscriber() {
 }
 
 module.exports = {
-  // This function checks for a query parameter called apiToken that matches the token we defined earler
   verifyToken: (req, res, next) => {
-    // If the token matches it will continue the middleware chain
-    if (req.query.apiToken === token) next();
-    // Else it will pass an error.
-    else next(new Error("Invalid API token."));
+    let token = req.query.apiToken;
+    // Check whether a token exists as the query parameter.
+    if (token) {
+      // Search for a user with the provided API token
+      User.findOne({ apiToken: token })
+        .then(user => {
+          // Call next if a user with the API token exists.
+          if (user) next();
+          else next(new Error("Invalid API token."));
+        })
+        // Pass an error to the error handler
+        .catch(error => {
+          next(new Error(error.message));
+        });
+    } else {
+      next(new Error("Invalid API token."));
+    }
   },
   login: (req, res) => {
     res.render("users/login");

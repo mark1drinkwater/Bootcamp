@@ -2,6 +2,7 @@
 
 const passportLocalMongoose = require("passport-local-mongoose");
 const mongoose = require("mongoose");
+const randToken = require("rand-token");
 const bcrypt = require("bcrypt"),
     { Schema } = mongoose,
     Subscriber = require("./subscriber"),
@@ -22,31 +23,26 @@ const bcrypt = require("bcrypt"),
                 required: true,
                 lowercase: true,
                 unique: true
-            },
+            },            
             zipCode: {
                 type: Number,
                 min: [1000, "Zip code too short"],
                 max: 99999
             },
-            // password: {
-            //     type: String,
-            //     required: true
-            // },
             courses: [{ type: Schema.Types.ObjectId, ref: "Course" }],
             subscribedAccount: {
                 type: Schema.Types.ObjectId,
                 ref: "Subscriber"
-            }
+            },  
+            apiToken: {
+                type: String
+            }        
         },
         {
             timestamps: true
         }
     );
 
-// you’re telling your userSchema to use passportLocalMongoose for password hashing and storage.
-// Telling userSchema to use passportLocalMongoose to use email field as usr's login
-// When this line is in place, Passport.js automatically takes care of password storage, so you can remove the password property from userSchema
-// ads hash & salt fields
 userSchema.plugin(passportLocalMongoose, {
     usernameField: "email"
 });
@@ -75,18 +71,40 @@ userSchema.pre("save", function (next) {
     }
 });
 
-// Later on we comment this out because we want to use passport to handle passwords
-// userSchema.pre("save", function (next) {
-//     let user = this;
-//     bcrypt.hash(user.password, 10).then(hash => {
-//         user.password = hash;
-//         next();
-//     })
-//         .catch(error => {
-//             console.log(`Error in hashing password: ${error.message}`);
-//             next(error);
-//         });
-// });
+userSchema.pre("save", async function (next) {
+    if (!this.apiToken) {
+        let unique = false;
+        let token;
+        
+        /// Added functionality. Makes sure the token generated is unique.
+        while (!unique) {
+            // Generate the 16-bit token
+            token = randToken.generate(16);
+            
+            try {
+                // Check if the token is unique
+                const existingUser = await this.model("User").findOne({ apiToken: token });
+                
+                if (!existingUser) {
+                    unique = true;
+                    this.apiToken = token;
+                    console.log('Token created successfully');
+                    console.log(token);
+                } else {
+                    console.log('Token already in use')
+                }
+            } catch (error) {
+                console.log(`Error in generating user token: ${error.message}`);
+                next(error);
+                return;
+            }
+        }
+    }
+    
+    next();
+});
+
+   
 
 userSchema.methods.passwordComparison = function (inputPassword) {
     let user = this;
