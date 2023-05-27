@@ -53,6 +53,12 @@ router.get("/subscribers/:id/edit", subscribersController.edit);
 router.put("/subscribers/:id/update", subscribersController.update, subscribersController.redirectView);
 router.delete("/subscribers/:id/delete", subscribersController.delete, subscribersController.redirectView);
 //
+router.get("/contact", subscribersController.showSignUp);
+router.post("/contact", subscribersController.postedSignUpForm);
+//
+router.get("/subscribers/new", subscribersController.new);
+router.post("/subscribers/create", subscribersController.create, subscribersController.redirectView);
+//
 router.get("/users", usersController.index, usersController.indexView);
 router.get("/users/new", usersController.new);
 router.post("/users/create", usersController.create, usersController.redirectView);

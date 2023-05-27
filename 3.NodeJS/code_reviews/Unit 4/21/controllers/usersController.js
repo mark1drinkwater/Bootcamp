@@ -28,6 +28,8 @@ module.exports = {
         res.render("users/new");
     },
     create: (req, res, next) => {
+        console.log('Request body:')
+        console.log(req.body)
         let userParams = getUserParams(req.body);
         console.log("Attempting to create new user:")
         console.log(userParams);

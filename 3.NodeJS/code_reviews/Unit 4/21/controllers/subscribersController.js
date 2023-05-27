@@ -8,7 +8,7 @@ const Subscriber = require("../models/subscriber"),
             zipCode: parseInt(body.zipCode)
         };
     };
-    
+
 module.exports = {
     index: (req, res, next) => {
         Subscriber.find()
@@ -26,6 +26,12 @@ module.exports = {
     },
     new: (req, res) => {
         res.render("subscribers/new");
+    },
+    showSignUp: (req, res) => {
+        res.render("contact");
+    },
+    postedSignUpForm: (req, res) => {
+        res.render("thanks");
     },
     create: (req, res, next) => {
         let subscriberParams = getSubscriberParams(req.body);

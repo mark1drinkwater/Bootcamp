@@ -1,0 +1,173 @@
+use acme 
+db.createCollection('posts')
+show collections
+
+// Insert one record
+
+db.posts.insert({
+    title: 'Post One',
+    body: 'Body of post one',
+    category: 'News',
+    likes: 4,
+    tags: ['news', 'events'],
+    user : {
+        name: 'John Doe',
+        status: 'author'
+    },
+    date: Date()
+})
+
+// Insert multiple records
+
+db.posts.insertMany([
+{
+    title: 'Post Two',
+    body: 'Body of post two',
+    category: 'Technology',
+    date: Date()
+},
+{
+    title: 'Post Three',
+    body: 'Body of post three',
+    category: 'News',
+    date: Date()
+},
+{
+    title: 'Post Four',
+    body: 'Body of post four',
+    category: 'Entertainment',
+    date: Date()
+}
+])
+
+// Display all records nicely formatted & easier to read
+db.posts.find().pretty()
+
+// Search for posts with news category.
+db.posts.find({ category: 'News' }).pretty()
+
+// Sorts records by title ASC order
+// 1 for ASC, -1 for DESC
+db.posts.find().sort({ title: 1 }).pretty()
+
+// Count how many news posts we have
+db.posts.find({ category: 'News' }).count()
+
+// Limit to 2 records and sort in DESC order
+db.posts.find().sort({ title: -1 }).limit(2)
+
+// For each loop
+db.posts.find().forEach(function(doc) { print('Blog Post: ' + doc.title)})  
+
+// Find one specific 
+db.posts.findOne({ category: 'News' })
+
+// Update records
+// 1st parameter: which record to update
+// 2nd parameter: what the record should look like after update
+// 3rd parameter: options. upsert: create the record if it can't find it
+db.posts.replaceOne(
+    { title: 'Post Two' }, 
+    {
+        title: 'Post Two',
+        body: 'New post 2 body',
+        date: Date()
+    },
+    {
+        upsert: true
+    }
+)
+
+// Check the updated record
+// Note: it removed the category field
+db.posts.find({ title: 'Post Two' })
+
+// If you just want to update the fields but keep the fields not mentioned untouched:
+
+db.posts.update(
+    { title: 'Post Two' }, 
+    {
+        $set: {
+            body: 'Body of post 2',
+            category: 'Technology'
+        }
+    },
+    {
+        upsert: true
+    }
+)
+
+// Check the result
+// For the most part you want to use the $set operator.
+
+db.posts.find({ title: 'Post Two' })
+
+//Increment likes by 2
+db.posts.update({ title: 'Post One' }, { $inc: { likes: 2} } )
+// Now 6
+db.posts.find({ title: 'Post One' })
+
+// Rename field, likes to views
+db.posts.update({ title: 'Post One' }, { $rename: { likes: 'views'} } )
+
+// Delete
+db.posts.remove({ title: 'Post Four'})
+
+// Sub-Documents
+// Add comments field to existing Post Two
+db.posts.update(
+    { title: 'Post Two' }, 
+    {
+        $set: {
+            comments: [
+                {
+                    user: 'Mary Williams',
+                    body: 'Comment One',
+                    date: Date()
+                },
+                                {
+                    user: 'Harry White',
+                    body: 'Comment Two',
+                    date: Date()
+                }
+            ]
+        }
+    }
+)
+
+// To find all the posts that have a comment by 'Mary Williams'
+// We can use an operator called LM match
+// Find by Element in Array ($elemMatch)
+db.posts.find({
+  comments: {
+     $elemMatch: {
+       user: 'Mary Williams'
+       }
+    }
+  }
+)
+
+// Add Index
+db.posts.createIndex({ title: 'text' })
+
+// Text Search
+db.posts.find({
+  $text: {
+    $search: "\"Post O\""
+    }
+})
+
+db.posts.find({
+  $text: {
+    $search: "\"Post T\""
+    }
+})
+
+//Add views to post Two
+db.posts.update({ title: 'Post Two' }, {$set: { views:10 } })
+
+// Greater & Less Than
+db.posts.find({ views: { $gt: 2 } })
+db.posts.find({ views: { $gte: 7 } })
+db.posts.find({ views: { $lt: 7 } })
+db.posts.find({ views: { $lte: 7 } })
