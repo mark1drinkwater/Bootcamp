@@ -42,7 +42,7 @@ app.use('*', (req, res, next) => {
     next();
 })
 
-mongoose.connect('mongodb+srv://admin:razRJv5W8vtcfOM6@cluster0.1ztmqpn.mongodb.net/', { useNewUrlParser: true })
+mongoose.connect('mongodb+srv://admin:razRJv5W8vtcfOM6@cluster0.1ztmqpn.mongodb.net/my_database', { useNewUrlParser: true })
 
 app.get('/posts/new', authMiddleware, newPostController)
 app.get('/', homeController)

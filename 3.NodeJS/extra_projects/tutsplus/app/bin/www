@@ -29,11 +29,12 @@ var server = http.createServer(app);
 // server.on('error', onError);
 // server.on('listening', onListening);
 
-// Anonymous function, don't need any assert statement since the code will already throw an error
+// Anonymous function, don't need any assert statement since the code will already throw an error.
 (async function() {
   const { MongoClient } = require("mongodb");
-  const client = new MongoClient("mongodb://127.0.0.1:27017/fastdelivery");
+  const client = new MongoClient(`mongodb://${config.mongo.host}:${config.mongo.client}/fastdelivery`);
   await client.connect()
+  // All express handlers will have the req.db available, due to middleware automatically running before each request.
   app.use(function (req, res, next) {
     req.db = client.db;
     next();

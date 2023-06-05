@@ -5,9 +5,6 @@ module.exports = async (req, res) => {
     let image
     if (req.files) {
         image = req.files.image
-    } else {
-        const validationErrors = 'Please upload a image.';
-
     }
 
     let imgPath;
