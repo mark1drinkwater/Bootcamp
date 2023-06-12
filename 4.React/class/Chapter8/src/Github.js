@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios'; // npm install axios
 import ReactLoading from 'react-loading';
 import { Media, Form, Button } from 'react-bootstrap';
+import { Nav, Navbar } from 'react-bootstrap';
 
 class GitHub extends Component {
 
@@ -41,13 +42,13 @@ class GitHub extends Component {
     }
 
     handleChange(e) {
-        this.setState({ searchTerm: e.target.value }); 
-        }
+        this.setState({ searchTerm: e.target.value });
+    }
 
     render() {
         const listUsers = this.state.data.map((user) =>
             <Media key={user.id}>
-                <a href={user.html_url}>
+                <Nav.Link href={`/github/user/${user.login}/${user.id}`}>
                     <img
                         width={64}
                         height={64}
@@ -55,7 +56,7 @@ class GitHub extends Component {
                         src={user.avatar_url}
                         alt="Generic placeholder"
                     />
-                </a>
+                </Nav.Link>
                 <Media.Body>
                     <h5>Login: {user.login}</h5>
                     <p>Id: {user.id}</p>

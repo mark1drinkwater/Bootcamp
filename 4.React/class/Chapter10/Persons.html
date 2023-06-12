@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>List of Persons</title>
+    <script src="https://unpkg.com/redux@latest/dist/redux.js"></script>
+</head>
+
+<body>
+    <script>
+        // Action creators
+        function addPerson(id, name, age) {
+            return {
+                type: "ADD",
+                personData: {
+                    id: id,
+                    name: name,
+                    age: age
+                }
+            }
+        }
+        // Action creators
+        function removePerson(id) {
+            return {
+                type: "REMOVE",
+                personId: id
+            }
+        }
+
+        // Initialise state to initialState
+        const initialState = {
+            persons: []
+        }
+
+        // Reducer method gets the action object which gives the reducer access to the action type & payload
+        // Reducers should never alter argument passed, or route or call non-pure functions like Date.now() or Math.random()
+        // Reducers should always call pure functions
+        // What are pure functions? That is, given the same arguments it should always return the same next state with no argument mutation
+        // It should be a pure function which always returns the same result given the same arguments (in others words be predicable)
+        function reducer(state, action) {
+            // If-else statements that handle our actions.
+            if (state === undefined) {
+                state = initialState;
+            }
+            // Add action
+            // Notice it doesn't mutate the given persons array using persons.push() as this woudl mutate the existing stte.
+            // Instead we use ...state to create a copy of the existing state and then replace the existing persons array in it.
+            // The state.persons.concat method returns a new array that contains the old values along with the added persons
+            // Does not actually alter to the original persons array, instead returns a totally new one.
+            if (action.type === "ADD") {
+                const newPerson = {
+                    id: action.personData.id,
+                    name: action.personData.name,
+                    age: action.personData.age
+                }
+                return {
+                    ...state,            
+                    persons: state.persons.concat(newPerson)
+                }
+                // Remove action
+                // We return a NEW array with the specified person removed using the filter method.
+                // Understand: we should NOT modify the state but instead return a new one.
+                // Or your Redux app will BREAK.
+            } else if (action.type === "REMOVE") {
+                return {
+                    ...state,
+                    persons: state.persons.filter(person => person.id !== action.personId)
+                }
+                // Any other unrecognised action will simply return the current state
+            } else {
+                return state;
+            }
+        }
+        function showState() {
+            // logs the state's  value
+            console.log(store.getState())
+        }
+
+        // Create a new store and provide our reducer as an argument.
+        // With this, we have linked our actions, reducers and store together.
+        var store = Redux.createStore(reducer);
+        // Stores allow us to subscribe handler functions that will be called each time the store completes dispatching an action.
+        store.subscribe(showState);
+        // To see it in action, we call the dispatch method of the store object and provide it with an action as an argument
+        store.dispatch(addPerson(1, "Greg", 5));
+        store.dispatch(addPerson(2, "Carol", 3));
+        store.dispatch(addPerson(3, "Gabriel", 6));
+        store.dispatch(addPerson(4, "Fred", 8));
+        store.dispatch(removePerson(4))
+
+            // The above vode, each dispatch method sends the provided action to the reducer which goes through the logic and returns a new state
+
+            // To see the store's state each time the application state is modified, add the following code
+    </script>
+</body>
+
+</html>
