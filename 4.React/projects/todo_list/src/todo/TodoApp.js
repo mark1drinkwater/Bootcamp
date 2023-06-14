@@ -31,22 +31,32 @@ class TodoApp extends Component {
 
     render() {
         return (
-            <div className="container">
-                <div className="row">
-                    <div className="col-sm-4">
-                        <h3 className="text-center">React Todo App</h3>
-                        <div className="input-group">
-                            <input type="text" placeholder="Enter Something" className="form-control" onChange={this.changeTodoInput} value={this.state.inputData} />
-                            <div className="input-group-append">
-                                <span className="btn btn-success " onClick={this.addTodo}>Add</span>
+            <div className='container'>
+                <div className='row'>
+                    <div className='col-m-4'>
+                        <h3 className='text-center'>React Todo App </h3>
+                        <div className='input-group'>
+                            <input
+                                type='text'
+                                placeholder="Add to your To Do's"
+                                className='form-control'
+                                onChange={this.changeTodoInput}
+                                value={this.state.inputData}
+                            />
+                            <div className='input-group-append'>
+                                <span className='btn btn-success' onClick={this.addTodo}>
+                                    Add
+                                </span>
                             </div>
                         </div>
+                        <br />
                         <TodoList items={this.state.todoItems} deleteTodo={this.deleteTodo} />
                     </div>
                 </div>
             </div>
-        )
+        );
     }
+
 }
 
 export default TodoApp;
