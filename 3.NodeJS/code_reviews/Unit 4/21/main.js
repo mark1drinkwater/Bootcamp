@@ -14,7 +14,7 @@ const express = require("express"),
 // Added mongoose and connected to the database
 const mongoose = require("mongoose");
 mongoose.connect(
-  "mongodb://127.0.0.1:27017/confetti_cuisine",
+  "mongodb://localhost:27017/confetti_cuisine",
   { useNewUrlParser: true }
 );
 
