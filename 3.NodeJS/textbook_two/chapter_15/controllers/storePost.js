@@ -8,7 +8,6 @@ module.exports = async (req, res) => {
     }
 
     let imgPath;
-    let imageResult;
 
     try {
         imgResult = await image.mv(path.resolve(__dirname, '..', 'public/img', image.name));
