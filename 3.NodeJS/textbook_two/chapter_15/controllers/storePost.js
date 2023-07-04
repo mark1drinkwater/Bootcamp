@@ -2,14 +2,10 @@ const BlogPost = require('../models/BlogPost.js')
 const path = require('path')
 
 module.exports = async (req, res) => {
-    let image
-    if (req.files) {
-        image = req.files.image
-    }
-
     let imgPath;
 
     try {
+        let image = req.files.image;
         imgResult = await image.mv(path.resolve(__dirname, '..', 'public/img', image.name));
         imgPath = '/img/' + image.name;
     } catch (error) {
