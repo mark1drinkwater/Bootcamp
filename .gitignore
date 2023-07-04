@@ -18,6 +18,7 @@ Unit Zips/
 
 # misc
 .DS_Store
+.env
 .env.local
 .env.development.local
 .env.test.local
@@ -31,5 +32,4 @@ yarn-error.log*
 .netlify
 
 #Environment files
-.env
 /3.NodeJS/textbook_two/chapter_15/public/img
