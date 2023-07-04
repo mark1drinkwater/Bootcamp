@@ -32,3 +32,4 @@ yarn-error.log*
 
 #Environment files
 .env
+/3.NodeJS/textbook_two/chapter_15/public/img
