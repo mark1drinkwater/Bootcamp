@@ -21,7 +21,7 @@ const BlogPostSchema = new Schema({
     },
     image: {
         type: String,
-        required: [true, 'Please upload a image']
+        required: [true, 'Please upload a image.']
     }
 })
 
