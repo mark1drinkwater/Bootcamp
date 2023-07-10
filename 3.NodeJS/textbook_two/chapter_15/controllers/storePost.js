@@ -3,6 +3,7 @@ const path = require('path')
 
 module.exports = async (req, res) => {
     let imgPath;
+    let imgResult;
 
     try {
         let image = req.files.image;
