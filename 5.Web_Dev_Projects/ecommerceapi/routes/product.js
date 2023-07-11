@@ -26,7 +26,7 @@ router.put("/:id", verifyTokenAndAuthorization, async (req, res) => {
             },
             { new: true }
         );
-        res.status(200).json(updatedUser);
+        res.status(200).json(updatedProduct);
     } catch (error) {
         res.status(500).json(error);
     }
@@ -42,25 +42,36 @@ router.delete("/:id", verifyTokenAndAuthorization, async (req, res) => {
     }
 })
 
-//GET USER
-router.get("/find/:id", verifyTokenAndAdmin, async (req, res) => {
+//GET PRODUCT
+router.get("/find/:id", async (req, res) => {
     try {
-        const user = await Product.findById(req.params.id);
-        // Exclude password field from being seny by destructuring.
-        const { password, ...otherFields } = user._doc;
-        res.status(200).json(otherFields);
+        const product = await Product.findById(req.params.id);
+        res.status(200).json(product);
     } catch (error) {
         res.status(500).json(error);
     }
 })
 
-//GET ALL USERS
-router.get("/", verifyTokenAndAdmin, async (req, res) => {
-    const query = req.query.new;
+//GET ALL PRODUCTS
+router.get("/", async (req, res) => {
+    const qNew = req.query.new;
+    const qCategory = req.query.category;
+    let products; 
     try {
-        const users = query ? await Product.find({}).sort({ _id: -1 }).limit(5) : await Product.find();
-        console.log(users);
-        res.status(200).json(users);
+
+        if (qNew) {
+            products = await Product.find().sort({createdAt: -1}).limit(5);
+        } else if (qCategory) {
+            products = await Product.find({
+                categories : {
+                    $in: [qCategory],
+                }
+            })
+        } else {
+            products = await Product.find();
+        }
+
+        res.status(200).json(products);
     } catch (error) {
         res.status(500).json(error);
     }
