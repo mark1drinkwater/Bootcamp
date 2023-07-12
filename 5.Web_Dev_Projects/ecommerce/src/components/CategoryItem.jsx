@@ -1,7 +1,8 @@
 import React from 'react'
 
 import styled from "styled-components"
-import {mobile} from "../responsive"
+import { mobile } from "../responsive"
+import { Link } from 'react-router-dom/cjs/react-router-dom.min';
 
 const Container = styled.div`
     flex: 1;
@@ -44,16 +45,18 @@ const Button = styled.button`
     cursor: pointer;
 `;
 
-const CategoryItem = ({item}) => {
-  return (
-    <Container>
-        <Image src={item.img} />
-        <Info>
-            <Title>{item.title}</Title>
-            <Button>SHOP NOW</Button>
-        </Info>
-    </Container>
-  )
+const CategoryItem = ({ item }) => {
+    return (
+        <Container>
+            <Link to={`/products/${item.category}`}>
+                <Image src={item.img} />
+                <Info>
+                    <Title>{item.title}</Title>
+                    <Button>SHOP NOW</Button>
+                </Info>
+            </Link>
+        </Container>
+    )
 }
 
 export default CategoryItem
