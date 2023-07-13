@@ -82,7 +82,7 @@ const Navbar = () => {
                         <Search style={{ color: "gray", fontSize: 16 }} />
                     </SearchContainer>
                 </Left>
-                <Center><Logo>MARK.</Logo></Center>
+                <Link to ="/" style={{ textDecoration: 'none', color:'#000' }}><Center><Logo>MARK.</Logo></Center></Link>
                 <Right>
 
                     <MenuItem>REGISTER</MenuItem>
