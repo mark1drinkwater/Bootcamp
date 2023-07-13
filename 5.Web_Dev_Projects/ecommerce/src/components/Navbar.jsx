@@ -1,12 +1,14 @@
 import { Badge } from '@material-ui/core';
-import { Search, ShoppingCartOutlined } from '@material-ui/icons'
-import React from 'react'
-import styled from 'styled-components'
-import {mobile} from "../responsive"
+import { Search, ShoppingCartOutlined } from '@material-ui/icons';
+import React from 'react';
+import styled from 'styled-components';
+import { mobile } from "../responsive";
+import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom/cjs/react-router-dom.min';
 
 const Container = styled.div`
     height: 60px;
-    ${mobile({height: "50px"})};
+    ${mobile({ height: "50px" })};
 `;
 
 const Wrapper = styled.div`
@@ -14,7 +16,7 @@ const Wrapper = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-between;
-    ${mobile({padding: "10px 0px"})}    ;
+    ${mobile({ padding: "10px 0px" })}    ;
 `
 
 const Left = styled.div`
@@ -57,7 +59,7 @@ const Right = styled.div`
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    ${mobile({ flex:2, justifyContent: "center" })};
+    ${mobile({ flex: 2, justifyContent: "center" })};
 `
 
 const MenuItem = styled.div`
@@ -68,6 +70,8 @@ const MenuItem = styled.div`
 `
 
 const Navbar = () => {
+    const quantity = useSelector(state => state.cart.quantity);
+
     return (
         <Container>
             <Wrapper>
@@ -75,7 +79,7 @@ const Navbar = () => {
                     <Language>EN</Language>
                     <SearchContainer>
                         <Input placeholder="search" />
-                        <Search style={{color:"gray", fontSize:16}} />
+                        <Search style={{ color: "gray", fontSize: 16 }} />
                     </SearchContainer>
                 </Left>
                 <Center><Logo>MARK.</Logo></Center>
@@ -83,11 +87,13 @@ const Navbar = () => {
 
                     <MenuItem>REGISTER</MenuItem>
                     <MenuItem>SIGN IN</MenuItem>
-                    <MenuItem>
-                        <Badge badgeContent={4} color="primary">
-                            <ShoppingCartOutlined />
-                        </Badge>
-                    </MenuItem>
+                    <Link to="/cart">
+                        <MenuItem>
+                            <Badge badgeContent={quantity} color="primary">
+                                <ShoppingCartOutlined />
+                            </Badge>
+                        </MenuItem>
+                    </Link>
                 </Right>
             </Wrapper>
         </Container>
