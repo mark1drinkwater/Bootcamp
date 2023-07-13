@@ -14,10 +14,11 @@ import {
   Switch,
   Route
 } from "react-router-dom";
+import { useSelector } from 'react-redux';
 
 function App() {
 
-  const user = true;
+  let user = useSelector(state => state.user.currentUser)
 
   return (
     <Router>
@@ -45,6 +46,10 @@ function App() {
 
         <Route path="/register">
           {user ? <Redirect to="/" /> : <Register />}
+        </Route>
+
+        <Route path="/success">
+          <Success />
         </Route>
 
       </Switch>
