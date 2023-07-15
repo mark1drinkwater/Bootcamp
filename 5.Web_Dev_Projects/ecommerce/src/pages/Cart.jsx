@@ -162,32 +162,36 @@ const Button = styled.button`
 
 const Cart = () => {
   const cart = useSelector(state => state.cart);
-  const [stripeToken, setStripeToken] = useState(null);
+  // const [stripeToken, setStripeToken] = useState(null);
+  const [paymentToken, setPaymentToken] = useState(null);
   const history = useHistory();
 
   const onToken = (token) => {
-    setStripeToken(token);
+    // setStripeToken(token);
   }
 
   useEffect(() => {
     const makeRequest = async () => {
       try {
-        console.log('Attempting payment')
-        const res = await userRequest.post("/checkout/payment", {
-          tokenId: stripeToken.id,
-          amount: cart.total * 100,
+        // const res = await userRequest.post("/checkout/payment", {
+        //   tokenId: stripeToken.id,
+        //   amount: cart.total * 100,
+        // });
+        history.push("/success", {
+          // stripeData: res.data,
+          cart: cart,
         });
-        console.log('Your payment was successful 😃.');
-        history.push("/success", {data:res.data})
       } catch (error) {
         console.log("Error in making a request to pay.", error);
       }
     }
-    stripeToken && makeRequest();
-  }, [stripeToken, cart.total, history])
+    // stripeToken && makeRequest();
+    paymentToken && makeRequest();
+  }, [/*stripeToken,*/ paymentToken, cart.total, history])
 
   function checkout() {
-    history.push("/success")
+    setPaymentToken(Math.random()*Math.random());
+    // history.push("/success")
   }
 
   return (
@@ -202,7 +206,6 @@ const Cart = () => {
             <TopText>Shopping Bag(2)</TopText>
             <TopText>Your Wishlist (0)</TopText>
           </TopTexts>
-          <TopButton type="filled" onClick={() => checkout() } >CHECKOUT NOW</TopButton>
         </Top>
         <Bottom>
           <Info>
@@ -231,18 +234,18 @@ const Cart = () => {
                         <ProductAmount>{product.quantity}</ProductAmount>
                         <Remove />
                       </ProductAmountContainer>
-                      <ProductPrice>R {product.price*product.quantity}</ProductPrice>
+                      <ProductPrice>R {(product.price * product.quantity).toFixed(2)}</ProductPrice>
                     </PriceDetail>
                   </Product>
                   <Hr />
                 </div>
-              ))}          
+              ))}
           </Info>
           <Summary>
             <SummaryTitle>ORDER SUMMARY</SummaryTitle>
             <SummaryItem>
               <SummaryItemText>Subtotal</SummaryItemText>
-              <SummaryItemPrice>R {cart.total}</SummaryItemPrice>
+              <SummaryItemPrice>R {cart.total.toFixed(2)}</SummaryItemPrice>
             </SummaryItem>
             <SummaryItem>
               <SummaryItemText>Estimated Shipping</SummaryItemText>
@@ -252,19 +255,26 @@ const Cart = () => {
               <SummaryItemText>Shipping Discount</SummaryItemText>
               <SummaryItemPrice>R -5.90</SummaryItemPrice>
             </SummaryItem>
+            <hr/>
             <SummaryItem type="total">
               <SummaryItemText>Total</SummaryItemText>
-              <SummaryItemPrice>R {cart.total}</SummaryItemPrice>
+              <SummaryItemPrice>R {cart.total.toFixed(2)}</SummaryItemPrice>
             </SummaryItem>
-            <StripeCheckout name="Mark's Shop"
-                    image="https://avatars.githubusercontent.com/u/63488797?v=4"
-                    billingAddress
-                    shippingAddress
-                    description={`Your total is R${cart.total}`}
-                    amount={cart.total*100}
-                    token={onToken}
-                    stripeKey={KEY}
-                />
+
+          <hr/>
+          <br/>
+          <TopButton type="filled" onClick={() => checkout()} >CHECKOUT NOW</TopButton>
+
+            {/* <StripeCheckout name="Mark's Shop"
+              image="https://avatars.githubusercontent.com/u/63488797?v=4"
+              billingAddress
+              shippingAddress
+              description={`Your total is R${cart.total}`}
+              amount={cart.total * 100}
+              token={onToken}
+              stripeKey={KEY}
+            /> */}
+
           </Summary>
         </Bottom>
       </Wrapper>
