@@ -65,7 +65,8 @@ const Products = ({cat,filters,sort}) => {
         return [...prev].sort((a,b) => b.price - a.price)
       }) 
     }
-  })
+  }, [sort]
+  )
 
   return (
     <Container>
