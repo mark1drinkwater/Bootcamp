@@ -13,17 +13,20 @@ const Container = styled.div`
 const Products = ({cat,filters,sort}) => {
   const [products, setProducts] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState([]);
+  console.log("Fetching products")
+
 
   useEffect(() => {
     const getProducts = async () => {
       try {
-        const res = await axios.get(cat ? 
+        const res = await axios.get(cat==="all" ? 
+         "http://localhost:3000/api/v1/products"
+         :
           `http://localhost:3000/api/v1/products?category=${cat}`
-          : "http://localhost:3000/api/v1/products"
         );
         setProducts(res.data)
       } catch (err) {
-        
+        console.log("Error occurred fetching products", err);
       }
     };
     getProducts();
