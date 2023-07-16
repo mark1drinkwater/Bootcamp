@@ -6,6 +6,9 @@ import { mobile } from "../responsive";
 import { useSelector } from 'react-redux';
 import { Link } from "@material-ui/core";
 
+import { useDispatch } from "react-redux";
+import { logout } from "../redux/apiCalls";
+
 const Container = styled.div`
     height: 60px;
     ${mobile({ height: "50px" })};
@@ -66,12 +69,20 @@ const MenuItem = styled.div`
     font-size: 14px;
     cursor: pointer;
     margin-left: 25px;
-    ${mobile({ fontSize: "12px", marginLeft: "10px" })};
-`
+    ${mobile({ fontSize: "12px", marginLeft: "10px" })};    
+`;
+
 
 const Navbar = () => {
     const quantity = useSelector(state => state.cart.quantity);
     const user = useSelector(state => state?.user?.currentUser?.others);
+    const dispatch = useDispatch();
+
+    const logoutButton = () => {
+        console.log("Logging out...")
+        logout(dispatch);
+        // dispatch(clearCart());
+    }
 
     return (
         <Container>
@@ -83,24 +94,25 @@ const Navbar = () => {
                         <Search style={{ color: "gray", fontSize: 16 }} />
                     </SearchContainer>
                 </Left>
+
                 <Link href="/" style={{ textDecoration: 'none', color: '#000' }}><Center><Logo>MARK.</Logo></Center></Link>
                 <Right>
-
                     {
                         user ?
                             (
-                                <MenuItem>{`Hello, ${user.username}`}</MenuItem>
+                                <Wrapper>
+                                    <MenuItem>{`Hello, ${user.username}`}</MenuItem>
+                                    <MenuItem onClick={() => logoutButton()}>Logout</MenuItem>
+                                </Wrapper>
                             )
                             :
                             (
                                 <Wrapper>
-                                    <Link href="/login" underline="hover" color="black"><MenuItem>SIGN IN</MenuItem></Link>
-                                    <Link href="/register" underline="hover" color="black"><MenuItem>REGISTER</MenuItem></Link>
-                                    
+                                    <MenuItem><Link href="/login" underline="hover" color="black">SIGN IN</Link></MenuItem>
+                                    <MenuItem><Link href="/register" underline="hover" color="black">REGISTER</Link></MenuItem>
                                 </Wrapper>
                             )
                     }
-
 
                     <Link href="/cart">
                         <MenuItem>
