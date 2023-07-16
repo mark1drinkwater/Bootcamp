@@ -190,7 +190,7 @@ const Cart = () => {
   }, [/*stripeToken,*/ paymentToken, cart.total, history])
 
   function checkout() {
-    setPaymentToken(Math.random()*Math.random());
+    setPaymentToken(Math.random() * Math.random());
     // history.push("/success")
   }
 
@@ -249,21 +249,23 @@ const Cart = () => {
             </SummaryItem>
             <SummaryItem>
               <SummaryItemText>Estimated Shipping</SummaryItemText>
-              <SummaryItemPrice>R 5.90</SummaryItemPrice>
+              <SummaryItemPrice>R {cart.shipping.toFixed(2)}</SummaryItemPrice>
             </SummaryItem>
-            <SummaryItem>
+
+            {/* <SummaryItem>
               <SummaryItemText>Shipping Discount</SummaryItemText>
-              <SummaryItemPrice>R -5.90</SummaryItemPrice>
-            </SummaryItem>
-            <hr/>
+              <SummaryItemPrice>R {cart.discount.toFixed(2)}</SummaryItemPrice>
+            </SummaryItem> */}
+
+            <hr />
             <SummaryItem type="total">
               <SummaryItemText>Total</SummaryItemText>
               <SummaryItemPrice>R {cart.total.toFixed(2)}</SummaryItemPrice>
             </SummaryItem>
 
-          <hr/>
-          <br/>
-          <TopButton type="filled" onClick={() => checkout()} >CHECKOUT NOW</TopButton>
+            <hr />
+            <br />
+            <TopButton type="filled" onClick={() => checkout()} >CHECKOUT NOW</TopButton>
 
             {/* <StripeCheckout name="Mark's Shop"
               image="https://avatars.githubusercontent.com/u/63488797?v=4"
