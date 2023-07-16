@@ -2,8 +2,7 @@ import { Facebook, Instagram, MailOutline, Phone, Pinterest, Room, Twitter } fro
 import React from 'react'
 import styled from 'styled-components'
 import { mobile } from "../responsive"
-import { Link as RouterLink } from 'react-router-dom';
-import { Link as MaterialLink } from "@material-ui/core"
+import { Link } from '@material-ui/core';
 
 const Container = styled.div`
     display: flex;
@@ -90,34 +89,46 @@ const Footer = () => {
           Discover a world of convenience and quality at your fingertips, with our wide range of products and reliable customer support.
         </Desc>
         <SocialContainer>
-          <SocialIcon bg="3B5999">
-            <Facebook />
-          </SocialIcon>
-          <SocialIcon bg="E4405F">
-            <Twitter />
-          </SocialIcon>
-          <SocialIcon bg="55ACEE">
-            <Instagram />
-          </SocialIcon>
-          <SocialIcon bg="E60023">
-            <Pinterest />
-          </SocialIcon>
+          <Link href="https://www.facebook.com">
+            <SocialIcon bg="3B5999">
+              <Facebook />
+            </SocialIcon>
+          </Link>
+
+          <Link href="https://www.twitter.com">
+            <SocialIcon bg="E4405F">
+              <Twitter />
+            </SocialIcon>
+          </Link>
+
+          <Link href="https://www.instagram.com">
+            <SocialIcon bg="55ACEE">
+              <Instagram />
+            </SocialIcon>
+          </Link>
+
+          <Link href="https://www.pinterest.com">
+            <SocialIcon bg="E60023">
+              <Pinterest />
+            </SocialIcon>
+          </Link>
+
         </SocialContainer>
       </Left>
       <Center>
         <Title>Useful Links</Title>
+
         <List>
-          <ListItem>Home</ListItem>
-          <ListItem>Cart</ListItem>
-          <ListItem>Men Fashion</ListItem>
-          <ListItem>Women Fashion</ListItem>
-          <ListItem>Accessories</ListItem>
-          <ListItem>My Account</ListItem>
-          <ListItem>Order Tracking</ListItem>
-          <ListItem>Wishlist</ListItem>
-          <ListItem>Wishlist</ListItem>
-          <ListItem>Terms</ListItem>
+          <ListItem><Link href="/">Home</Link></ListItem>
+          <ListItem><Link href="/men">Men Fashion</Link></ListItem>
+          <ListItem><Link href="/women">Women Fashion</Link></ListItem>
+          <ListItem><Link href="/accessories">Accessories</Link></ListItem>
+          <ListItem><Link href="/account">My Account</Link></ListItem>
+          <ListItem><Link href="/order_tracking">Order Tracking</Link></ListItem>
+          <ListItem><Link href="/wishlist">Wishlist</Link></ListItem>
+          <ListItem><Link href="/terms">Terms and Conditions</Link></ListItem>
         </List>
+
       </Center>
       <Right>
         <Title>Contact</Title>
@@ -128,12 +139,12 @@ const Footer = () => {
           <Phone style={{ marginRight: "10px" }} /> +1 234 56 78
         </ContactItem>
         <ContactItem>
-          <MailOutline style={{ marginRight: "10px"}} /> mark1drinkwater@gmail.com
+          <MailOutline style={{ marginRight: "10px" }} /> mark1drinkwater@gmail.com
         </ContactItem>
         <Payment src="https://i.ibb.co/Qfvn4z6/payment.png" />
       </Right>
-    </Container>
+    </Container >
   )
 }
 
-export default Footer
+export default Footer;
