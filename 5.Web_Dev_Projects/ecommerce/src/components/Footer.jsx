@@ -1,7 +1,9 @@
 import { Facebook, Instagram, MailOutline, Phone, Pinterest, Room, Twitter } from '@material-ui/icons';
 import React from 'react'
 import styled from 'styled-components'
-import {mobile} from "../responsive"
+import { mobile } from "../responsive"
+import { Link as RouterLink } from 'react-router-dom';
+import { Link as MaterialLink } from "@material-ui/core"
 
 const Container = styled.div`
     display: flex;
@@ -36,6 +38,7 @@ const SocialIcon = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-right: 20px;
 `;
 
 const Center = styled.div`
@@ -75,7 +78,7 @@ const ContactItem = styled.div`
 `;
 
 const Payment = styled.img`
-  width: 100%;
+  width: 60%;
 `;
 
 const Footer = () => {
@@ -84,7 +87,7 @@ const Footer = () => {
       <Left>
         <Logo>MARK.</Logo>
         <Desc>
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vitae aliquid inventore rerum eum laudantium saepe, repellendus impedit, magni eaque dolorum possimus sunt? Distinctio iusto repellendus labore modi porro cupiditate corporis.
+          Discover a world of convenience and quality at your fingertips, with our wide range of products and reliable customer support.
         </Desc>
         <SocialContainer>
           <SocialIcon bg="3B5999">
@@ -119,13 +122,13 @@ const Footer = () => {
       <Right>
         <Title>Contact</Title>
         <ContactItem>
-          <Room style={{ marginRight: "10px" }} /> 622 Dixie Path , South Tobinchester 98336
+          <Room style={{ marginRight: "10px" }} /> 11 Karoo Drive, Eastern Cape
         </ContactItem>
         <ContactItem>
           <Phone style={{ marginRight: "10px" }} /> +1 234 56 78
         </ContactItem>
         <ContactItem>
-          <MailOutline style={{ marginRight: "10px" }} /> mark1drinkwater@gmail.com
+          <MailOutline style={{ marginRight: "10px"}} /> mark1drinkwater@gmail.com
         </ContactItem>
         <Payment src="https://i.ibb.co/Qfvn4z6/payment.png" />
       </Right>
