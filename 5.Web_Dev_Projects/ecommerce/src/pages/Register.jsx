@@ -50,6 +50,8 @@ const Button = styled.button`
   background-color: teal;
   color: white;
   cursor: pointer;
+  font-size: 18px;
+  font-weight: 400;
 `;
 
 const Register = () => {
@@ -58,11 +60,11 @@ const Register = () => {
       <Wrapper>
         <Title>CREATE AN ACCOUNT</Title>
         <Form>
-          <Input placeholder="name" />
-          <Input placeholder="last name" />
+          <Input placeholder="First Name" />
+          <Input placeholder="Last Name" />
           <Input placeholder="username" />
           <Input placeholder="email" />
-          <Input placeholder="password" />
+          <Input placeholder="Password" />
           <Input placeholder="confirm password" />
           <Agreement>
             By creating an account, I consent to the processing of my personal
