@@ -1,10 +1,10 @@
-import { Badge } from '@material-ui/core';
+import { Badge, Menu } from '@material-ui/core';
 import { Search, ShoppingCartOutlined } from '@material-ui/icons';
 import React from 'react';
 import styled from 'styled-components';
 import { mobile } from "../responsive";
 import { useSelector } from 'react-redux';
-import { Link } from 'react-router-dom/cjs/react-router-dom.min';
+import { Link } from "@material-ui/core";
 
 const Container = styled.div`
     height: 60px;
@@ -71,6 +71,7 @@ const MenuItem = styled.div`
 
 const Navbar = () => {
     const quantity = useSelector(state => state.cart.quantity);
+    const user = useSelector(state => state?.user?.currentUser?.others);
 
     return (
         <Container>
@@ -82,12 +83,26 @@ const Navbar = () => {
                         <Search style={{ color: "gray", fontSize: 16 }} />
                     </SearchContainer>
                 </Left>
-                <Link to ="/" style={{ textDecoration: 'none', color:'#000' }}><Center><Logo>MARK.</Logo></Center></Link>
+                <Link href="/" style={{ textDecoration: 'none', color: '#000' }}><Center><Logo>MARK.</Logo></Center></Link>
                 <Right>
 
-                    <MenuItem>REGISTER</MenuItem>
-                    <MenuItem>SIGN IN</MenuItem>
-                    <Link to="/cart">
+                    {
+                        user ?
+                            (
+                                <MenuItem>{`Hello, ${user.username}`}</MenuItem>
+                            )
+                            :
+                            (
+                                <Wrapper>
+                                    <Link href="/login" underline="hover" color="black"><MenuItem>SIGN IN</MenuItem></Link>
+                                    <Link href="/register" underline="hover" color="black"><MenuItem>REGISTER</MenuItem></Link>
+                                    
+                                </Wrapper>
+                            )
+                    }
+
+
+                    <Link href="/cart">
                         <MenuItem>
                             <Badge badgeContent={quantity} color="primary">
                                 <ShoppingCartOutlined />
