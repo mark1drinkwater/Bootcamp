@@ -104,7 +104,7 @@ const Slider = () => {
                         <InfoContainer>
                             <Title>{item.title}</Title>
                             <Desc>{item.desc}</Desc>
-                            <Button>SHOP NOW</Button>
+                            <Button onClick={() => window.location.href = "/products/all"}>SHOP NOW</Button>
                         </InfoContainer>
                     </Slide>
                 ))}
