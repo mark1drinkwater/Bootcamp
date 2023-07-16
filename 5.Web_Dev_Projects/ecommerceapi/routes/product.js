@@ -12,6 +12,7 @@ router.post("/", verifyTokenAndAdmin, async (req, res) => {
         const savedProduct = await newProduct.save();
         res.status(200).json(savedProduct);
     } catch (error) {
+        console.log("Error occured trying to add new product", error);
         res.status(500).json(error);
     }
 })
