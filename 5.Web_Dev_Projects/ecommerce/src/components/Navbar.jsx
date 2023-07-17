@@ -8,11 +8,20 @@ import { Link } from "@material-ui/core";
 
 import { useDispatch } from "react-redux";
 import { logout } from "../redux/apiCalls";
+import { clearCart } from '../redux/cartRedux';
 
 const Container = styled.div`
     height: 60px;
     ${mobile({ height: "50px" })};
+    border-bottom: solid #d3d3d3 1px;
+    position: fixed; 
+    top: 35px; 
+    width: 100%;
+    overflow: hidden; 
+    z-index: 100;
+    background-color: white;
 `;
+
 
 const Wrapper = styled.div`
     padding: 10px 20px;
@@ -81,11 +90,11 @@ const Navbar = () => {
     const logoutButton = () => {
         console.log("Logging out...")
         logout(dispatch);
-        // dispatch(clearCart());
+        dispatch(clearCart());
     }
 
     return (
-        <Container>
+        <Container >
             <Wrapper>
                 <Left>
                     <Language>EN</Language>
