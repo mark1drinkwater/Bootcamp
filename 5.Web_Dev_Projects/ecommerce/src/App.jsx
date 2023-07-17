@@ -5,7 +5,7 @@ import ProductList from './pages/ProductList';
 import Product from './pages/Product';
 import Register from './pages/Register';
 import Cart from './pages/Cart';
-import Pay from './pages/Pay';
+import PayGate from './pages/PayGate';
 import Success from './pages/Success';
 import Login from './pages/Login';
 
@@ -15,6 +15,7 @@ import {
   Route
 } from "react-router-dom";
 import { useSelector } from 'react-redux';
+import NotFoundPage from './pages/NotFound';
 
 function App() {
 
@@ -50,6 +51,14 @@ function App() {
 
         <Route path="/success">
           <Success />
+        </Route>
+
+        <Route path="/paygate">
+          <PayGate/>
+        </Route>
+
+        <Route path="*">
+          <NotFoundPage/>
         </Route>
 
       </Switch>
