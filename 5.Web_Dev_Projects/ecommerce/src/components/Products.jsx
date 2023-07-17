@@ -17,13 +17,11 @@ const Products = ({cat,filters,sort}) => {
 
 
   useEffect(() => {
-    const getProducts = async () => {
+    const getProducts = async () => {            
       try {
-        const res = await axios.get(cat==="all" ? 
-         "http://localhost:3000/api/v1/products"
-         :
-          `http://localhost:3000/api/v1/products?category=${cat}`
-        );
+        const urlRequest = `http://localhost:3000/api/v1/products?category=${cat}`;
+        console.log("Making Request to", urlRequest);
+        const res = await axios.get(urlRequest);
         setProducts(res.data)
       } catch (err) {
         console.log("Error occurred fetching products", err);
