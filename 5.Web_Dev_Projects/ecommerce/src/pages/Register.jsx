@@ -1,4 +1,8 @@
+import { useDispatch } from 'react-redux';
+import { useState } from "react";
 import styled from "styled-components";
+import { addUser } from "../redux/apiCalls"; 
+import { Redirect } from "react-router-dom";
 
 const Container = styled.div`
   width: 100vw;
@@ -55,22 +59,39 @@ const Button = styled.button`
 `;
 
 const Register = () => {
+  const [inputs, setInputs] = useState({});
+  const dispatch = useDispatch();
+
+  const handleChange = (e) => {
+    setInputs(prev => {
+      return { ...inputs, [e.target.name]: e.target.value }
+    });
+  }
+
+
+  const handleClick = async (e) => {
+    e.preventDefault();
+    const user = {...inputs};
+    await addUser(dispatch, user);
+    window.location.href = '/login';  
+  }
+
   return (
     <Container>
       <Wrapper>
         <Title>CREATE AN ACCOUNT</Title>
         <Form>
-          <Input placeholder="First Name" />
-          <Input placeholder="Last Name" />
-          <Input placeholder="username" />
-          <Input placeholder="email" />
-          <Input placeholder="Password" />
-          <Input placeholder="confirm password" />
+          <Input name="firstName" placeholder="First Name" onChange={handleChange} />
+          <Input name="lastName" placeholder="Last Name" onChange={handleChange} />
+          <Input name="username" placeholder="username" onChange={handleChange} />
+          <Input name="email" placeholder="email" onChange={handleChange} />
+          <Input type="password" name="password" placeholder="Password" onChange={handleChange} />
+          <Input type="password" name="confirmPassword" placeholder="confirm password" onChange={handleChange} />
           <Agreement>
             By creating an account, I consent to the processing of my personal
             data in accordance with the <b>PRIVACY POLICY</b>
           </Agreement>
-          <Button>CREATE</Button>
+          <Button onClick={handleClick}>CREATE</Button>
         </Form>
       </Wrapper>
     </Container>
