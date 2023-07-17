@@ -82,68 +82,68 @@ const Payment = styled.img`
 
 const Footer = () => {
   return (
-    <Container>
-      <Left>
-        <Logo>MARK.</Logo>
-        <Desc>
-          Discover a world of convenience and quality at your fingertips, with our wide range of products and reliable customer support.
-        </Desc>
-        <SocialContainer>
-          <Link href="https://www.facebook.com">
-            <SocialIcon bg="3B5999">
-              <Facebook />
-            </SocialIcon>
-          </Link>
+      <Container>
+        <Left>
+          <Logo>MARK.</Logo>
+          <Desc>
+            Discover a world of convenience and quality at your fingertips, with our wide range of products and reliable customer support.
+          </Desc>
+          <SocialContainer>
+            <Link href="https://www.facebook.com">
+              <SocialIcon bg="3B5999">
+                <Facebook />
+              </SocialIcon>
+            </Link>
 
-          <Link href="https://www.twitter.com">
-            <SocialIcon bg="E4405F">
-              <Twitter />
-            </SocialIcon>
-          </Link>
+            <Link href="https://www.twitter.com">
+              <SocialIcon bg="E4405F">
+                <Twitter />
+              </SocialIcon>
+            </Link>
 
-          <Link href="https://www.instagram.com">
-            <SocialIcon bg="55ACEE">
-              <Instagram />
-            </SocialIcon>
-          </Link>
+            <Link href="https://www.instagram.com">
+              <SocialIcon bg="55ACEE">
+                <Instagram />
+              </SocialIcon>
+            </Link>
 
-          <Link href="https://www.pinterest.com">
-            <SocialIcon bg="E60023">
-              <Pinterest />
-            </SocialIcon>
-          </Link>
+            <Link href="https://www.pinterest.com">
+              <SocialIcon bg="E60023">
+                <Pinterest />
+              </SocialIcon>
+            </Link>
 
-        </SocialContainer>
-      </Left>
-      <Center>
-        <Title>Useful Links</Title>
+          </SocialContainer>
+        </Left>
+        <Center>
+          <Title>Useful Links</Title>
 
-        <List>
-          <ListItem><Link href="/">Home</Link></ListItem>
-          <ListItem><Link href="/men">Men Fashion</Link></ListItem>
-          <ListItem><Link href="/women">Women Fashion</Link></ListItem>
-          <ListItem><Link href="/accessories">Accessories</Link></ListItem>
-          <ListItem><Link href="/account">My Account</Link></ListItem>
-          <ListItem><Link href="/order_tracking">Order Tracking</Link></ListItem>
-          <ListItem><Link href="/wishlist">Wishlist</Link></ListItem>
-          <ListItem><Link href="/terms">Terms and Conditions</Link></ListItem>
-        </List>
+          <List>
+            <ListItem><Link href="/">Home</Link></ListItem>
+            <ListItem><Link href="/products/men">Men Fashion</Link></ListItem>
+            <ListItem><Link href="/products/women">Women Fashion</Link></ListItem>
+            <ListItem><Link href="/products/accessories">Accessories</Link></ListItem>
+            <ListItem><Link href="/account">My Account</Link></ListItem>
+            <ListItem><Link href="/order_tracking">Order Tracking</Link></ListItem>
+            <ListItem><Link href="/wishlist">Wishlist</Link></ListItem>
+            <ListItem><Link href="/terms">Terms and Conditions</Link></ListItem>
+          </List>
 
-      </Center>
-      <Right>
-        <Title>Contact</Title>
-        <ContactItem>
-          <Room style={{ marginRight: "10px" }} /> 11 Karoo Drive, Eastern Cape
-        </ContactItem>
-        <ContactItem>
-          <Phone style={{ marginRight: "10px" }} /> +1 234 56 78
-        </ContactItem>
-        <ContactItem>
-          <MailOutline style={{ marginRight: "10px" }} /> mark1drinkwater@gmail.com
-        </ContactItem>
-        <Payment src="https://i.ibb.co/Qfvn4z6/payment.png" />
-      </Right>
-    </Container >
+        </Center>
+        <Right>
+          <Title>Contact</Title>
+          <ContactItem>
+            <Room style={{ marginRight: "10px" }} /> 11 Karoo Drive, Eastern Cape
+          </ContactItem>
+          <ContactItem>
+            <Phone style={{ marginRight: "10px" }} /> +1 234 56 78
+          </ContactItem>
+          <ContactItem>
+            <MailOutline style={{ marginRight: "10px" }} /> mark1drinkwater@gmail.com
+          </ContactItem>
+          <Payment src="https://i.ibb.co/Qfvn4z6/payment.png" />
+        </Right>
+      </Container >
   )
 }
 
