@@ -1,7 +1,8 @@
 import { Description, Send } from '@material-ui/icons'
 import React from 'react'
 import styled from 'styled-components';
-import {mobile} from "../responsive"
+import { mobile } from "../responsive"
+import { subscribe } from '../redux/apiCalls';
 
 const Container = styled.div`
     height: 60vh;
@@ -47,19 +48,40 @@ const Button = styled.button`
     color: white;
 `;
 
+const Status = styled.div`
+    margin-top: 10px;
+    font-size: 24px;
+    font-weight: 700;
+`;
+
 const Newsletter = () => {
-  return (
-    <Container>
-        <Title>Newsletter</Title>
-        <Desc>Get timely updates from your favourite products.</Desc>
-        <InputContainer>
-            <Input placeholder='Your email' />
-            <Button>
-                <Send/>
-            </Button>
-        </InputContainer>
-    </Container>
-  )
+    const [email, setEmail] = React.useState("");
+    const [signupStatus, setSignupStatus] = React.useState(null);
+
+    const handleClick = async (e) => {
+        e.preventDefault();
+        const res = await subscribe(email);   
+        if (res.success) 
+            setEmail("");        
+        setSignupStatus(res.message);
+    }
+
+    return (
+        <Container>            
+            <Title>Newsletter</Title>
+            <Desc>Get timely updates from your favourite products.</Desc>
+            <InputContainer>
+                <Input value={email} type='email' placeholder='Your email' onChange={(e) => setEmail(e.target.value)} />
+                <Button onClick={handleClick}>
+                    <Send />
+                </Button>
+            </InputContainer>
+            <Status>
+                <br/>
+                {signupStatus && signupStatus}
+            </Status>
+        </Container>
+    )
 }
 
 export default Newsletter
