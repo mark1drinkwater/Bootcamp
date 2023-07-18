@@ -5,7 +5,7 @@ import { mobile } from "../responsive"
 import { subscribe } from '../redux/apiCalls';
 
 const Container = styled.div`
-    height: 60vh;
+    height: 30vh;
     background-color: #fcf5f5;
     display: flex;
     align-items: center;
@@ -49,7 +49,6 @@ const Button = styled.button`
 `;
 
 const Status = styled.div`
-    margin-top: 10px;
     font-size: 24px;
     font-weight: 700;
 `;
@@ -71,7 +70,7 @@ const Newsletter = () => {
             <Title>Newsletter</Title>
             <Desc>Get timely updates from your favourite products.</Desc>
             <InputContainer>
-                <Input value={email} type='email' placeholder='Your email' onChange={(e) => setEmail(e.target.value)} />
+                <Input value={email} type='email' placeholder='Enter your email address' onChange={(e) => setEmail(e.target.value)} />
                 <Button onClick={handleClick}>
                     <Send />
                 </Button>
