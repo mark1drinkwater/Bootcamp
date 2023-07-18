@@ -6,13 +6,14 @@ import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 import { mobile } from "../responsive";
 import { useSelector } from "react-redux";
-import StripeCheckout from "react-stripe-checkout";
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
-import { userRequest } from "../requestMethods";
+import { Link as MaterialLink } from "@material-ui/core";
+import Payment from './Payment';
 
-const KEY = process.env.REACT_APP_STRIPE;
-
-const Container = styled.div``;
+const Container = styled.div`
+margin-top: 95px;
+top: 0;
+`;
 
 const Wrapper = styled.div`
   padding: 20px;
@@ -133,7 +134,7 @@ const Summary = styled.div`
   border: 0.5px solid lightgray;
   border-radius: 10px;
   padding: 20px;
-  height: 50vh;
+  height: 700px;
 `;
 
 const SummaryTitle = styled.h1`
@@ -201,7 +202,7 @@ const Cart = () => {
       <Wrapper>
         <Title>YOUR BAG</Title>
         <Top>
-          <TopButton>CONTINUE SHOPPING</TopButton>
+          <TopButton><MaterialLink href="/products/all" color="black">CONTINUE SHOPPING</MaterialLink ></TopButton>
           <TopTexts>
             <TopText>Shopping Bag(2)</TopText>
             <TopText>Your Wishlist (0)</TopText>
@@ -265,17 +266,9 @@ const Cart = () => {
 
             <hr />
             <br />
-            <TopButton type="filled" onClick={() => checkout()} >CHECKOUT NOW</TopButton>
+            {/* <TopButton type="filled" onClick={() => checkout()} >CHECKOUT NOW</TopButton> */}
 
-            {/* <StripeCheckout name="Mark's Shop"
-              image="https://avatars.githubusercontent.com/u/63488797?v=4"
-              billingAddress
-              shippingAddress
-              description={`Your total is R${cart.total}`}
-              amount={cart.total * 100}
-              token={onToken}
-              stripeKey={KEY}
-            /> */}
+            <Payment amount={cart.total.toFixed(0)*100} />
 
           </Summary>
         </Bottom>
