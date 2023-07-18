@@ -5,7 +5,6 @@ import ProductList from './pages/ProductList';
 import Product from './pages/Product';
 import Register from './pages/Register';
 import Cart from './pages/Cart';
-import PayGate from './pages/PayGate';
 import Success from './pages/Success';
 import Login from './pages/Login';
 
@@ -49,12 +48,8 @@ function App() {
           {user ? <Redirect to="/" /> : <Register />}
         </Route>
 
-        <Route path="/success">
+        <Route path="/completion">
           <Success />
-        </Route>
-
-        <Route path="/paygate">
-          <PayGate/>
         </Route>
 
         <Route path="*">
