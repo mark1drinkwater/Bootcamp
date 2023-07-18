@@ -20,7 +20,8 @@ const Info = styled.div`
 
 const Container = styled.div`
     flex: 1;
-    margin: 5px;
+    margin: 95px 5px 5px 5px;
+    /* margin-top: 95px; */
     min-width: 280px;
     height: 350px;
     display: flex;
@@ -44,7 +45,7 @@ const Circle = styled.div`
 
 const Image = styled.img`
     height: 75%;
-    z-index: 2;;
+    z-index: 2;
 `;
 
 const Icon = styled.div`
