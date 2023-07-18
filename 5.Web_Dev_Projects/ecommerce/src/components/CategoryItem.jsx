@@ -34,15 +34,21 @@ const Info = styled.div`
 const Title = styled.h1`
     color: white;
     margin-bottom: 20px;
+    font-size: 56px;
 `;
 
 const Button = styled.button`
-    border: none;
+    border: 4px white solid;
     padding: 10px;
-    background-color: white;
-    color: gray;
-    font-weight: 600;
+    background-color: transparent;
+    color: white;
+    font-weight: bold;
+    font-size: 24px;
     cursor: pointer;
+
+    &:hover {
+        font-size: 36px;
+    }
 `;
 
 const CategoryItem = ({ item }) => {
