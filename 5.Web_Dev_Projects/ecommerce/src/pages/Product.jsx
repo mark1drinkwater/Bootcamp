@@ -12,7 +12,7 @@ import { addProduct } from '../redux/cartRedux';
 import { useDispatch  } from "react-redux";
 
 const Container = styled.div`
-    
+    margin-top: 45px;    
 `;
 
 const Wrapper = styled.div`
@@ -28,7 +28,7 @@ const ImgContainer = styled.div`
 const Image = styled.img`
     width: 100%;
     height: 90vh;
-    object-fit: cover;
+    object-fit: contain;
     ${mobile({ height: "40vh" })};
 `;
 
