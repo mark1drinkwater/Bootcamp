@@ -1,10 +1,10 @@
 export const sliderItems = [
     {
         id: 1,
-        img: "https://cdn-montecasino.pressidium.com/wp-content/uploads/2020/06/Truworths-Desktop-1024x576.jpg",
-        title: "SUMMER SALE",
-        desc: "DON'T COMRPOMISE ON STYLE! GET FLAT 30% OFF FOR NEW ARRIVALS.",
-        bg: "f5fafd",
+        img: "https://www.nicepng.com/png/full/8-88585_women-fashion-png-example-of-magazine-cover.png",
+        title: "POPULAR SALE",
+        desc: "DON'T COMPROMISE ON STYLE! GET FLAT 30% OFF FOR NEW ARRIVEALS.",
+        bh: "fbf0f4"
     },
     {
         id: 2,
@@ -15,11 +15,12 @@ export const sliderItems = [
     },
     {
         id: 3,
-        img: "https://www.nicepng.com/png/full/8-88585_women-fashion-png-example-of-magazine-cover.png",
-        title: "POPULAR SALE",
-        desc: "DON'T COMPROMISE ON STYLE! GET FLAT 30% OFF FOR NEW ARRIVEALS.",
-        bh: "fbf0f4"
-    }
+        // img: "https://cdn-montecasino.pressidium.com/wp-content/uploads/2020/06/Truworths-Desktop-1024x576.jpg",
+        img: "https://www.kindpng.com/picc/m/4-40720_transparent-fashion-models-png-fashion-man-jeans-png.png",
+        title: "SUMMER SALE",
+        desc: "DON'T COMRPOMISE ON STYLE! GET FLAT 30% OFF FOR NEW ARRIVALS.",
+        bg: "f5fafd",
+    },
 ]
 
 export const categories = [
