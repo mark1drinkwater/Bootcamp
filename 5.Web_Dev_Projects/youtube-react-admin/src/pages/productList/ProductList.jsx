@@ -6,11 +6,9 @@ import { Link } from "react-router-dom";
 import { useEffect } from "react";
 import { deleteProduct, getProducts } from "../../redux/apiCalls";
 
-
-
 export default function ProductList() {
   const dispatch = useDispatch();
-  const products  = useSelector((state) => state.product.products);
+  const products = useSelector((state) => state.product.products);
 
   useEffect(() => {
     getProducts(dispatch);
@@ -54,7 +52,7 @@ export default function ProductList() {
         return (
           <>
             <Link to={"/product/" + params.row._id}>
-              <button className="productListEdit">Edit</button>
+              <button style={{marginTop:"30px", height:"75%"}} className="productListEdit">Edit</button>
             </Link>
             <DeleteOutline
               className="productListDelete"
@@ -66,13 +64,18 @@ export default function ProductList() {
     },
   ];
 
+  console.log("Columns", columns)
+
   return (
     <div className="productList">
+      <Link to="/newproduct">
+          <button className="productAddButton">Create</button>
+        </Link>
       <DataGrid
         rows={products}
         disableSelectionOnClick
         columns={columns}
-        getRowId={row=>row._id}
+        getRowId={row => row._id}
         pageSize={8}
         checkboxSelection
       />
