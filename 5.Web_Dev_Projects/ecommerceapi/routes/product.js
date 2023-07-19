@@ -2,7 +2,6 @@
 
 const { verifyToken, verifyTokenAndAuthorization, verifyTokenAndAdmin } = require("./verifyToken");
 const Product = require("../models/Product")
-const CryptoJS = require("crypto-js")
 const router = require("express").Router();
 
 router.post("/", verifyTokenAndAdmin, async (req, res) => {
@@ -57,19 +56,22 @@ router.get("/find/:id", async (req, res) => {
 router.get("/", async (req, res) => {
     const qNew = req.query.new;
     const qCategory = req.query.category;
-    let products; 
-    console.log("Incoming request with category:", qCategory)
+    let products;
+    console.log("MATCH request with category:", qCategory);
     try {
         if (qNew) {
-            products = await Product.find().sort({createdAt: -1}).limit(5);
+            products = await Product.find().sort({ createdAt: -1 }).limit(5);
         } else if (qCategory) {
-            products = await Product.find({
-                categories : {
-                    $in: [qCategory],
-                }
-            })
-        } else {
-            products = await Product.find();
+            if (qCategory === "all") {
+                products = await Product.find();
+                console.log(products)
+            } else {
+                products = await Product.find({
+                    categories: {
+                        $in: [qCategory],
+                    }
+                })
+            }
         }
 
 
