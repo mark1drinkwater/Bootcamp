@@ -246,7 +246,7 @@ const Cart = () => {
             <SummaryTitle>ORDER SUMMARY</SummaryTitle>
             <SummaryItem>
               <SummaryItemText>Subtotal</SummaryItemText>
-              <SummaryItemPrice>R {cart.total.toFixed(2)}</SummaryItemPrice>
+              <SummaryItemPrice>R {cart.subTotal.toFixed(2)}</SummaryItemPrice>
             </SummaryItem>
             <SummaryItem>
               <SummaryItemText>Estimated Shipping</SummaryItemText>
@@ -261,14 +261,14 @@ const Cart = () => {
             <hr />
             <SummaryItem type="total">
               <SummaryItemText>Total</SummaryItemText>
-              <SummaryItemPrice>R {cart.total.toFixed(2)}</SummaryItemPrice>
+              <SummaryItemPrice>R {cart.total.toFixed(2) }</SummaryItemPrice>
             </SummaryItem>
 
             <hr />
             <br />
             {/* <TopButton type="filled" onClick={() => checkout()} >CHECKOUT NOW</TopButton> */}
 
-            <Payment amount={cart.total.toFixed(0)*100} />
+            <Payment amount={ cart.total.toFixed(2) * 100 } />
 
           </Summary>
         </Bottom>
