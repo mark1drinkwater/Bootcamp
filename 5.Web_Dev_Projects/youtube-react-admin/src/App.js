@@ -10,21 +10,22 @@ import ProductList from "./pages/productList/ProductList";
 import Product from "./pages/product/Product";
 import NewProduct from "./pages/newProduct/NewProduct";
 import Login from "./pages/login/Login";
+import { useEffect } from "react";
+import { useSelector } from "react-redux";
 
 function App() {
 
-  let admin;
-  try {
-    admin = JSON.parse(JSON.parse(localStorage.getItem("persist:root")).user).currentUser.others.isAdmin;
-  } catch (error) {
-    admin = "";
-  }
+  const admin = useSelector(state => state?.user?.currentUser?.others?.isAdmin);
+
+  useEffect(() => {
+    console.log("admin", admin)
+  }, [admin])
 
   return (
     <Router>
       <Switch>
 
-        {admin && (
+        {admin ? (
           <>
             <Topbar />
             <div className="container">
@@ -53,12 +54,12 @@ function App() {
             </div>
           </>
         )
-        
-        }
+          :
+          (
+            <Login />
+          )
 
-        <Route path="/login">
-          <Login />
-        </Route>
+        }
 
       </Switch>
     </Router>
