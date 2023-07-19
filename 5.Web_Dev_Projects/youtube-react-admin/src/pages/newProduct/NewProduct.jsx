@@ -9,7 +9,7 @@ export default function NewProduct() {
   const [inputs, setInputs] = useState({});
   const [file, setFile] = useState(null);
   const [category, setCategory] = useState();
-  const [uploadStatus, setUploadStatus] = useState(0);
+  const [uploadStatus, setUploadStatus] = useState("");
   const dispatch = useDispatch();
 
   const handleChange = (e) => {
@@ -59,10 +59,11 @@ export default function NewProduct() {
       () => {
         // Handle successful uploads on complete
         // For instance, get the download URL: https://firebasestorage.googleapis.com/...
-        getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+        getDownloadURL(uploadTask.snapshot.ref).then( async (downloadURL) =>  {
           console.log('File available at', downloadURL);
           const product = { ...inputs, image: downloadURL, inStock: inputs.inStock === "true", categories: category  };
-          addProduct(product, dispatch);
+          await addProduct(product, dispatch);
+          window.location.href= ("/products");
         });
       }
     );
