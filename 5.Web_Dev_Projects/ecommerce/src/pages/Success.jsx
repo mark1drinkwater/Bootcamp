@@ -1,17 +1,22 @@
 import React from 'react'
 import { useState } from 'react';
 import { useEffect } from 'react';
-import { useLocation } from 'react-router-dom/cjs/react-router-dom.min';
 import { userRequest } from '../requestMethods';
 import { useDispatch, useSelector } from 'react-redux';
 import { clearCart } from '../redux/cartRedux';
+import styled from 'styled-components';
+import moment from"moment";
+
+const Image = styled.img`
+  max-width: 50px;
+`;
 
 const Success = () => {
-  const location = useLocation();
-  // const cart = location.state.cart;
   const currentUser = useSelector((state) => state.user.currentUser);
   const cart = useSelector((state) => state.cart);
-  const [orderId, setOrderId] = useState(null);
+  const [orderTotal, setOrderTotal] = useState(0);
+  const [orderId, setOrderId] = useState(0);
+  const [orderDate, setOrderDate] = useState(0);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -26,30 +31,16 @@ const Success = () => {
           amount: cart.total,
           address: "123 Sesame Street"
         });
+        setOrderTotal(cart.total);
         setOrderId(res.data._id);
+        setOrderDate(res.data._createdAt)
         dispatch(clearCart());
       } catch (error) {
         console.log("Error has occured in Success page", error);
       }
     };
     cart && createOrder();
-  }, [cart, currentUser]);
-
-  // return (
-  //   <div>
-  //     {/* {!currentUser && <h1>You must be logged in to checkout.</h1>} */}
-  //     {orderId ?
-  //       (<div>
-  //         <h1>Thank you for shopping! Payment was Successful.</h1>
-  //         <br/>
-  //         <h1>Order will be on it's way </h1>
-  //         <br/>
-  //         <h1>Your Order ID is: {orderId}</h1>
-  //       </div>)
-  //       : <h1>Payment failed.</h1>
-  //     }
-  //   </div>
-  // )
+  }, []);
 
   const handleContinueShopping = () => {
     window.location.href = '/';
@@ -61,13 +52,25 @@ const Success = () => {
         <h1 style={styles.heading}>Payment Successful! 😃</h1>
         <p style={styles.message}>Thank you for your purchase. Your payment has been successfully processed.</p>
         <div style={styles.orderDetails}>
-          <h2 style={styles.subHeading}>Order Details</h2>
+          <h2 style={styles.subHeading}>Order Details:</h2>
+          <hr/>
+          <br/>
           <ul style={styles.list}>
-            <li>Product: Example Product</li>
-            <li>Price: $99.99</li>
-            <li>Order ID: 123456789</li>
-            <li>Date: July 17, 2023</li>
+            <li>Price: R{orderTotal.toFixed(2)}</li>
+            <li>Order ID: {orderId}</li>
+            <li>Date: {moment(orderDate).format("Do MMMM YYYY")}</li>
+            <br />
+            {/*<li><b>Products:</b></li>
+             {
+              cart.products.map(product => (
+                <div>
+                  {product.title}
+                  <Image src={product.image} />
+                  <hr />
+                </div>
+              ))} */}
           </ul>
+        <hr/>
         </div>
         <p style={styles.confirmationMessage}>A confirmation email has been sent to your registered email address.</p>
         <p style={styles.additionalInfo}>For any inquiries or issues, please contact our support team.</p>
