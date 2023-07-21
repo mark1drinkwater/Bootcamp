@@ -4,9 +4,13 @@ import { DeleteOutline } from "@material-ui/icons";
 import { userRows } from "../../dummyData";
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import { useSelector } from "react-redux";
 
 export default function UserList() {
   const [data, setData] = useState(userRows);
+  const users = useSelector((state) => state.user.users)
+
+  console.log("Users data", users)
 
   const handleDelete = (id) => {
     setData(data.filter((item) => item.id !== id));
