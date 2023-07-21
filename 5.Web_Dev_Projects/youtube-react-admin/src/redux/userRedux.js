@@ -4,6 +4,7 @@ const userSlice = createSlice({
     name: "user",
     initialState: {
         currentUser: null,
+        users: [],
         isFetching: false,
         error: false,
     },
@@ -19,13 +20,13 @@ const userSlice = createSlice({
             state.isFetching = false;
             state.error = true;
         },
-        // USER
+        // USERS
         getUsersStart: (state) => {
             state.isFetching = true;
         },
         getUsersSuccess: (state, action) => {
             state.isFetching = false;
-            state.currentUser = action.payload;
+            state.users = action.payload;
         },
         getUsersFailure: (state) => {
             state.isFetching = false;
