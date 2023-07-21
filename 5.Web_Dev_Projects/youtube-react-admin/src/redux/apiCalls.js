@@ -61,3 +61,12 @@ export const addProduct = async (product, dispatch) => {
 
 // USERS
 // GET USERS
+export const getUsers = async (dispatch) => {
+  dispatch(getUserStart());
+  try {
+    const res = await publicRequest.get("/users");
+    dispatch(getUsersSuccess(res.data));
+  } catch (err) {
+    dispatch(getUsersFailure());
+  }
+};
