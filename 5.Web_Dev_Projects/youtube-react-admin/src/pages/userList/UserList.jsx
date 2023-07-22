@@ -3,29 +3,35 @@ import { DataGrid } from "@material-ui/data-grid";
 import { DeleteOutline } from "@material-ui/icons";
 import { userRows } from "../../dummyData";
 import { Link } from "react-router-dom";
-import { useState } from "react";
-import { useSelector } from "react-redux";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getUsers } from "../../redux/apiCalls";
 
 export default function UserList() {
-  const [data, setData] = useState(userRows);
-  const users = useSelector((state) => state.user.users)
 
-  console.log("Users data", users)
+  const dispatch = useDispatch();
+  const users = useSelector((state) => state.user.users);
 
+  useEffect(() => {
+    getUsers(dispatch);
+  }, [dispatch]);
+
+
+  //TODO
   const handleDelete = (id) => {
-    setData(data.filter((item) => item.id !== id));
+    // deleteUser(id, dispatch);
   };
   
   const columns = [
-    { field: "id", headerName: "ID", width: 90 },
+    { field: "_id", headerName: "ID", width: 90 },
     {
-      field: "user",
-      headerName: "User",
+      field: "username",
+      headerName: "Username",
       width: 200,
       renderCell: (params) => {
         return (
           <div className="userListUser">
-            <img className="userListImg" src={params.row.avatar} alt="" />
+            {/* <img className="userListImg" src={params.row.avatar} alt="" /> */}
             {params.row.username}
           </div>
         );
@@ -65,9 +71,10 @@ export default function UserList() {
   return (
     <div className="userList">
       <DataGrid
-        rows={data}
+        rows={users}
         disableSelectionOnClick
         columns={columns}
+        getRowId={row => row._id}
         pageSize={8}
         checkboxSelection
       />
