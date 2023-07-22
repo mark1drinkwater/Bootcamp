@@ -5,7 +5,7 @@ import { userRows } from "../../dummyData";
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getUsers } from "../../redux/apiCalls";
+import { getUsers, deleteUser } from "../../redux/apiCalls";
 
 export default function UserList() {
 
@@ -17,9 +17,8 @@ export default function UserList() {
   }, [dispatch]);
 
 
-  //TODO
   const handleDelete = (id) => {
-    // deleteUser(id, dispatch);
+    deleteUser(id, dispatch);
   };
   
   const columns = [
@@ -50,7 +49,7 @@ export default function UserList() {
             </Link>
             <DeleteOutline
               className="userListDelete"
-              onClick={() => handleDelete(params.row.id)}
+              onClick={() => handleDelete(params.row._id)}
             />
           </>
         );
