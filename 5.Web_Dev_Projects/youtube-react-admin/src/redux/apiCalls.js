@@ -1,5 +1,6 @@
 import { loginFailure, loginStart, loginSuccess } from "./userRedux";
 import { publicRequest, userRequest } from "../requestMethods";
+
 import {
   getProductFailure, getProductSuccess, getProductStart,
   deleteProductFailure, deleteProductStart, deleteProductSuccess, 
@@ -9,7 +10,8 @@ import {
 
 import
 {
-  getUsersStart, getUsersSuccess, getUsersFailure
+  getUsersStart, getUsersSuccess, getUsersFailure,
+  deleteUserFailure, deleteUserStart, deleteUserSuccess
 }
 from "./userRedux";
 
@@ -75,5 +77,17 @@ export const getUsers = async (dispatch) => {
   } catch (err) {
     console.log("Getting users failed", err);
     dispatch(getUsersFailure());
+  }
+};
+
+//USER
+// DELETE USER
+export const deleteUser = async (id, dispatch) => {
+  dispatch(deleteUserStart());
+  try {
+    const res = await userRequest.delete(`/users/${id}`);
+    dispatch(deleteUserSuccess(res.data));
+  } catch (err) {
+    dispatch(deleteUserFailure());
   }
 };
