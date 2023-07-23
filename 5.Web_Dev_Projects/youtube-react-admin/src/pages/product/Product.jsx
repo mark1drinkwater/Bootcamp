@@ -114,7 +114,7 @@ export default function Product() {
           console.log('File available at', downloadURL);
           const product = { ...inputs, image: downloadURL, inStock: inputs.inStock === "true", categories: category };
           await updateProduct(productId, product, dispatch);
-          window.location.href = ("/products");
+          // window.location.href = ("/products");
         });
       }
     );
