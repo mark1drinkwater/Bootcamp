@@ -53,8 +53,8 @@ export default function Product() {
     const getStats = async () => {
       try {
         const res = await userRequest.get("orders/income?pid=" + productId);
-        const list = res.data.sort((a,b)=>{
-            return a._id - b._id
+        const list = res.data.sort((a, b) => {
+          return a._id - b._id
         })
         list.map((item) =>
           setPStats((prev) => [
@@ -68,6 +68,10 @@ export default function Product() {
     };
     getStats();
   }, [productId, MONTHS]);
+
+  const handleCategories = (e) => {
+    setCategory(e.target.value.split(","));
+  }
 
   const handleClick = (e) => {
     e.preventDefault();
@@ -106,11 +110,11 @@ export default function Product() {
       () => {
         // Handle successful uploads on complete
         // For instance, get the download URL: https://firebasestorage.googleapis.com/...
-        getDownloadURL(uploadTask.snapshot.ref).then( async (downloadURL) =>  {
+        getDownloadURL(uploadTask.snapshot.ref).then(async (downloadURL) => {
           console.log('File available at', downloadURL);
-          const product = { ...inputs, image: downloadURL, inStock: inputs.inStock === "true", categories: category  };
-          await updateProduct(product, dispatch);
-          window.location.href= ("/products");
+          const product = { ...inputs, image: downloadURL, inStock: inputs.inStock === "true", categories: category };
+          await updateProduct(productId, product, dispatch);
+          window.location.href = ("/products");
         });
       }
     );
@@ -158,7 +162,11 @@ export default function Product() {
             <input type="text" placeholder={product.description} onChange={handleChange} />
             <label>Price</label>
             <input type="text" placeholder={product.price} onChange={handleChange} />
-            <label>In Stock</label>            
+            <div className="addProductItem">
+              <label>Category</label>
+              <input name="category" type="text" placeholder="jeans,skirts" onChange={handleCategories} />
+            </div>
+            <label>In Stock</label>
             <select name="inStock" id="idStock" defaultValue={product.inStock} onChange={handleChange} >
               <option value="true">Yes</option>
               <option value="false">No</option>
@@ -170,7 +178,7 @@ export default function Product() {
               <label for="file">
                 <Publish />
               </label>
-              <input type="file" id="file" style={{ display: "none" }} />
+              <input type="file" id="file" style={{ display: "none" }} onChange={e => setFile(e.target.files[0])} />
             </div>
             <button className="productButton" onClick={handleClick}>Update</button>
           </div>
