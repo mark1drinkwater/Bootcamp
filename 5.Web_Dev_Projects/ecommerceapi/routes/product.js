@@ -28,6 +28,7 @@ router.put("/:id", verifyTokenAndAuthorization, async (req, res) => {
         );
         res.status(200).json(updatedProduct);
     } catch (error) {
+        console.log("Error occurred when updating product.", error);
         res.status(500).json(error);
     }
 })
@@ -57,14 +58,12 @@ router.get("/", async (req, res) => {
     const qNew = req.query.new;
     const qCategory = req.query.category;
     let products;
-    console.log("MATCH request with category:", qCategory);
     try {
         if (qNew) {
             products = await Product.find().sort({ createdAt: -1 }).limit(5);
         } else if (qCategory) {
             if (qCategory === "all") {
                 products = await Product.find();
-                console.log(products)
             } else {
                 products = await Product.find({
                     categories: {
@@ -103,7 +102,7 @@ router.get("/stats", verifyTokenAndAdmin, async (req, res) => {
         ])
         res.status(200).json(data);
     } catch (error) {
-        console.log(error);
+        console.log("Error occurred getting user stats", error);
         res.status(500).json(error);
     }
 })
