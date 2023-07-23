@@ -5,11 +5,27 @@ import { Publish } from "@material-ui/icons";
 import { useSelector } from "react-redux";
 import { useEffect, useMemo, useState } from "react";
 import { userRequest } from "../../requestMethods";
+import { updateProduct } from "../../redux/apiCalls";
+import { useDispatch } from 'react-redux';
+import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
+import app from '../../firebase';
 
 export default function Product() {
   const location = useLocation();
   const productId = location.pathname.split("/")[2];
   const [pStats, setPStats] = useState([]);
+
+  const [inputs, setInputs] = useState({});
+  const [file, setFile] = useState(null);
+  const [category, setCategory] = useState();
+  const [uploadStatus, setUploadStatus] = useState("");
+  const dispatch = useDispatch();
+
+  const handleChange = (e) => {
+    setInputs(prev => {
+      return { ...inputs, [e.target.name]: e.target.value }
+    });
+  }
 
   const product = useSelector((state) =>
     state.product.products.find((product) => product._id === productId)
@@ -53,7 +69,7 @@ export default function Product() {
     getStats();
   }, [productId, MONTHS]);
 
-  const handleClick = () => {
+  const handleClick = (e) => {
     e.preventDefault();
     const fileName = new Date().getTime() + file.name;
     const storage = getStorage(app);
@@ -93,7 +109,7 @@ export default function Product() {
         getDownloadURL(uploadTask.snapshot.ref).then( async (downloadURL) =>  {
           console.log('File available at', downloadURL);
           const product = { ...inputs, image: downloadURL, inStock: inputs.inStock === "true", categories: category  };
-          await addProduct(product, dispatch);
+          await updateProduct(product, dispatch);
           window.location.href= ("/products");
         });
       }
@@ -137,13 +153,13 @@ export default function Product() {
         <form className="productForm">
           <div className="productFormLeft">
             <label>Product Name</label>
-            <input type="text" placeholder={product.title} />
+            <input type="text" placeholder={product.title} onChange={handleChange} />
             <label>Product Description</label>
-            <input type="text" placeholder={product.description} />
+            <input type="text" placeholder={product.description} onChange={handleChange} />
             <label>Price</label>
-            <input type="text" placeholder={product.price} />
+            <input type="text" placeholder={product.price} onChange={handleChange} />
             <label>In Stock</label>            
-            <select name="inStock" id="idStock" defaultValue={product.inStock}>
+            <select name="inStock" id="idStock" defaultValue={product.inStock} onChange={handleChange} >
               <option value="true">Yes</option>
               <option value="false">No</option>
             </select>
