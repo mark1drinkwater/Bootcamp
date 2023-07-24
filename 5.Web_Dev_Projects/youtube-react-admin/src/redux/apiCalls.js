@@ -11,7 +11,8 @@ import {
 import
 {
   getUsersStart, getUsersSuccess, getUsersFailure,
-  deleteUserFailure, deleteUserStart, deleteUserSuccess
+  deleteUserFailure, deleteUserStart, deleteUserSuccess,
+  updateUserStart, updateUserSuccess, updateUserFailure
 }
 from "./userRedux";
 
@@ -91,5 +92,18 @@ export const deleteUser = async (id, dispatch) => {
     dispatch(deleteUserSuccess(res.data));
   } catch (err) {
     dispatch(deleteUserFailure());
+  }
+};
+
+// UPDATE USER
+export const updateUser = async (id, user, dispatch) => {
+  dispatch(updateUserStart());
+  try {
+    const res = await userRequest.put(`/users/${id}`, user);
+    console.log("User successfully updated")
+    dispatch(updateUserSuccess({ id: id, user: user }));
+  } catch (err) {
+    console.log("Error updating user", err)
+    dispatch(updateUserFailure());
   }
 };
