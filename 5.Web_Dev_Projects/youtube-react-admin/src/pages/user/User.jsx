@@ -22,10 +22,10 @@ export default function User() {
   const [user, setUser] = useState({});
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    const users = getUsers(dispatch);
+  useEffect( async () => {
+    const users = await getUsers(dispatch);
     users.find((user) => user._id === userId);
-    
+
     setUser(user);
   }, [dispatch]);
 
