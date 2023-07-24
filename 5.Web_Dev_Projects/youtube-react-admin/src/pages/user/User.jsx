@@ -24,11 +24,12 @@ export default function User() {
   const dispatch = useDispatch();
 
   useEffect( async () => {
-    const users = await userRequest.get("/users");
-    users.find((user) => user._id === userId);
-
-    setUser(user);
+    const users = (await userRequest.get("/users")).data;
+    console.log(users)
+    const userTemp = users.find((user) => user._id === userId);
+    setUser(userTemp);
   }, [dispatch]);
+  
 
   const handleChange = (e) => {
     setInputs(prev => {
