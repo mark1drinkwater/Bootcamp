@@ -10,8 +10,8 @@ import { Link } from "react-router-dom";
 import "./user.css";
 import { useLocation } from "react-router-dom/cjs/react-router-dom.min";
 import { useDispatch, useSelector } from "react-redux";
-import { useState } from "react";
-import { updateUser } from "../../redux/apiCalls";
+import { useEffect, useState } from "react";
+import { getUsers, updateUser } from "../../redux/apiCalls";
 
 export default function User() {
 
@@ -21,11 +21,17 @@ export default function User() {
   const [inputs, setInputs] = useState({});
   const dispatch = useDispatch();
 
+  useEffect(() => {
+    getUsers(dispatch);
+  }, [dispatch]);
+
   const handleChange = (e) => {
     setInputs(prev => {
       return { ...inputs, [e.target.name]: e.target.value }
     });
   }
+
+  getUse
 
   const user = useSelector((state) => {
     console.log(state.user.users)
