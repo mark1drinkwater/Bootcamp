@@ -40,7 +40,7 @@ export default function Product() {
       "May",
       "Jun",
       "Jul",
-      "Agu",
+      "Aug",
       "Sep",
       "Oct",
       "Nov",
@@ -157,14 +157,14 @@ export default function Product() {
         <form className="productForm">
           <div className="productFormLeft">
             <label>Product Name</label>
-            <input type="text" placeholder={product.title} onChange={handleChange} />
+            <input type="text" placeholder={product.title} name="title" onChange={handleChange} />
             <label>Product Description</label>
-            <input type="text" placeholder={product.description} onChange={handleChange} />
+            <input type="text" placeholder={product.description} name="description" onChange={handleChange} />
             <label>Price</label>
-            <input type="text" placeholder={product.price} onChange={handleChange} />
+            <input type="text" placeholder={product.price} name="price" onChange={handleChange} />
             <div className="addProductItem">
               <label>Category</label>
-              <input name="category" type="text" placeholder="jeans,skirts" onChange={handleCategories} />
+              <input name="category" type="text" placeholder={product?.categories?.toString()} onChange={handleCategories} />
             </div>
             <label>In Stock</label>
             <select name="inStock" id="idStock" defaultValue={product.inStock} onChange={handleChange} >
