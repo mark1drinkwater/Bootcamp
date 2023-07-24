@@ -25,7 +25,6 @@ export default function User() {
 
   useEffect( async () => {
     const users = (await userRequest.get("/users")).data;
-    console.log(users)
     const userTemp = users.find((user) => user._id === userId);
     setUser(userTemp);
   }, [dispatch]);
