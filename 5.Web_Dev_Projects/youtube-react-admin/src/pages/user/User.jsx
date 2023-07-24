@@ -12,6 +12,7 @@ import { useLocation } from "react-router-dom/cjs/react-router-dom.min";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { getUsers, updateUser } from "../../redux/apiCalls";
+import { userRequest } from "../../requestMethods";
 
 export default function User() {
 
@@ -23,7 +24,7 @@ export default function User() {
   const dispatch = useDispatch();
 
   useEffect( async () => {
-    const users = await getUsers(dispatch);
+    const users = await userRequest.get("/users");
     users.find((user) => user._id === userId);
 
     setUser(user);
