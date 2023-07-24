@@ -19,10 +19,14 @@ export default function User() {
   const userId = location.pathname.split("/")[2];
 
   const [inputs, setInputs] = useState({});
+  const [user, setUser] = useState({});
   const dispatch = useDispatch();
 
   useEffect(() => {
-    getUsers(dispatch);
+    const users = getUsers(dispatch);
+    users.find((user) => user._id === userId);
+    
+    setUser(user);
   }, [dispatch]);
 
   const handleChange = (e) => {
@@ -30,16 +34,6 @@ export default function User() {
       return { ...inputs, [e.target.name]: e.target.value }
     });
   }
-
-  getUse
-
-  const user = useSelector((state) => {
-    console.log(state.user.users)
-    // Help
-    //Why doesn't the state include the id when you update the USER
-    state.user.users.find((user) => user._id === userId)
-  }
-  );
 
   const handleClick = async (e) => {
     e.preventDefault();
