@@ -77,7 +77,7 @@ export default function ProductList() {
           <button className="productAddButton">Create</button>
         </Link>
       <DataGrid
-        rows={products}
+        rows={products ? products : {}}
         disableSelectionOnClick
         columns={columns}
         getRowId={row => row._id}
