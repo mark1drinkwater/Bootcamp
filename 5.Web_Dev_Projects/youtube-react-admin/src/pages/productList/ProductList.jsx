@@ -10,6 +10,8 @@ export default function ProductList() {
   const dispatch = useDispatch();
   const products = useSelector((state) => state.product.products);
 
+  console.log("Products", products);
+
   useEffect(() => {
     getProducts(dispatch);
   }, [dispatch]);
