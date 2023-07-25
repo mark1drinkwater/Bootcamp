@@ -19,6 +19,7 @@ export default function Product() {
   const [file, setFile] = useState(null);
   const [category, setCategory] = useState();
   const [uploadStatus, setUploadStatus] = useState("");
+  const [product, setProduct] = useState();
   const dispatch = useDispatch();
 
   const handleChange = (e) => {
@@ -27,9 +28,12 @@ export default function Product() {
     });
   }
 
-  const product = useSelector((state) =>
-    state.product.products.find((product) => product._id === productId)
-  );
+  useEffect( async () => {
+    const users = (await userRequest.get("/products?category=all")).data;
+
+    const userTemp = users.find((product) => product._id === productId);
+    setProduct(userTemp);
+  }, [dispatch]);
 
   const MONTHS = useMemo(
     () => [
@@ -134,13 +138,13 @@ export default function Product() {
         </div>
         <div className="productTopRight">
           <div className="productInfoTop">
-            <img src={product.image} alt="" className="productInfoImg" />
-            <span className="productName">{product.title}</span>
+            <img src={product?.image} alt="" className="productInfoImg" />
+            <span className="productName">{product?.title}</span>
           </div>
           <div className="productInfoBottom">
             <div className="productInfoItem">
               <span className="productInfoKey">id:</span>
-              <span className="productInfoValue">{product._id}</span>
+              <span className="productInfoValue">{product?._id}</span>
             </div>
             <div className="productInfoItem">
               <span className="productInfoKey">sales:</span>
@@ -148,7 +152,7 @@ export default function Product() {
             </div>
             <div className="productInfoItem">
               <span className="productInfoKey">in stock:</span>
-              <span className="productInfoValue">{product.inStock ? "Yes" : "No"}</span>
+              <span className="productInfoValue">{product?.inStock ? "Yes" : "No"}</span>
             </div>
           </div>
         </div>
@@ -157,24 +161,24 @@ export default function Product() {
         <form className="productForm">
           <div className="productFormLeft">
             <label>Product Name</label>
-            <input type="text" placeholder={product.title} name="title" onChange={handleChange} />
+            <input type="text" placeholder={product?.title} name="title" onChange={handleChange} />
             <label>Product Description</label>
-            <input type="text" placeholder={product.description} name="description" onChange={handleChange} />
+            <input type="text" placeholder={product?.description} name="description" onChange={handleChange} />
             <label>Price</label>
-            <input type="text" placeholder={product.price} name="price" onChange={handleChange} />
+            <input type="text" placeholder={product?.price} name="price" onChange={handleChange} />
             <div className="addProductItem">
               <label>Category</label>
               <input name="category" type="text" placeholder={product?.categories?.toString()} onChange={handleCategories} />
             </div>
             <label>In Stock</label>
-            <select name="inStock" id="idStock" defaultValue={product.inStock} onChange={handleChange} >
+            <select name="inStock" id="idStock" defaultValue={product?.inStock} onChange={handleChange} >
               <option value="true">Yes</option>
               <option value="false">No</option>
             </select>
           </div>
           <div className="productFormRight">
             <div className="productUpload">
-              <img src={product.image} alt="" className="productUploadImg" />
+              <img src={product?.image} alt="" className="productUploadImg" />
               <label for="file">
                 <Publish />
               </label>
