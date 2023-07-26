@@ -5,17 +5,12 @@ import { DeleteOutline } from "@material-ui/icons";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { deleteProduct, getProducts } from "../../redux/apiCalls";
-import { userRequest } from '../../requestMethods';
 
 export default function ProductList() {
   const dispatch = useDispatch();
-  // const products = useSelector((state) => state.product.products);
-  const [products, setProducts] = useState(null);
+  const products = useSelector((state) => state.product.products);
 
   useEffect(async () => {
-    const tempProducts = (await userRequest.get("/products?category=all")).data;
-    setProducts(tempProducts)
-    
     getProducts(dispatch);
   }, [dispatch]);
 
@@ -77,7 +72,7 @@ export default function ProductList() {
           <button className="productAddButton">Create</button>
         </Link>
       <DataGrid
-        rows={products ? products : {}}
+        rows={products}
         disableSelectionOnClick
         columns={columns}
         getRowId={row => row._id}
