@@ -45,6 +45,7 @@ router.delete("/:id", verifyTokenAndAdmin, async (req, res) => {
 router.get("/find/:userId", verifyTokenAndAdmin, async (req, res) => {
     try {
         const orders = await Order.find({ userId: req.params.userId });
+
         res.status(200).json(orders);
     } catch (error) {
         res.status(500).json(error);
@@ -58,8 +59,13 @@ router.get("/", verifyTokenAndAdmin, async (req, res) => {
     let products;
     try {
         const orders = await Order.find();
+        // HELP
+        const orders2 = await Order.find().populate('userId', '-_id -__v');
+        console.log("Populated query", orders2);
+
         res.status(200).json(orders);
     } catch (error) {
+        console.log("Error occurred in retrieving order from mongo", error)
         res.status(500).json(error);
     }
 })
