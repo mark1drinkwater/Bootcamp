@@ -5,7 +5,7 @@ const OrderSchema = new mongoose.Schema(
         userId: { 
             type: mongoose.Schema.Types.ObjectId,
             // Ref helps us get full fields of Comment when we call populate()
-            ref: 'userId' 
+            ref: 'User' 
         },
         products: [
             {
