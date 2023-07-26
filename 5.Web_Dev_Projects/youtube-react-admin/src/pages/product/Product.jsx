@@ -5,7 +5,7 @@ import { Publish } from "@material-ui/icons";
 import { useSelector } from "react-redux";
 import { useEffect, useMemo, useState } from "react";
 import { userRequest } from "../../requestMethods";
-import { updateProduct } from "../../redux/apiCalls";
+import { getProducts, updateProduct } from "../../redux/apiCalls";
 import { useDispatch } from 'react-redux';
 import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import app from '../../firebase';
@@ -118,7 +118,10 @@ export default function Product() {
           console.log('File available at', downloadURL);
           const product = { ...inputs, image: downloadURL, inStock: inputs.inStock === "true", categories: category };
           await updateProduct(productId, product, dispatch);
-          // window.location.href = ("/products");
+          // FORCE refresh of products list stored in redux
+          await getProducts(dispatch);
+          // Re-direct user back to products page
+          window.location.href = ("/products");
         });
       }
     );
