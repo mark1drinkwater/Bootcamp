@@ -23,12 +23,12 @@ export default function User() {
   const [user, setUser] = useState({});
   const dispatch = useDispatch();
 
-  useEffect( async () => {
+  useEffect(async () => {
     const users = (await userRequest.get("/users")).data;
     const userTemp = users.find((user) => user._id === userId);
     setUser(userTemp);
   }, [dispatch]);
-  
+
 
   const handleChange = (e) => {
     setInputs(prev => {
@@ -40,6 +40,10 @@ export default function User() {
     e.preventDefault();
     const user = { ...inputs };
     await updateUser(userId, user, dispatch);
+    // FORCE refresh of users list stored in redux
+    await getUsers(dispatch);
+    // Re-direct user back to users page
+    window.location.href = ("/users");
   }
 
 
