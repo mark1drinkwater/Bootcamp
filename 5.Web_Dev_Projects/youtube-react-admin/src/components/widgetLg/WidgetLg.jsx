@@ -13,7 +13,7 @@ export default function WidgetLg() {
         const res = await userRequest.get("orders")
         setOrders(res.data);
       } catch (err) {
-
+        console.log("Error occured fetching orders from API");
       }
     };
     getOrders();
