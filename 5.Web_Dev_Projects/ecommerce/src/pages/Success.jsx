@@ -11,7 +11,8 @@ const Image = styled.img`
   max-width: 50px;
 `;
 
-const Success = () => {
+// Receive props from payment
+const Success = (props) => {
   const currentUser = useSelector((state) => state.user.currentUser);
   const cart = useSelector((state) => state.cart);
   const [orderTotal, setOrderTotal] = useState(0);
