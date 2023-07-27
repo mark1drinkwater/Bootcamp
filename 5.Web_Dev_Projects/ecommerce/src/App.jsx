@@ -48,9 +48,10 @@ function App() {
           {user ? <Redirect to="/" /> : <Register />}
         </Route>
 
-        <Route path="/completion">
+        {/* Prevent direct route access */}
+        {/* <Route path="/completion">
           <Success />
-        </Route>
+        </Route> */}
 
         <Route path="*">
           <NotFoundPage/>
