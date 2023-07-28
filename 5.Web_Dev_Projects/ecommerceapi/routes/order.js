@@ -9,9 +9,10 @@ router.post("/", async (req, res) => {
   
     try {
       const savedOrder = await newOrder.save();
-      return res.status(200).json(savedOrder);
+      res.status(200).json(savedOrder);
     } catch (err) {
-      return res.status(500).json(err);
+      console.log("Error creating new order in DB", error)
+      res.status(500).json(err);
     }
   });
 
@@ -27,6 +28,7 @@ router.put("/:id", verifyTokenAndAdmin, async (req, res) => {
         );
         res.status(200).json(updatedOrder);
     } catch (error) {
+        console.log("Error updating existing order in DB", error)
         res.status(500).json(error);
     }
 })
@@ -37,6 +39,7 @@ router.delete("/:id", verifyTokenAndAdmin, async (req, res) => {
         await Order.findByIdAndDelete(req.params.id);
         res.status(200).json("Order has been deleted...");
     } catch (error) {
+        console.log("Error deleting order in DB", error)
         res.status(500).json(error);
     }
 })
@@ -45,9 +48,9 @@ router.delete("/:id", verifyTokenAndAdmin, async (req, res) => {
 router.get("/find/:userId", verifyTokenAndAdmin, async (req, res) => {
     try {
         const orders = await Order.find({ userId: req.params.userId });
-
         res.status(200).json(orders);
     } catch (error) {
+        console.log("Error retrieving order from user from DB", error)
         res.status(500).json(error);
     }
 })
@@ -65,7 +68,7 @@ router.get("/", verifyTokenAndAdmin, async (req, res) => {
 
         res.status(200).json(orders);
     } catch (error) {
-        console.log("Error occurred in retrieving order from mongo", error)
+      console.log("Error retrieving all orders from DB", error)
         res.status(500).json(error);
     }
 })
@@ -102,6 +105,7 @@ router.get("/income", verifyTokenAndAdmin, async (req, res) => {
       ]);
       res.status(200).json(income);
     } catch (err) {
+      console.log("Error retrieving order statistics from DB", error)
       res.status(500).json(err);
     }
   });
