@@ -5,7 +5,8 @@ const { verifyToken, verifyTokenAndAuthorization, verifyTokenAndAdmin } = requir
 const Subscriber = require("../models/Subscriber")
 const router = require("express").Router();
 
-router.post("/subscribe", async (req, res) => {
+// CREATE NEW SUBSCRIBER
+router.post("/", async (req, res) => {
     try {        
         if (!req.body.email)
             throw "Email is required";
