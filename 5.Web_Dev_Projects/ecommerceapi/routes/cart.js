@@ -11,6 +11,7 @@ router.post("/", verifyTokenAndAuthorization, async (req, res) => {
         const savedProduct = await newCart.save();
         res.status(200).json(savedProduct);
     } catch (error) {
+        console.log("Error adding product to cart in DB", error)
         res.status(500).json(error);
     }
 })
@@ -27,6 +28,7 @@ router.put("/:id", verifyTokenAndAuthorization, async (req, res) => {
         );
         res.status(200).json(updatedCart);
     } catch (error) {
+        console.log("Error updating product in cart from DB", error)
         res.status(500).json(error);
     }
 })
@@ -37,6 +39,7 @@ router.delete("/:id", verifyTokenAndAuthorization, async (req, res) => {
         await Cart.findByIdAndDelete(req.params.id);
         res.status(200).json("Cart has been deleted...");
     } catch (error) {
+        console.log("Error deleting product in cart from DB", error)
         res.status(500).json(error);
     }
 })
@@ -47,6 +50,7 @@ router.get("/find/:userId", verifyTokenAndAuthorization , async (req, res) => {
         const cart = await Cart.find({userId: req.params.userId});
         res.status(200).json(cart);
     } catch (error) {
+        console.log("Error retrieving user's cart from DB", error)
         res.status(500).json(error);
     }
 })
@@ -57,6 +61,7 @@ router.get("/", verifyTokenAndAdmin, async(req, res) => {
         const carts = await Cart.find();
         res.status(200).json(carts);
     } catch (error) {
+        console.log("Error retrieving all carts from DB", error)
         res.status(500).json(error);
     }
 })
