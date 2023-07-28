@@ -134,7 +134,7 @@ const Summary = styled.div`
   border: 0.5px solid lightgray;
   border-radius: 10px;
   padding: 20px;
-  height: ${(props) => props.cartCount > 0 ? "700px" : "300px"};
+  height: ${(props) => props.cartCount > 0 ? "780px" : "300px"};
 `;
 
 const SummaryTitle = styled.h1`
