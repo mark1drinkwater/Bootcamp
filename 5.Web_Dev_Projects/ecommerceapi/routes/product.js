@@ -11,7 +11,7 @@ router.post("/", verifyTokenAndAdmin, async (req, res) => {
         const savedProduct = await newProduct.save();
         res.status(200).json(savedProduct);
     } catch (error) {
-        console.log("Error occured trying to add new product", error);
+        console.log("Error adding product to DB.", error)
         res.status(500).json(error);
     }
 })
@@ -29,7 +29,7 @@ router.put("/:id", verifyTokenAndAuthorization, async (req, res) => {
         console.log(`Attempting to update product ID: ${req.params.id}. with`, req.body);
         res.status(200).json(updatedProduct);
     } catch (error) {
-        console.log("Error occurred when updating product.", error);
+        console.log("Error occurred when updating product in DB.", error);
         res.status(500).json(error);
     }
 })
@@ -40,6 +40,7 @@ router.delete("/:id", verifyTokenAndAuthorization, async (req, res) => {
         await Product.findByIdAndDelete(req.params.id);
         res.status(200).json("Product has been deleted...");
     } catch (error) {
+        console.log("Error occurred when deleting product.", error)
         res.status(500).json(error);
     }
 })
@@ -50,6 +51,7 @@ router.get("/find/:id", async (req, res) => {
         const product = await Product.findById(req.params.id);
         res.status(200).json(product);
     } catch (error) {
+        console.log("Error occurred when fetching product from DB.", error)
         res.status(500).json(error);
     }
 })
@@ -74,9 +76,9 @@ router.get("/", async (req, res) => {
             }
         }
 
-
         res.status(200).json(products);
     } catch (error) {
+        console.log("Error occurred when retrieving products from DB.", error)
         res.status(500).json(error);
     }
 })
@@ -103,7 +105,7 @@ router.get("/stats", verifyTokenAndAdmin, async (req, res) => {
         ])
         res.status(200).json(data);
     } catch (error) {
-        console.log("Error occurred getting user stats", error);
+        console.log("Error occurred when retrieving user stats from DB.", error);
         res.status(500).json(error);
     }
 })
