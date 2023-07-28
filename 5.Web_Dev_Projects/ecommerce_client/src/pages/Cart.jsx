@@ -134,7 +134,7 @@ const Summary = styled.div`
   border: 0.5px solid lightgray;
   border-radius: 10px;
   padding: 20px;
-  height: 700px;
+  height: ${(props) => props.cartCount > 0 ? "700px": "300px"};
 `;
 
 const SummaryTitle = styled.h1`
@@ -163,37 +163,6 @@ const Button = styled.button`
 
 const Cart = () => {
   const cart = useSelector(state => state.cart);
-  // const [stripeToken, setStripeToken] = useState(null);
-  const [paymentToken, setPaymentToken] = useState(null);
-  const history = useHistory();
-
-  const onToken = (token) => {
-    // setStripeToken(token);
-  }
-
-  useEffect(() => {
-    const makeRequest = async () => {
-      try {
-        // const res = await userRequest.post("/checkout/payment", {
-        //   tokenId: stripeToken.id,
-        //   amount: cart.total * 100,
-        // });
-        history.push("/success", {
-          // stripeData: res.data,
-          cart: cart,
-        });
-      } catch (error) {
-        console.log("Error in making a request to pay.", error);
-      }
-    }
-    // stripeToken && makeRequest();
-    paymentToken && makeRequest();
-  }, [/*stripeToken,*/ paymentToken, cart.total, history])
-
-  function checkout() {
-    setPaymentToken(Math.random() * Math.random());
-    // history.push("/success")
-  }
 
   return (
     <Container>
@@ -266,7 +235,6 @@ const Cart = () => {
 
             <hr />
             <br />
-            {/* <TopButton type="filled" onClick={() => checkout()} >CHECKOUT NOW</TopButton> */}
 
             <Payment amount={ cart.total.toFixed(2) * 100 } />
 
