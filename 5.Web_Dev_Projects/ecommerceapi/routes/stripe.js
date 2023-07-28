@@ -25,6 +25,7 @@ router.post("/create-payment-intent", async (req, res) => {
       clientSecret: paymentIntent.client_secret,
     });
   } catch (e) {
+    console.log("Error occurred during payment process.")
     return res.status(400).send({
       error: {
         message: e.message,
