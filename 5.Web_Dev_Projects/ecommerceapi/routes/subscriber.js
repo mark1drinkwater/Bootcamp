@@ -18,7 +18,7 @@ router.post("/subscribe", async (req, res) => {
             res.status(201).json({ success: true, savedSubscriber });
         }
     catch (error) {
-        console.log("Error in creating new user", error.name, error.code)
+        console.log("Error in creating new subscriber in DB.", error.name, error.code)
         if (error.code === 11000) {
             // Duplicate username
             console.log("You have already subscribed")
@@ -35,6 +35,7 @@ router.delete("/:email", verifyTokenAndAdmin, async (req, res) => {
         await Subscriber.findOneAndDelete({ email: req.params.email });
         res.status(200).json("Subscriber has unsubscribed.");
     } catch (error) {
+        console.log("Error deleting subscriber from DB.", error);
         res.status(500).json(error);
     }
 })
@@ -45,6 +46,7 @@ router.get("/find/:email", verifyTokenAndAdmin, async (req, res) => {
         const subscriber = await Subscriber.find({ email: req.params.userId });
         res.status(200).json(subscriber);
     } catch (error) {
+        console.log("Error retrieving subscriber from DB.", error)
         res.status(500).json(error);
     }
 })
@@ -55,6 +57,7 @@ router.get("/", verifyTokenAndAdmin, async (req, res) => {
         const subscribers = await Subscriber.find();
         res.status(200).json(subscribers);
     } catch (error) {
+        console.log("Error retrieving all subscribers from DB.")
         res.status(500).json(error);
     }
 })
