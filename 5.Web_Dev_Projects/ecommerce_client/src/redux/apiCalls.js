@@ -39,10 +39,10 @@ export const logout = async (dispatch) => {
 
 export const subscribe = async (email) => {
   try {
-    const res = await publicRequest.post("/subscribers/subscribe", { email: email });  
+    const res = await publicRequest.post("/subscribers", { email: email });  
     return {success: true, message: "Sign-up successful"};
   } catch (err) {    
-    console.log(err.response.data)
+    console.log("Error occurred subscribing user", err.response.data)
     return err.response.data;
   }
 }
