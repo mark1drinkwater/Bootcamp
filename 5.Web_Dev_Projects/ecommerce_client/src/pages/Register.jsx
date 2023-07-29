@@ -58,8 +58,14 @@ const Button = styled.button`
   font-weight: 400;
 `;
 
+const Status = styled.div`
+    font-size: 24px;
+    font-weight: 700;
+`;
+
 const Register = () => {
   const [inputs, setInputs] = useState({});
+  const [signUpStatus, setSignUpStatus] = useState({});
   const dispatch = useDispatch();
 
   const handleChange = (e) => {
@@ -71,9 +77,9 @@ const Register = () => {
 
   const handleClick = async (e) => {
     e.preventDefault();
-    const user = {...inputs};
+    const user = { ...inputs };
     await addUser(dispatch, user);
-    window.location.href = '/login';  
+    window.location.href = '/login';
   }
 
   return (
@@ -87,6 +93,11 @@ const Register = () => {
           <Input name="email" placeholder="email" onChange={handleChange} />
           <Input type="password" name="password" placeholder="Password" onChange={handleChange} />
           <Input type="password" name="confirmPassword" placeholder="confirm password" onChange={handleChange} />
+
+          <Status>
+            {signupStatus && signupStatus}
+          </Status>
+
           <Agreement>
             By creating an account, I consent to the processing of my personal
             data in accordance with the <b>PRIVACY POLICY</b>
