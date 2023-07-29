@@ -134,7 +134,7 @@ const Summary = styled.div`
   border: 0.5px solid lightgray;
   border-radius: 10px;
   padding: 20px;
-  height: ${(props) => props.cartCount > 0 ? "700px": "300px"};
+  height: ${(props) => props.cartCount > 0 ? "780px" : "300px"};
 `;
 
 const SummaryTitle = styled.h1`
@@ -203,7 +203,8 @@ const Cart = () => {
                 </div>
               ))}
           </Info>
-          <Summary>
+
+          <Summary cartCount={cart.products.length}>
             <SummaryTitle>ORDER SUMMARY</SummaryTitle>
             <SummaryItem>
               <SummaryItemText>Subtotal</SummaryItemText>
@@ -222,13 +223,16 @@ const Cart = () => {
             <hr />
             <SummaryItem type="total">
               <SummaryItemText>Total</SummaryItemText>
-              <SummaryItemPrice>R {cart.total.toFixed(2) }</SummaryItemPrice>
+              <SummaryItemPrice>R {cart.total.toFixed(2)}</SummaryItemPrice>
             </SummaryItem>
 
             <hr />
             <br />
 
-            <Payment amount={ cart.total.toFixed(2) * 100 } />
+            {
+              cart.products.length > 0 &&
+              <Payment amount={cart.total.toFixed(2) * 100} />
+            }
 
           </Summary>
         </Bottom>
