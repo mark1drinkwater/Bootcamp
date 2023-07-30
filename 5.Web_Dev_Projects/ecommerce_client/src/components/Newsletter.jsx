@@ -1,8 +1,9 @@
 import { Description, Send } from '@material-ui/icons'
-import React from 'react'
+import React, { useEffect } from 'react'
 import styled from 'styled-components';
 import { mobile } from "../responsive"
 import { subscribe } from '../redux/apiCalls';
+import { useSelector } from 'react-redux';
 
 const Container = styled.div`
     height: 30vh;
