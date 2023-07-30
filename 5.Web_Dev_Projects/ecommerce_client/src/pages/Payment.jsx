@@ -9,20 +9,30 @@ function Payment({ amount }) {
   const [stripePromise, setStripePromise] = useState(null);
   const [clientSecret, setClientSecret] = useState("");
 
-  useEffect(async () => {
-    const res = await axios.get("http://localhost:3000/api/v1/checkout/config");
-    const publishableKey = res.data.publishableKey;
-    setStripePromise(loadStripe(publishableKey));
+  useEffect(() => {
+    async function fetchLoadKey() {
+      const res = await axios.get("http://localhost:3000/api/v1/checkout/config");
+      const publishableKey = res.data.publishableKey;
+      setStripePromise(loadStripe(publishableKey));
+    }
+
+    fetchLoadKey();
+
   }, []);
 
-  useEffect(async () => {
-    if (amount >= 1) {
-      const res = await axios.post("http://localhost:3000/api/v1/checkout/create-payment-intent", {
-        amount: amount
-      })
-      const clientSecret = res.data.clientSecret;
-      setClientSecret(clientSecret);
+  useEffect(() => {
+    async function fetchSetSecret() {
+      if (amount >= 1) {
+        const res = await axios.post("http://localhost:3000/api/v1/checkout/create-payment-intent", {
+          amount: amount
+        })
+        const clientSecret = res.data.clientSecret;
+        setClientSecret(clientSecret);
+      }
     }
+
+    fetchSetSecret();
+
   }, []);
 
 
