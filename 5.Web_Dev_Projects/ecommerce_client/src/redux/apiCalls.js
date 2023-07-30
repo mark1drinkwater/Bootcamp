@@ -5,6 +5,7 @@ import {
 } from "./userRedux";
 import { publicRequest } from "../requestMethods";
 
+//REDUX CALLS
 export const login = async (dispatch, user) => {
   dispatch(loginStart());
   try {
@@ -23,7 +24,7 @@ export const addUser = async (dispatch, user) => {
     dispatch(addUserSuccess(res.data));
   } catch (err) {
     console.log("addUser failed", err)
-    dispatch(addUserFailure());
+    dispatch(addUserFailure(err.response.data));
   }
 }
 
@@ -37,6 +38,8 @@ export const logout = async (dispatch) => {
   }
 }
 
+//Direct api calls
+// Subscribe to newsletter
 export const subscribe = async (email) => {
   try {
     const res = await publicRequest.post("/subscribers", { email: email });  
