@@ -1,7 +1,7 @@
-import { useDispatch } from 'react-redux';
-import { useState } from "react";
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect, useState } from "react";
 import styled from "styled-components";
-import { addUser } from "../redux/apiCalls"; 
+import { addUser } from "../redux/apiCalls";
 
 const Container = styled.div`
   width: 100vw;
@@ -63,8 +63,9 @@ const Status = styled.div`
 `;
 
 const Register = () => {
+  const userState = useSelector(state => state.user);
   const [inputs, setInputs] = useState({});
-  const [signUpStatus, setSignUpStatus] = useState({});
+  const [signUpStatus, setSignUpStatus] = useState("");
   const dispatch = useDispatch();
 
   const handleChange = (e) => {
@@ -73,11 +74,18 @@ const Register = () => {
     });
   }
 
+  useEffect(() => {
+    console.log("Error message", userState.errorMessage)
+    userState.error ? setSignUpStatus(userState.errorMessage.message) : setSignUpStatus("")
+  }, [userState])
+
 
   const handleClick = async (e) => {
     e.preventDefault();
     const user = { ...inputs };
     await addUser(dispatch, user);
+
+
     window.location.href = '/login';
   }
 
