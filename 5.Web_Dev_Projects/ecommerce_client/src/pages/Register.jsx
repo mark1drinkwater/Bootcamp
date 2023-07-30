@@ -2,7 +2,6 @@ import { useDispatch } from 'react-redux';
 import { useState } from "react";
 import styled from "styled-components";
 import { addUser } from "../redux/apiCalls"; 
-import { Redirect } from "react-router-dom";
 
 const Container = styled.div`
   width: 100vw;
@@ -95,7 +94,7 @@ const Register = () => {
           <Input type="password" name="confirmPassword" placeholder="confirm password" onChange={handleChange} />
 
           <Status>
-            {signupStatus && signupStatus}
+            {signUpStatus && signUpStatus}
           </Status>
 
           <Agreement>
