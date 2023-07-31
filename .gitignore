@@ -33,3 +33,6 @@ yarn-error.log*
 
 #Environment files
 /3.NodeJS/textbook_two/chapter_15/public/img
+
+/6.Java/.idea
+/6.Java/.idea/Java_Dummies_Book/.idea
