@@ -22,9 +22,11 @@ export const addUser = async (dispatch, user) => {
   try {
     const res = await publicRequest.post("/auth/register", user);
     dispatch(addUserSuccess(res.data));
-  } catch (err) {
-    console.log("addUser failed", err)
-    dispatch(addUserFailure(err.response.data));
+  } catch (error) {
+    console.log("addUser failed", error)
+    const errorsData = error.response.data;
+    const validationErrors = Object.keys(errorsData.errors).map(key => errorsData.errors[key].message)
+    dispatch(addUserFailure(validationErrors));
   }
 }
 
@@ -47,5 +49,17 @@ export const subscribe = async (email) => {
   } catch (err) {    
     console.log("Error occurred subscribing user", err.response.data)
     return err.response.data;
+  }
+}
+
+export const registerUser = async (user) => {
+  try {
+    const res = await publicRequest.post("/auth/register", user);
+    return {success: true, message: "Sign-up successful"};
+  } catch (error) {
+    console.log("addUser failed", error.response.data)
+    const errorsData = error.response.data;
+    const validationErrors = Object.keys(errorsData.errors).map(key => errorsData.errors[key].message)
+    return {success: false, message:validationErrors};
   }
 }

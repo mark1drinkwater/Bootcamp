@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from "react";
 import styled from "styled-components";
-import { addUser } from "../redux/apiCalls";
+import { addUser, registerUser } from "../redux/apiCalls";
 
 const Container = styled.div`
   width: 100vw;
@@ -57,16 +57,23 @@ const Button = styled.button`
   font-weight: 400;
 `;
 
-const Status = styled.div`
-    font-size: 24px;
-    font-weight: 700;
+const StatusList = styled.ul`
+  padding-left: 0px;
+  margin-left: 0px;
+  margin-top: 10px;
+  list-style-type: none;
+`;
+
+const StatusItem = styled.li`
+    padding-left: 10px;
+    margin-left: 0px;
+    font-size: 16px;
+    font-weight: 500;
 `;
 
 const Register = () => {
-  const userState = useSelector(state => state.user);
   const [inputs, setInputs] = useState({});
-  const [signUpStatus, setSignUpStatus] = useState("");
-  const dispatch = useDispatch();
+  const [errorMessage, setErrorMessage] = useState("");
 
   const handleChange = (e) => {
     setInputs(prev => {
@@ -74,19 +81,30 @@ const Register = () => {
     });
   }
 
-  useEffect(() => {
-    console.log("Error message", userState.errorMessage)
-    userState.error ? setSignUpStatus(userState.errorMessage.message) : setSignUpStatus("")
-  }, [userState])
-
-
   const handleClick = async (e) => {
     e.preventDefault();
     const user = { ...inputs };
-    await addUser(dispatch, user);
+    // await addUser(dispatch, user);
+    // if (!userState.error)
+    // window.location.href = '/login';
 
+    //complicated need to fix
+    if (user.password === user.confirmPassword) {
+      const res = await registerUser(user);
+      res.success ?
+        window.location.href = '/login' : setErrorMessage(res.message);
+    } else {
+      // hard copy array
+      const errorMessageTemp = [...errorMessage];
+      if (!errorMessageTemp.includes("Passwords don't match."))
+        errorMessageTemp.push
 
-    window.location.href = '/login';
+      if (!errorMessage.includes("Passwords don't match"))
+        setErrorMessage(prev => {
+          return [...errorMessage, "Passwords don't match"]
+        })
+    }
+
   }
 
   return (
@@ -101,9 +119,13 @@ const Register = () => {
           <Input type="password" name="password" placeholder="Password" onChange={handleChange} />
           <Input type="password" name="confirmPassword" placeholder="confirm password" onChange={handleChange} />
 
-          <Status>
-            {signUpStatus && signUpStatus}
-          </Status>
+          <StatusList>
+            {
+              errorMessage?.length > 0 && (
+                errorMessage.map((item) => <StatusItem key={item}>{item}</StatusItem>
+                ))
+            }
+          </StatusList>
 
           <Agreement>
             By creating an account, I consent to the processing of my personal

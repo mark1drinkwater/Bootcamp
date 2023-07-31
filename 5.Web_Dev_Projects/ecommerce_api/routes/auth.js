@@ -8,7 +8,8 @@ router.post("/register", async (req, res) => {
     console.log("Attempting to create new user")
     try {
         if (req.body?.password !== req.body?.confirmPassword)
-            throw "Passwords do not match";
+        
+            throw {response:{data:{errors: { "password": {message:"Passwords do not match"} } }}};
 
         const newUser = new User({
             firstName: req.body.firstName,
