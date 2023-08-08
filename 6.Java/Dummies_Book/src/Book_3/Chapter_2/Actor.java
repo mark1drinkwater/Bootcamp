@@ -34,10 +34,10 @@ public class Actor {
         this.isGoodActor = goodActor;
     }
 
-    public Actor(String first, String last)
+    public Actor(String firstName, String lastName)
     {
-        this.firstName = first;
-        this.lastName = last;
+        this.firstName = firstName;
+        this.lastName = lastName;
     }
 
     public Actor(String first, String last, boolean good)
