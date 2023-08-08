@@ -8,6 +8,7 @@ public class Initializer {
 
     // Initializer
     public int x;
+
     {
         System.out.println("In static initializer.");
         System.out.print(
