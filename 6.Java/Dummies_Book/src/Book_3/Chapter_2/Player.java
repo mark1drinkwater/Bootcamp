@@ -1,7 +1,7 @@
 package Book_3.Chapter_2;
 
 public class Player {
-    private int health;
+    public int health;
 
     public int getHealth() {
         return health;
