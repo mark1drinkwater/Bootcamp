@@ -3,6 +3,12 @@ package Book_3.Chapter_2;
 public class PlayApp {
 
     public static void main(String[] args) {
+        // Directly accessing variables
+        Player john = new Player();
+        john.health = 500;
+        System.out.println("John health " + john.health);
+
+        // Getters and Setters
         Player p1 = new Player();
         p1.setHealth(10);
         System.out.println("Player 1 health status: " + p1.getHealth());
