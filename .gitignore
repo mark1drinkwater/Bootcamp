@@ -114,6 +114,7 @@ yarn-error.log*
 /6.Java/D83527GC10_labs/D83527GC10/src/main/java/com/markdrinkwater/d83527gc10/labs/15-DeployingMaintaining/solutions/15-DeployingMaintaining/build/
 /6.Java/D83527GC10_labs/D83527GC10/src/main/java/com/markdrinkwater/d83527gc10/labs/15-DeployingMaintaining/solutions/15-DeployingMaintaining/nbproject/private/
 /6.Java/D83527GC10_labs/D83527GC10/target/
+nbproject/
 *.xml
 *.properties
 *.properties
