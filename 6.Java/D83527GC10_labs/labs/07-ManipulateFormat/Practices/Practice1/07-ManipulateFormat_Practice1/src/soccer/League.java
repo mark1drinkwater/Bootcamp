@@ -57,8 +57,22 @@ public class League {
                 currGame.goals[0].theTeam.teamName);
         
         /* Practice 7-1. Add code for finding a player within team2 here */
+        for (Player thePlayer: team2.playerArray) {
+            if (thePlayer.playerName.matches(".*Sab.*")) {
+                System.out.println("Found " + thePlayer.playerName);
+                System.out.println("Last name is " + thePlayer.playerName.split(" ")[1]);
+            }            
+        }     
         
-        
+        StringBuilder familyNameFirst = new StringBuilder();
+        for (Player thePlayer: team1.playerArray) {
+            String name[] = thePlayer.playerName.split(" ");
+            familyNameFirst.append(name[1]);
+            familyNameFirst.append(", ");
+            familyNameFirst.append(name[0]);
+            System.out.println(familyNameFirst);
+            familyNameFirst.delete(0, familyNameFirst.length());
+        }
         
     }   
 }
