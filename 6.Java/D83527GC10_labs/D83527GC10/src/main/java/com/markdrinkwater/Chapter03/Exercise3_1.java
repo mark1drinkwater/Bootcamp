@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Other/File.java to edit this template
  */
-package com.markdrinkwater.d83527gc10.Chapter03;
+package com.markdrinkwater.Chapter03;
 
 /**
  *
@@ -15,5 +15,6 @@ public class Exercise3_1 {
      */
     public static void main(String args[]) {
         // TODO code application logic here
+        System.out.println("Hello world!");
     }
 }
