@@ -11,7 +11,7 @@ public class ShoppingCart {
         char char1 = 'E';
         
         // Print the long variable.
-        System.out.println("long1");
+        System.out.println(long1);
 	// Assign the long to the int and print the int variable.
         int1 = (int) long1;
         System.out.println(int1);        
