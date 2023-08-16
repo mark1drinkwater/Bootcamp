@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.markdrinkwater.d83527gc10.Chapter06;
+package com.markdrinkwater.Chapter06;
 
 /**
  *

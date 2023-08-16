@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Other/File.java to edit this template
  */
-package com.markdrinkwater.d83527gc10.Chapter05;
+package com.markdrinkwater.Chapter05;
 
 /**
  *
@@ -21,8 +21,8 @@ String custName = "Mary Smith";
         double price = 19.99;
         double tax = 1.15;
         double total;        
-        int quantity = 3;        
-        boolean outOfStock = false;
+        int quantity = 1;        
+        boolean outOfStock = true;
 
         message = custName + " wants to purchase " + quantity + " " + itemDesc;
         

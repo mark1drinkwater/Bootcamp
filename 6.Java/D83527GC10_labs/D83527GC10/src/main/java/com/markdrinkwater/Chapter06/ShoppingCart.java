@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Other/File.java to edit this template
  */
-package com.markdrinkwater.d83527gc10.Chapter06;
+package com.markdrinkwater.Chapter06;
 
 /**
  *
@@ -28,4 +28,5 @@ public class ShoppingCart {
         System.out.println("Item 2 description after re-assignment: " + item2.descr);
         System.out.println(item2.descr);
     }
+    
 }
