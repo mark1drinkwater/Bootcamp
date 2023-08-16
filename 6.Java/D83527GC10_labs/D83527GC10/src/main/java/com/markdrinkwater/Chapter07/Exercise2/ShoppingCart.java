@@ -19,6 +19,7 @@ public class ShoppingCart {
 	//   You can just enter the String literal for the last name.
 	//   Print the full name.
         sb.append(" Smith");
+        System.out.println(sb.toString());
         
         
     }
