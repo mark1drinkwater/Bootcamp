@@ -1,5 +1,5 @@
 
-package ex10_1_exercise;
+package com.markdrinkwater.Chapter10.Exercise1;
 
 
 public class TestClass {
@@ -14,5 +14,6 @@ public class TestClass {
         System.out.println("After if stmt, x = " + x);
         
          // Use a ternary operator to perform the same logic as above.
+         x = ((y / x) < 3) ? (x += y) : (x *= y);
     }
 }
