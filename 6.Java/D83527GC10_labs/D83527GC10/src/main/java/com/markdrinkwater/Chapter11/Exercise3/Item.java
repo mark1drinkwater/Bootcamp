@@ -1,4 +1,4 @@
-package ex11_3_exercise;
+package com.markdrinkwater.Chapter11.Exercise3;
 
 public class Item {
 
