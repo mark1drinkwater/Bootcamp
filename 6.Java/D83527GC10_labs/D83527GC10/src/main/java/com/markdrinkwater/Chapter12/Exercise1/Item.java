@@ -1,4 +1,4 @@
-package ex12_1_exercise;
+package com.markdrinkwater.Chapter12.Exercise1;
 
 public class Item {
     private int id;
