@@ -1,4 +1,4 @@
-package ex12_3_exercise;
+package com.markdrinkwater.Chapter12.Exercise3;
 
 public class Shirt extends Item{
     private char size;
@@ -18,5 +18,18 @@ public class Shirt extends Item{
     
     // Code a public getColor method that converts the colorCode to a the color name
        // Use a switch statement.  Return the color name. 
+    public String getColor() {
+        
+        switch (colorCode) {
+            case 'R':
+                return "Red";
+            case 'G':
+                return "Green";
+            case 'B':
+                return "Blue";
+            default:
+                return "Color is not recognised.";
+        }
+    }
 
 }
