@@ -37,14 +37,22 @@ public class Game {
     public String getDescription() {
         
         /* Practice 10-1. Declare two int variables here */
+        int homeTeamGoals = 0;
+        int awayTeamGoals = 0;
         
         StringBuilder returnString = new StringBuilder();
+        returnString.append(homeTeam.getTeamName() + " vs. " + awayTeam.getTeamName() + "\n");
         
         /* Practice 10-1. Add code to show teams that are playing */
         
         for (Goal currGoal: this.getGoals()) {
             
             /* Practice 10-1. Add if block here */
+            if (currGoal.getTheTeam() == homeTeam) {
+                homeTeamGoals++;
+            } else {
+                awayTeamGoals++;
+            }
             
             returnString.append("Goal scored after "
             + currGoal.getTheTime() + " mins by "
@@ -54,8 +62,21 @@ public class Game {
         }
         
         /* Practice 10-1. Add if block here */
-        
+        if (homeTeamGoals == awayTeamGoals) {
+            returnString.append("It's a draw!");
+            homeTeam.incPointsTotal(1);
+            awayTeam.incPointsTotal(1);
+        }
+        else if (homeTeamGoals > awayTeamGoals) {
+            returnString.append(homeTeam.getTeamName()).append(" win");
+            homeTeam.incPointsTotal(2);
+        }
+        else {
+            returnString.append(awayTeam.getTeamName()).append(" win");
+            awayTeam.incPointsTotal(2);
+        }
         /* Practice 10-1. Add returnString.append() that shows score */
+        returnString.append(" (" + homeTeamGoals + " - " + awayTeamGoals + ") \n");                        
         
         return returnString.toString();
     }
