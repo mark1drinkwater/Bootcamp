@@ -48,9 +48,11 @@ public class Game {
             if (currGoal.getTheTeam()== homeTeam) {
                 homeTeamGoals++;
                 /* Practice 10-2. Add code to increment Team.goalsTotal here */
+                homeTeam.incGoalsTotal(1);
             } else {
                 awayTeamGoals++;
                 /* Practice 10-2. Add code to increment Team.goalsTotal here */
+                awayTeam.incGoalsTotal(1);
             }
             
             returnString.append("Goal scored after "
