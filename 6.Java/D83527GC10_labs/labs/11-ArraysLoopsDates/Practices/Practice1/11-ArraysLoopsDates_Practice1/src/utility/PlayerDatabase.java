@@ -6,6 +6,10 @@
 
 package utility;
 
+import java.util.ArrayList;
+import java.util.StringTokenizer;
+import soccer.Player;
+
 
 /**
  *
@@ -14,10 +18,33 @@ package utility;
 public class PlayerDatabase {
     
     /* Practice 11-2. Declare an ArrayList here */
+    ArrayList<Player> players;
+
     
     /* Practice 11-2. Add Constructor here */
+    public PlayerDatabase() {
+        players = new ArrayList();
+        Player thePlayer;
+        
+        StringTokenizer authorTokens = new StringTokenizer(authorList, ",");
+    
+        while (authorTokens.hasMoreTokens()) {
+            thePlayer = new Player(authorTokens.nextToken());
+            players.add(thePlayer);
+        }
+    }
     
     /* Practice 11-2. Add getTeam() method here */
+    public Player[] getTeam(int numberOfPlayers){
+        Player[] teamPlayers = new Player[numberOfPlayers];
+        
+        for (int i = 0; i < numberOfPlayers; i++) {
+            int playerIndex = (int) (Math.random() * players.size());
+            teamPlayers[i] = players.get(playerIndex);
+            players.remove(playerIndex);
+        }   
+        return teamPlayers;
+    }
         
 String authorList = 
 "Agatha Christie," + 
