@@ -1,14 +1,16 @@
-package ex13_2_exercise;
+package com.markdrinkwater.Chapter13.Exercise2;
 
+import java.awt.ItemSelectable;
 import java.util.ArrayList;
 import java.util.function.Predicate;
 
 public class ShoppingCart {
-    ArrayList<Item> items = new ArrayList();
+    static ArrayList<Item> items = new ArrayList();
     
     public static void main(String[] args){
         ShoppingCart cart = new ShoppingCart();
         cart.fillCart();
+        System.out.println("Items before removal: " + items.toString() );
         cart.removeItemFromCart("Trousers");
     }
     
@@ -21,7 +23,8 @@ public class ShoppingCart {
     
     public void removeItemFromCart(String desc){
         // remove all Trousers from the items list, then print out the list
-        
+        items.removeIf( i -> i.getDesc().equals(desc) );
+        System.out.println("Items after removing " + desc + ": " + items.toString());
     }
     
 }
