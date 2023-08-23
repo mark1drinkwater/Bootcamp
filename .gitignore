@@ -121,3 +121,10 @@ nbproject/
 /6.Java/D83527GC10_labs/labs/11-ArraysLoopsDates/Practices/Practice1/11-ArraysLoopsDates_Practice1/build/
 /6.Java/D83527GC10_labs/labs/11-ArraysLoopsDates/Practices/Practice2/11-ArraysLoopsDates_Practice2/build/
 *.class
+/6.Java/D83527GC10_labs/labs/14-Exceptions/Practices/Practice1/14-Exceptions_Practice1/build/
+/6.Java/D83527GC10_labs/labs/15-DeployingMaintaining/solutions/15-DeployingMaintaining/dist/
+/6.Java/D83527GC10_labs/labs/13-Interfaces/Practices/Practice2/13-UsingInterfaces_Practice2/build/
+/6.Java/D83527GC10_labs/labs/13-Interfaces/Practices/Practice3/13-UsingInterfaces_Practice3/build/
+*.properties
+*.xml
+*.class
