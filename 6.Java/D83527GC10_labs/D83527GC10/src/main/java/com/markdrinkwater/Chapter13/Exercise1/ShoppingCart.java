@@ -1,4 +1,7 @@
-package ex13_1_exercise;
+package com.markdrinkwater.Chapter13.Exercise1;
+
+import java.util.ArrayList;
+import java.util.Arrays;
 
 
 public class ShoppingCart {
@@ -10,8 +13,15 @@ public class ShoppingCart {
         //   upper case (use toUpperCase() method of String class) 
         // Print all other days in lower case 
         // Print out the ArrayList  
-
-
+        ArrayList<String> dayList = new ArrayList( Arrays.asList(days) );
+        
+        for (String day : dayList) {
+            if (day.equals("sunday")) {
+                System.out.println(day.toUpperCase());
+            } else {
+                System.out.println(day);
+            }
+        }
 
     }    
 }
