@@ -9,6 +9,7 @@ import java.time.LocalDateTime;
 import java.time.Period;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.StringTokenizer;
 import utility.PlayerDatabase;
 
@@ -36,7 +37,7 @@ public class League {
         }
         
         theLeague.showBestTeam(theTeams);
-
+        theLeague.showBestPlayers(theTeams);
     }
 
     public Team[] createTeams(String teamNames, int teamSize) {
@@ -97,6 +98,24 @@ public class League {
         return "The league is scheduled to run for " +
         thePeriod.getMonths() + " month(s), and " +
         thePeriod.getDays() + " day(s)\n";
+    }
+    
+    public void showBestPlayers(Team[] theTeams) {
+        ArrayList<Player> thePlayers = new ArrayList();
+        for (Team currTeam: theTeams) {
+            thePlayers.addAll(Arrays.asList(currTeam.getPlayerArray()) );            
+        }
+        System.out.println("\n\nBest Players");
+        
+        
+        
+        Collections.sort(thePlayers, (p1, p2) -> 
+           Double.valueOf(p2.getGoalsScored()).compareTo(Double.valueOf(p1.getGoalsScored()))
+        );
+        
+        for (Player currPlayer: thePlayers) {
+            System.out.println(currPlayer.getPlayerName() + " : " + currPlayer.getGoalsScored() );
+        }
     }
 
 }
