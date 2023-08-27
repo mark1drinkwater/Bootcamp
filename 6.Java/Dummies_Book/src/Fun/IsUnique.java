@@ -2,6 +2,7 @@ package Fun;
 
 public class IsUnique {
 
+    // O(n) time
     public boolean isUnique(String sen) {
 
         if (sen.length() > 128) return false;
@@ -23,10 +24,26 @@ public class IsUnique {
         return true;
     }
 
+    // O(n^2) time
+    public boolean isUnique2(String sen) {
+        for (int i = 0; i < sen.length(); i++) {
+            for (int j = i+1; j < sen.length(); j++) {
+                if (sen.charAt(i) == sen.charAt(j)) {
+                    System.out.println("Not unique cz of " + i + " | " + j );
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
     public static void main (String[] args) {
         IsUnique test1 = new IsUnique();
-        System.out.println(test1.isUnique("sandy"));
-        System.out.println(test1.isUnique("sandy sea"));
+//        System.out.println(test1.isUnique("sandy"));
+//        System.out.println(test1.isUnique("sandy sea"));
+
+        System.out.println(test1.isUnique2("sandy"));
+        System.out.println(test1.isUnique2("sandy sea"));
     }
 
 }
