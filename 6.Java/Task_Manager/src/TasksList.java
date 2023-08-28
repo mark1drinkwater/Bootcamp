@@ -12,7 +12,12 @@ public class TasksList {
     }
 
     public Task getTask(String taskId) {
-            
+        for (Task task: tasks) {
+            if (task.getTaskId().equals(taskId) ) {
+                return task;
+            }
+        }
+        return null;
     }
 
 }
