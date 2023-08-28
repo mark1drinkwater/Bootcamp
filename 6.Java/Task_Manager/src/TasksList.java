@@ -11,13 +11,20 @@ public class TasksList {
         tasks.remove(task);
     }
 
-    public Task getTask(String taskId) {
+    public Task getTaskById(String taskId) {
         for (Task task: tasks) {
             if (task.getTaskId().equals(taskId) ) {
                 return task;
             }
         }
         return null;
+    }
+
+    public void editTask(Task task) {
+        Task existingTask = getTaskById(task.getTaskId());
+        if (existingTask != null ) {
+            
+        }
     }
 
 }
