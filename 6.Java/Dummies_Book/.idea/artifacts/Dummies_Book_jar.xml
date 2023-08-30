@@ -1,5 +1,5 @@
 <component name="ArtifactManager">
-  <artifact type="jar" name="Dummies_Book:jar">
+  <artifact type="jar" build-on-make="true" name="Dummies_Book:jar">
     <output-path>$PROJECT_DIR$/out/artifacts/Dummies_Book_jar</output-path>
     <root id="archive" name="Dummies_Book.jar">
       <element id="module-output" name="Dummies_Book" />
