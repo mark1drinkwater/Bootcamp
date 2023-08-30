@@ -22,8 +22,12 @@ public class TasksList {
 
     public void editTask(Task task) {
         Task existingTask = getTaskById(task.getTaskId());
+        
         if (existingTask != null ) {
-            
+            existingTask.setDescription(task.getDescription());
+            existingTask.setStatus(task.getStatus());
+            existingTask.setDueDate(task.getDueDate());
+            existingTask.setTitle(task.getTitle());
         }
     }
 
