@@ -1,5 +1,7 @@
 package Book_5.Chapter_1.CountDownV1;
 
+// Class implements Runnable interface, so it is required to override the run method
+// Runnable is a functional interface as it has only 1 method.
 public class LaunchEvent implements Runnable
 {
     private int start;
