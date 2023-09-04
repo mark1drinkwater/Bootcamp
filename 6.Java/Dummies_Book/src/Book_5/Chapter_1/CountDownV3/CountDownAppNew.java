@@ -17,9 +17,9 @@ public class CountDownAppNew
             pool.schedule(new CountDownClockNew(t), (long) (20 - t), TimeUnit.SECONDS);
         }
 
-        pool.schedule(flood, 4L, TimeUnit.SECONDS);
-        pool.schedule(ignition, 14L, TimeUnit.SECONDS);
-        pool.schedule(liftoff, 20L, TimeUnit.SECONDS);
+        pool.schedule(flood, 3L, TimeUnit.SECONDS);
+        pool.schedule(ignition, 13L, TimeUnit.SECONDS);
+        pool.schedule(liftoff, 19L, TimeUnit.SECONDS);
 
         pool.shutdown();
 
