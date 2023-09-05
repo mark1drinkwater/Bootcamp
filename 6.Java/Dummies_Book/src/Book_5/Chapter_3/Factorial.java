@@ -11,7 +11,7 @@ public class Factorial {
         int n = sc.nextInt();
         long fact;
         fact = factorial(n);
-        System.out.println("The factorial of "+ n + " is " + fact + ".");
+//        System.out.println("The factorial of "+ n + " is " + fact + ".");
         System.out.println("#Recursive: The factorial of "+ n + " is " + recursiveFactorial(n) + ".");
     }
 
@@ -27,7 +27,7 @@ public class Factorial {
         if (n == 1)
             return 1;
         else
-            return n * factorial(n-1);
+            return n * recursiveFactorial(n-1);
     }
 
 
