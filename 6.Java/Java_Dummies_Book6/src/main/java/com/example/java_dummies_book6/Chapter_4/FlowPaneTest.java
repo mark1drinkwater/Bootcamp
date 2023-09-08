@@ -21,7 +21,7 @@ public class FlowPaneTest extends Application {
         Button btn4 = new Button("Button Four");
         Button btn5 = new Button("Button Five");
         FlowPane pane = new FlowPane(Orientation.HORIZONTAL, 10, 10, btn1, btn2, btn3, btn4, btn5);
-        pane.setPrefWrapLength(300);
+        pane.setPrefWrapLength(500);
 
         Scene scene = new Scene(pane,300, 400);
 
