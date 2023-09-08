@@ -33,7 +33,7 @@ public class BorderPaneTest extends Application {
             }
 
             vBoxes.add(new VBox(buttons.get(i*3), buttons.get(i*3+1), buttons.get(i*3+2)));
-            vBoxes.get(i).setAlignment(Pos.CENTER);
+//            vBoxes.get(i).setAlignment(Pos.CENTER);
             vBoxes.get(i).setStyle(cssLayout);
         }
 
