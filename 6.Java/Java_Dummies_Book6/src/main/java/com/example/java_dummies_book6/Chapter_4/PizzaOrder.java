@@ -20,7 +20,8 @@ public class PizzaOrder extends Application {
     Stage stage;
     TextField txtName, txtPhone, txtAddress;
     RadioButton rdoSmall, rdoMedium, rdoLarge, rdoThin, rdoThick;
-    CheckBox chkPepperoni, chkMushrooms, chkPineapples;
+    CheckBox chkPepperoni, chkMushrooms, chkAnchovies;
+    ToggleGroup groupSize, groupCrust;
 
     @Override
     public void start(Stage primaryStage) {
@@ -61,7 +62,7 @@ public class PizzaOrder extends Application {
         rdoMedium = new RadioButton("Medium");
         rdoLarge = new RadioButton("Large");
         rdoMedium.setSelected(true);
-        ToggleGroup groupSize = new ToggleGroup();
+        groupSize = new ToggleGroup();
         rdoSmall.setToggleGroup(groupSize);
         rdoMedium.setToggleGroup(groupSize);
         rdoLarge.setToggleGroup(groupSize);
@@ -75,7 +76,7 @@ public class PizzaOrder extends Application {
         rdoThick = new RadioButton("Thick");
         rdoThin.setSelected(true);
 
-        ToggleGroup groupCrust = new ToggleGroup();
+        groupCrust = new ToggleGroup();
         rdoThin.setToggleGroup(groupCrust);
         rdoThick.setToggleGroup(groupCrust);
 
@@ -86,9 +87,11 @@ public class PizzaOrder extends Application {
         Label lblToppings = new Label("Toppings");
         chkPepperoni = new CheckBox("Pepperoni");
         chkMushrooms = new CheckBox("Mushrooms");
-        chkPineapples = new CheckBox("Pineapples");
+        chkAnchovies = new CheckBox("Anchovies");
 
-        VBox paneToppings = new VBox(lblToppings, chkPepperoni, chkMushrooms, chkPineapples);
+        chkAnchovies.setOnAction(e -> chkAnchovies_Click());
+
+        VBox paneToppings = new VBox(lblToppings, chkPepperoni, chkMushrooms, chkAnchovies);
         paneToppings.setSpacing(10);
 
         // Create the buttons
@@ -111,13 +114,13 @@ public class PizzaOrder extends Application {
         grid.setPrefWidth(500);
         grid.setMaxWidth(800);
 
-        txtName.setStyle(cssLayout);
-        txtPhone.setStyle(cssLayout);
-        txtAddress.setStyle(cssLayout);
-        paneButtons.setStyle(cssLayout);
-        paneCrust.setStyle(cssLayout);
-        paneSize.setStyle(cssLayout);
-        paneToppings.setStyle(cssLayout);
+//        txtName.setStyle(cssLayout);
+//        txtPhone.setStyle(cssLayout);
+//        txtAddress.setStyle(cssLayout);
+//        paneButtons.setStyle(cssLayout);
+//        paneCrust.setStyle(cssLayout);
+//        paneSize.setStyle(cssLayout);
+//        paneToppings.setStyle(cssLayout);
 
         // Add the nodes to the pane
         grid.addRow(0, lblName, txtName);
@@ -181,7 +184,7 @@ public class PizzaOrder extends Application {
         String toppings = "";
         toppings = buildToppings(chkPepperoni, toppings);
         toppings = buildToppings(chkMushrooms, toppings);
-        toppings = buildToppings(chkPineapples, toppings);
+        toppings = buildToppings(chkAnchovies, toppings);
 
         if (toppings.equals(""))
             msg += "no toppings";
@@ -192,6 +195,17 @@ public class PizzaOrder extends Application {
         Alert a = new Alert(Alert.AlertType.INFORMATION, msg);
         a.setTitle("Order Details");
         a.showAndWait();
+
+        groupSize.getSelectedToggle().setSelected(false);
+        groupCrust.getSelectedToggle().setSelected(false);
+
+        chkAnchovies.setSelected(false);
+        chkMushrooms.setSelected(false);
+        chkPepperoni.setSelected(false);
+
+        txtAddress.clear();
+        txtPhone.clear();
+        txtName.clear();
     }
 
     public String buildToppings(CheckBox chk, String msg) {
@@ -207,6 +221,13 @@ public class PizzaOrder extends Application {
 
     public void btnCancel_Click() {
         stage.close();
+    }
+
+    public void chkAnchovies_Click() {
+        Alert a = new Alert(Alert.AlertType.WARNING, "We don't do anchovies here.");
+        a.setTitle("Yuck!");
+        a.showAndWait();
+        chkAnchovies.setSelected(false);
     }
 
 }
