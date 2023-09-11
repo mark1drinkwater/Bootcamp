@@ -84,7 +84,7 @@ public class RolePlayer extends Application {
 
     public void btnOK_Click() {
         String errorMessage = "";
-        if (txtCharacter.getText().length() == 0) {
+        if (txtCharacter.getText().isEmpty()) {
             errorMessage += "\nCharacter is a required field.";
         }
         if (txtActor.getText().length() == 0) {
