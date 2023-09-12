@@ -15,14 +15,12 @@ public class ComboBoxTest extends Application {
     }
 
     private ComboBox dwarves;
-    Label lbl;
 
     @Override
     public void start(Stage primaryStage) {
 
         dwarves = new ComboBox();
         dwarves.getItems().addAll("Bashful", "Doc", "Dopey", "Grumpy", "Happy", "Sleepy", "Sneezy");
-//        dwarves.setValue("Sleepy");
 
         dwarves.setEditable(true);
         dwarves.setVisibleRowCount(10);
@@ -48,7 +46,6 @@ public class ComboBoxTest extends Application {
                 a.setTitle("Your Choice:");
                 a.showAndWait();
             }
-            dwarves.setValue("");
         }
 
     }
