@@ -8,7 +8,7 @@ import java.nio.file.Paths;
 public class DirectoryStreamTest
 {
     public static void main(String[] args) {
-        Path c = Paths.get("C:\\Users\\Mark\\Desktop\\Java");
+        Path c = Paths.get("C:\\Users");
 
         try
         {
