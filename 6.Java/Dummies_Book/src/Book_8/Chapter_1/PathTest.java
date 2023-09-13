@@ -8,12 +8,12 @@ import java.nio.file.Paths;
 public class PathTest
 {
     public static void main(String[] args) {
-//        Path p = Paths.get("C:\\Users\\Mark\\Desktop\\Java\\TestArgs.java");
-//        if (Files.exists(p)) {
-//            System.out.println("The input file does exist!");
-//        } else {
-//            System.out.println("The input file does not exist!");
-//        }
+        Path p = Paths.get("C:\\Users\\Mark\\Desktop\\Java\\TestArgs.java");
+        if (Files.exists(p)) {
+            System.out.println("The input file does exist!");
+        } else {
+            System.out.println("The input file does not exist!");
+        }
 
         Path p2 = Paths.get("C:\\Users\\Mark\\Desktop\\Java\\HelloWorld.java");
         try {
