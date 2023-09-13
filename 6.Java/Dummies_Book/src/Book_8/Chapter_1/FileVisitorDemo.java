@@ -33,8 +33,8 @@ public class FileVisitorDemo
 
         @Override
         public FileVisitResult preVisitDirectory (Path dir, BasicFileAttributes attr) throws IOException {
-            if (!Files.isDirectory(dir))
-                System.out.println(dir.toString() + " COULD NOT ACCESS DIRECTORY");
+//            if (!Files.isDirectory(dir))
+//                System.out.println(dir.toString() + " Before Visiting the Directory ");
             return FileVisitResult.CONTINUE;
         }
 
