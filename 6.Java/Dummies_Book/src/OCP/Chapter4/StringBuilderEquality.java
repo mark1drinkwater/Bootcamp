@@ -14,5 +14,13 @@ public class StringBuilderEquality {
         var z = "   Hello World".trim();
         System.out.println(x.equals(z));
         System.out.println(x==z);
+
+        var a = "Hello";
+        a.toUpperCase();
+        System.out.println(a);
+
+        var b = new StringBuilder("Hello");
+        b.append("$");
+        System.out.println(b);
     }
 }
