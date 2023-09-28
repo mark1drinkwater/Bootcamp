@@ -1,0 +1,16 @@
+package igbook1.lesson7.collections;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class ArrayListTest {
+    public static void main(String[] args) {
+        List<Integer> partList = new ArrayList<>(3);
+        partList.add(new Integer(1111));
+        partList.add(new Integer(2222));
+        partList.add(new Integer(3333));
+        partList.add(new Integer(4444)); // ArrayList auto grows
+        System.out.println("First Part: " + partList.get(0)); // 1st item
+        partList.add(0, new Integer(5555)); // Insert an item by index
+    }
+}
