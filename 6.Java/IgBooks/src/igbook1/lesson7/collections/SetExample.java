@@ -15,9 +15,10 @@ import java.util.TreeSet;
 public class SetExample {
 
     public static void main(String[] args) {
-//        Set<String> set = new TreeSet<>();
-        Set<String> set = new HashSet<>();
-        
+        Set<String> set = new TreeSet<>();
+//        Set<String> set = new HashSet<>();
+
+        set.add("Z");
         set.add("A");
         set.add("D");
         set.add("B");
