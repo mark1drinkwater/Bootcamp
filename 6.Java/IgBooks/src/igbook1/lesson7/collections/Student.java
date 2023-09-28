@@ -66,7 +66,8 @@ public class Student implements Comparable<Student> {
     @Override
         public int compareTo(Student s) {        
         int result = this.getGpa().compareTo(s.getGpa());
-        
+        // 3 1 2
+        // 3.(1)
         if (result > 0) {
             return 1;
         } else if (result < 0) {
