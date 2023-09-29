@@ -1,13 +1,19 @@
 package igbook1.lesson6.interfaces;
 
 public class Widget implements SalesCalcs {
-    double 
+    String name = "Widget";
+    double salesPrice;
+    double cost;
+    double weight;
     public Widget(double salesPrice, double cost, double weight) {
+        this.salesPrice = salesPrice;
+        this.cost = cost;
+        this.weight = weight;
     }
 
     @Override
     public String getName() {
-        return null;
+        return name;
     }
 
     @Override
