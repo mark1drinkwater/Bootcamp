@@ -7,6 +7,8 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.stream.Stream;
 
+import static java.nio.file.StandardCopyOption.REPLACE_EXISTING;
+
 public class FileTest {
     public static void main(String[] args) {
         Path p = Paths.get("C:\\Users\\Mark\\Documents\\Bootcamp");
@@ -24,7 +26,7 @@ public class FileTest {
         // How to create files and directories:
         Path p2 = Paths.get("C:\\Users\\Mark\\Documents\\Bootcamp\\TestFolder");
         try {
-            Files.createDirectories(p);
+            Files.createDirectories(p2);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -32,8 +34,16 @@ public class FileTest {
         // Two ways to delete files, directories
         // .delete() and .deleteIfExists()
         // Apparently should not throw an exception, yet it does.
+//        try {
+//            Files.deleteIfExists(p2);
+//        } catch (IOException e) {
+//            throw new RuntimeException(e);
+//        }
+
+        Path p3 = Paths.get("C:\\Users\\Mark\\Documents\\Bootcamp\\.gitignore");
+        Path p4 = Paths.get("C:\\Users\\Mark\\Documents\\Bootcamp\\TestFolder\\.gitignore");
         try {
-            Files.deleteIfExists(p2);
+            Files.copy(p3, p4, REPLACE_EXISTING);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -48,14 +58,14 @@ public class FileTest {
 
         // How to list the files in the current directory.
         try (Stream<Path> files = Files.list(p)) {
-            files.forEach(line -> System.out.println(line));
+//            files.forEach(line -> System.out.println(line));
         } catch (IOException e) {
             System.out.println("Message: " + e.getMessage());
         }
 
         // Walk the Directory Structure
         try (Stream<Path> files = Files.walk(p)) {
-            files.forEach(line -> System.out.println(line));
+            files.forEach(System.out::println);
         } catch (Exception e) {
             System.out.println("Message: " + e.getMessage());
         }
