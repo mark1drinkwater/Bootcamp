@@ -7,6 +7,7 @@ public class PathRedundancies {
     public static void main(String[] args) {
         String notNormalised = "\\home\\.\\clarence\\..\\peter\\foo";
         Path p = Paths.get(notNormalised);
+        System.out.println(notNormalised);
         Path normalizedPath = p.normalize();
         System.out.println(normalizedPath);
         // Normalize does not check the file system when it cleans up a path.
