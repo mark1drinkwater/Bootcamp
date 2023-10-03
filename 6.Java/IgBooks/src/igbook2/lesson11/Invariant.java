@@ -1,14 +1,16 @@
-package igbook2.lesson11;
+//package igbook2.lesson11;
 
 public class Invariant {
     static void checkNum(int num) {
         int x = num;
+
         if (x > 0) {
             System.out.print("Number is positive" + x);
         } else if (x == 0) {
             System.out.print("Number is zero" + x);
         } else {
-            assert (x > 0);
+            assert (x < 0);
+            System.out.println("Number is negative");
         }
     }
 
