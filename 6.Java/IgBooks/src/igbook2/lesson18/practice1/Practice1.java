@@ -27,9 +27,9 @@ public class Practice1 {
 
             // Insert a new Employee.
             String query = "INSERT INTO EMPLOYEE VALUES(400, 'Bill', 'Murray', '1950-09-21', 150000)";
-//            if (stmt.executeUpdate(query) != 1) {
-//                System.out.println("Failed to add a new employee record");
-//            }
+            if (stmt.executeUpdate(query) != 1) {
+                System.out.println("Failed to add a new employee record");
+            }
 
             query = "select * from EMPLOYEE";
 
