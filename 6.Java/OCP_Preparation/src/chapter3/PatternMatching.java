@@ -48,11 +48,11 @@ public class PatternMatching {
     specific circumstances. Notice that we’re using the pattern variable in an expression in the 
     same line in which it is declared. */
     //
-    void printIntegersOrNumbersGreaterThan5(Number number) {
-        if (number instanceof Integer data || data.compareTo(5) > 0) {
-            System.out.print(data);
-        }
-    }
+//    void printIntegersOrNumbersGreaterThan5(Number number) {
+//        if (number instanceof Integer data || data.compareTo(5) > 0) {
+//            System.out.print(data);
+//        }
+//    }
 
     static void printIntegerTwice(Number number) {
         if (number instanceof Integer data) {
