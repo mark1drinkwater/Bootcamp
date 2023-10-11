@@ -10,11 +10,11 @@ package chapter3;
  */
 public class SwitchTest {
 
-    enum Season {
-        WINTER, SPRING, SUMMER, FALL
-    }
-
-    public static void main(String[] args) {
+//    enum Season {
+//        WINTER, SPRING, SUMMER, FALL
+//    }
+//
+//    public static void main(String[] args) {
 //        int fish = 5;
 //        int length = 12;
 //        var name = switch (fish) {
@@ -30,23 +30,23 @@ public class SwitchTest {
 //            default ->
 //                "Swordfish";
 
-        getWeather(WINTER);
-    }
-    ;       
-        
-        String
-
-    static getWeather(Season value) {
-        return switch (value) {
-            case WINTER ->
-                "Cold";
-            case SPRING ->
-                "Rainy";
-            case SUMMER ->
-                "Hot";
-            case FALL ->
-                "Warm";
-        };
-    }
+//        getWeather(WINTER);
+//    }
+//    ;
+//
+//        String
+//
+//    static getWeather(Season value) {
+//        return switch (value) {
+//            case WINTER ->
+//                "Cold";
+//            case SPRING ->
+//                "Rainy";
+//            case SUMMER ->
+//                "Hot";
+//            case FALL ->
+//                "Warm";
+//        };
+//    }
 
 }
