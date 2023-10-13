@@ -1,4 +1,4 @@
-package OCP.Chapter6.initialize;
+package ch6.initialize;
 
 public class Q_ZooTickets {
     private String name = "BestZoo";
@@ -23,6 +23,6 @@ public class Q_ZooTickets {
     }
 
     public static void main(String... patrons) {
-        new OCP.Chapter6.initialize.Q_ZooTickets();
+        new Q_ZooTickets();
     }
 }

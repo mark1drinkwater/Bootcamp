@@ -14,9 +14,10 @@ class Beetle extends Insect {
         System.out.println(this.label);
         System.out.println(super.label);
         System.out.println(this.age);
-//        System.out.println(super.age); Does not compile
+//        System.out.println(super.age); //Does not compile
         System.out.println(numberOfLegs);
-//        System.out.println(super.species); Does not compile
+        System.out.println(super.numberOfLegs);
+//        System.out.println(super.species); //Does not compile
             /*
             Since both super and this have access to the inherited members.
             It's better to just use this.

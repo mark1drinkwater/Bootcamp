@@ -1,8 +1,10 @@
-package OCP.Chapter6.abstracts;
+package ch6.abstracts;
 
 abstract class Animal {
     public abstract String getName();
 }
+
+//public class Walrus extends Animal {} // DOES NOT COMPILE
 
 public class Walrus extends Animal {
 

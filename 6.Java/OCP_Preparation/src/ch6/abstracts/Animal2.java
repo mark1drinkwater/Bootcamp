@@ -1,4 +1,4 @@
-package OCP.Chapter6.abstracts;
+package ch6.abstracts;
 
 public abstract class Animal2 {
     abstract String getName();

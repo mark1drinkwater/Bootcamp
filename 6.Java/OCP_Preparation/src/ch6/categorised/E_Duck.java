@@ -12,7 +12,8 @@ public class E_Duck {
     }
 
     public void setData(int length, int theHeight) {
-        length = this.length; // Backwards -- no good!
+//        length = this.length; // Backwards -- no good!
+        this.length = length;
         height = theHeight; // Fine, because a different name
         this.color = "white"; // Fine, but this. reference not necessary
     }

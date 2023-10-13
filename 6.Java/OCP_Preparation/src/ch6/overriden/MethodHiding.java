@@ -1,4 +1,4 @@
-package OCP.Chapter6.overriden;
+package ch6.overriden;
 
 public class MethodHiding {
 }
@@ -10,9 +10,9 @@ class Bear {
 }
 
 class Panda extends Bear {
-//    public static void eat() {
-//        System.out.println("Panda is chewing");
-//    }
+    public static void eat() {
+        System.out.println("Panda is chewing");
+    }
 
     public static void main(String[] args) {
         eat();

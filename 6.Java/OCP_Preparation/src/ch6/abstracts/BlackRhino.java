@@ -1,4 +1,4 @@
-package OCP.Chapter6.abstracts;
+package ch6.abstracts;
 
 abstract class Mammal {
     abstract void showHorn();
@@ -6,6 +6,7 @@ abstract class Mammal {
 }
 
 abstract class Rhino extends Mammal {
+    @Override
     void showHorn() {
         System.out.println("Pointy horn.");
     } // Inherited from mammal

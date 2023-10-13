@@ -1,4 +1,4 @@
-package OCP.Chapter6.overriden;
+package ch6.overriden;
 
 public class Rhino {
     protected CharSequence getName() {

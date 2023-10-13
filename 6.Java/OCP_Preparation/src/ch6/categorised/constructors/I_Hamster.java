@@ -1,4 +1,4 @@
-package OCP.Chapter6.subclasses.constructors;
+package ch6.categorised.constructors;
 
 public class I_Hamster {
     private String color;
@@ -13,9 +13,9 @@ public class I_Hamster {
     }
 
     public static void main(String[] args) {
-        var h1 = new OCP.Chapter6.subclasses.constructors.I_Hamster(12);
+        var h1 = new I_Hamster(12);
         System.out.println(h1);
-        var h2 = new OCP.Chapter6.subclasses.constructors.I_Hamster(12, "white");
+        var h2 = new I_Hamster(12, "white");
         System.out.println(h2);
     }
 
