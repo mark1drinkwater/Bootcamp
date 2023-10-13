@@ -51,7 +51,7 @@ class VarKeyword {
 //        var n = null; // DOES NOT COMPILE
     }
 
-    // Cant use it in method parans
+    // Cant use it in method params
 //    public int addition(var a, var b) { // DOES NOT COMPILE
 //        return a + b;
 //    }
