@@ -5,24 +5,26 @@ public class C_PollingSleep {
 }
 
 class CheckResults {
-    private static int counter = 0;
+    private static int counter = Integer.MIN_VALUE;
 
     public static void main(String[] args) {
+        long start = System.currentTimeMillis();
         Thread myThread = new Thread(() -> {
-            for (int i = 0; i < 1_000_000; i++) counter++;
+            for (int i = Integer.MIN_VALUE; i < Integer.MAX_VALUE-1; i++) counter++;
         });
         System.out.println(myThread.getState()); // NEW
         myThread.start();
         System.out.println(myThread.getState()); // RUNNABLE
 
-        while (counter < 1_000_000) {
+        while (counter < (Integer.MAX_VALUE-1) ) {
+            System.out.println(counter);
             System.out.println(myThread.getState());
             System.out.println("Not reached yet");
             try {
                 // While 1 second may seem like a small amount
                 // We've freed the CPU to do other work instead of checking the counter infinitely within a loop
                 // Notice: the main() thread alternates between TIMED_WAITING and RUNNABLE when sleep() is entered and exited, respectively.
-                Thread.sleep(1); // 1 SECOND
+                Thread.sleep(50); // 1 SECOND
                 System.out.println(myThread.getState());
             } catch (InterruptedException e) {
                 System.out.println("Interrupted!");
@@ -31,6 +33,7 @@ class CheckResults {
         System.out.println(myThread.getState());
 
         System.out.println("Reached: " + counter);
+        System.out.println(System.currentTimeMillis()-start);
     }
 }
 
@@ -43,16 +46,19 @@ class CheckResultsWithSleepAndInterrupt {
         final var mainThread = Thread.currentThread();
 
         // Separate Thread
-        new Thread(() -> {
+        Thread myThread = new Thread(() -> {
             for(int i = 0; i < 1_000_000; i++) counter++;
             mainThread.interrupt();
-        }).start();
+        });
+        myThread.start();
 
         // Main Thread
         while(counter < 1_000_000) {
             System.out.println("Not reached yet");
             try {
-                Thread.sleep(1_000); // 1 SECOND
+                System.out.println(myThread.getState());
+                Thread.sleep(1); // 1 SECOND
+                System.out.println(myThread.getState());
             } catch (InterruptedException e) {
                 System.out.println("Interrupted!");
             }
