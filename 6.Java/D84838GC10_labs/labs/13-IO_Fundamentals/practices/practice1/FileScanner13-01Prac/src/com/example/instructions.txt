@@ -1,0 +1,32 @@
+Notice that the class has a method called countTokens already written for you. This
+method takes a String file and String search as parameters. The method will open the
+file name passed in and use an instance of a Scanner to look for the search token. For
+each token encountered, the method increments the integer field instanceCount. When
+the file is exhausted, it returns the value of instanceCount. Note that the class rethrows
+any IOException encountered, so you will need to be sure to use this method inside a
+try-catch block.
+3. Code the main method to check the number of arguments passed. The application expects
+at least one argument (a string representing the file to open). If the number of arguments is
+less than one, exit the application with an error code (-1).
+a. The main method is passed an array of Strings. Use the length attribute to determine
+whether the array contains less than one argument.
+b. Print a message if there is less than one argument, and use System.exit to return
+an error code. (-1 typically is used to indicate an error.)
+4. Save the first argument passed into the application as a String.
+5. Create an instance of the FileScanInteractive class. You will need this instance to
+call the countTokens method.
+6. Open the system console for input using a buffered reader.
+a. Use a try-with-resources to open a BufferedReader chained to the system console
+input. (Recall that System.in is an input stream connected to the system console.)
+b. Be sure to add a catch statement to the try block. Any exception returned will be an
+IOException type.
+c. In a while loop, read from the system console into a string until the string “q” is entered
+on the console by itself.
+Note: You can use equalsIgnoreCase to allow your users to enter an upper- or
+lowercase “Q.” Also the trim() method is a good choice to remove any whitespace
+characters from the input.
+d. If the string read from the console is not the terminate character, call the
+countTokens method, passing in the file name and the search string.
+e. Print a string indicating how many times the search token appeared in the file.
+f. Add any missing import statements.
+7. Save the FileScanInteractive class
