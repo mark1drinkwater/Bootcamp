@@ -1,12 +1,13 @@
-package OCP.Chapter8.functions;
+package OCP.Chapter8.B_functions;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.function.Supplier;
 
-public class SupplierTest {
+public class A_SupplierTest {
     public static void main(String[] args) {
         // Supplier is often used when constructing new objects.
+        // Supplier takes no parameters but returns a object.
         Supplier<LocalDate> s1 = LocalDate::now;
         Supplier<LocalDate> s2 = () -> LocalDate.now();
 

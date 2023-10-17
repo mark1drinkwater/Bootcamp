@@ -1,11 +1,11 @@
-package OCP.Chapter8.functions;
+package OCP.Chapter8.B_functions;
 
 import java.util.List;
 import java.util.function.BinaryOperator;
 import java.util.function.Function;
 import java.util.function.UnaryOperator;
 
-public class UnaryAndBinaryTest {
+public class E_UnaryAndBinaryTest {
     public static void main(String[] args) {
         UnaryOperator<String> mr = String::toUpperCase;
         UnaryOperator<String> lambda = s -> s.toUpperCase();
@@ -26,10 +26,12 @@ public class UnaryAndBinaryTest {
         System.out.println(Math.pow(4, 3));
 
         // Integer object
-        // System.out.println("Math pow Integer test " + lambda4.apply(Integer.valueOf(4), Integer.valueOf(3))  );
+//         System.out.println("Math pow Integer test " + lambda4.apply(Integer.valueOf(4), Integer.valueOf(3))  );
 
-        Function<List<String>, String> ex1 = x -> x.get(0); // DOES NOT COMPILE
-        UnaryOperator<Long> ex2 = (Long l) -> (long)(3.14); // DOES NOT COMPILE
+        Function<List<String>, String> ex1 = x -> x.get(0);
+        UnaryOperator<Long> ex2 = (Long l) -> (long)(3.14);
+
+        System.out.println(ex2.apply(5877L));
 
     }
 }

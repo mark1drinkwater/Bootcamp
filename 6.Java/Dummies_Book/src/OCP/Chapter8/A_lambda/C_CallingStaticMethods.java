@@ -1,10 +1,11 @@
-package OCP.Chapter8.lambda;
+package OCP.Chapter8.A_lambda;
 
+@FunctionalInterface
 interface Converter {
     long round(double num);
 }
 
-public class CallingStaticMethods {
+public class C_CallingStaticMethods {
     public static void main(String[] args) {
         // Notice we're calling a static method.
         Converter methodRef = Math::round;

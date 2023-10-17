@@ -1,10 +1,10 @@
-package OCP.Chapter8.functions;
+package OCP.Chapter8.B_functions;
 
 import java.util.HashMap;
 import java.util.function.BiConsumer;
 import java.util.function.Consumer;
 
-public class ConsumerTest {
+public class B_ConsumerTest {
     public static void main(String[] args) {
         Consumer<String> c1 = System.out::println;
         Consumer<String> c2 = x -> System.out.println(x);

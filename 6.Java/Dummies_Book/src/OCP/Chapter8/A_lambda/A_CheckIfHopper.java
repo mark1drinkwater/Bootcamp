@@ -1,4 +1,4 @@
-package OCP.Chapter8.lambda;
+package OCP.Chapter8.A_lambda;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,12 +9,12 @@ interface CheckTrait {
     boolean test(Animal a);
 }
 
-//public class CheckIfHopper implements CheckTrait {
-//    @Override
-//    public boolean test(Animal a) {
-//        return a.canHop();
-//    }
-//}
+class CheckIfHopper implements CheckTrait {
+    @Override
+    public boolean test(Animal a) {
+        return a.canHop();
+    }
+}
 
 class TraditionalSearch {
     public static void main(String[] args) {
@@ -26,9 +26,10 @@ class TraditionalSearch {
         animals.add(new Animal("turtle", false, true));
 
         // pass class that does check
-//        print(animals, new CheckIfHopper());
+        print(animals, new CheckIfHopper());
 
         // Lambdas to the rescue!!!
+        System.out.println("The lambda way");
         print(animals, a -> a.canHop());
     }
 
@@ -54,19 +55,19 @@ interface Dash extends Sprint {}
 interface Skip extends Sprint {
     void skip();
 }
-//Not a @FunctionalInterface
+//@FunctionalInterface
 interface Sleep {
     private void snore() {}
     default int getZzz() { return 1; }
 }
-//Not a @FunctionalInterface
+@FunctionalInterface
 interface Climb {
     void reach();
     default void fall() {}
     static int getBackUp() { return 100; }
     private static boolean checkHeight() { return true; }
 }
-// Not a @FunctionalInterface because all classes inherit thr Object class.
+// Not a @FunctionalInterface because all classes inherit the Object class.
 interface Soar {
     abstract String toString();
 }

@@ -1,10 +1,10 @@
-package OCP.Chapter8.functions;
+package OCP.Chapter8.B_functions;
 
 import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Predicate;
 
-public class ConvienceMethods {
+public class F_ConvienceMethods {
     public static void main(String[] args) {
         Predicate<String> egg = s -> s.contains("egg");
         Predicate<String> brown = s -> s.contains("brown");

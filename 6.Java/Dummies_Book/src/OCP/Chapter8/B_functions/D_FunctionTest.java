@@ -1,9 +1,9 @@
-package OCP.Chapter8.functions;
+package OCP.Chapter8.B_functions;
 
 import java.util.function.BiFunction;
 import java.util.function.Function;
 
-public class FunctionTest {
+public class D_FunctionTest {
     public static void main(String[] args) {
         Function<String,Integer> mr = String::length;
         Function<String,Integer> lamda = s -> s.length();

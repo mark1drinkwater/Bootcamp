@@ -1,4 +1,4 @@
-package OCP.Chapter8.lambda;
+package OCP.Chapter8.A_lambda;
 
 //////////////////////////////////////////////////
 // Calling Instance Methods on a Particular Object
@@ -10,7 +10,7 @@ interface StringChecker {
     boolean check();
 }
 
-public class CallingInstanceMethods {
+public class D_CallingInstanceMethods {
     public static void main(String[] args) {
         var str = "Zoo";
         // str is our string variable, and we're calling the startsWith method on it.
@@ -27,7 +27,9 @@ public class CallingInstanceMethods {
     }
 }
 
-//////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Switch Driver & Navigator Roles
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Calling Instance Methods on a Parameter
 interface StringParameterCheck {
     boolean check(String text);

@@ -1,9 +1,9 @@
-package OCP.Chapter8.functions;
+package OCP.Chapter8.B_functions;
 
 import java.util.function.BiPredicate;
 import java.util.function.Predicate;
 
-public class PredicateTest {
+public class C_PredicateTest {
     public static void main(String[] args) {
         Predicate<String> mr = String::isEmpty;
         Predicate<String> l = s -> s.isEmpty();

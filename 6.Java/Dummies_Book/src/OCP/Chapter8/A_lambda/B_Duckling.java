@@ -1,4 +1,4 @@
-package OCP.Chapter8.lambda;
+package OCP.Chapter8.A_lambda;
 
 
 interface LearnToSpeak {
@@ -17,7 +17,7 @@ class DuckHelper {
 //    }
 }
 
-public class Duckling {
+public class B_Duckling {
     public static void makeSound(String sound) {
         // This is how to do it, if you want to save your lambda to a variable.
         // Then have another class call it later.
