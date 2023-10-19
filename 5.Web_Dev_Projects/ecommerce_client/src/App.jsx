@@ -20,15 +20,16 @@ function App() {
 
   let user = useSelector(state => state.user.currentUser)
 
+  
+
   return (
     <Router>
       <Switch>
-
         <Route exact path="/">
-          {user ? <Redirect to="/" /> : <Login />}
+          <Home/>
         </Route>
 
-        <Route exact path="/products/:category">
+        <Route path="/products/:category">
           <ProductList/>
         </Route>
 
@@ -36,12 +37,13 @@ function App() {
           <Product />
         </Route>
 
-        <Route exact path="/cart">
+        <Route path="/cart">
           <Cart />
         </Route>
 
         <Route path="/login">
           {user ? <Redirect to="/" /> : <Login />}
+          <Login />
         </Route>
 
         <Route path="/register">
