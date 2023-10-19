@@ -18,7 +18,7 @@ const Products = ({cat,filters,sort}) => {
   useEffect(() => {
     const getProducts = async () => {            
       try {
-        const urlRequest = `http://localhost:3000/api/v1/products?category=${cat}`;
+        const urlRequest = `https://ecommerce-api-kh01.onrender.com/api/v1/products?category=${cat}`;
         console.log("Making Request to", urlRequest);
         const res = await axios.get(urlRequest);
         setProducts(res.data)

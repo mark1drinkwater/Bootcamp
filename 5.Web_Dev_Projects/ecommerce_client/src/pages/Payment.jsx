@@ -11,7 +11,7 @@ function Payment({ amount }) {
 
   useEffect(() => {
     async function fetchLoadKey() {
-      const res = await axios.get("http://localhost:3000/api/v1/checkout/config");
+      const res = await axios.get("https://ecommerce-api-kh01.onrender.com/api/v1/checkout/config");
       const publishableKey = res.data.publishableKey;
       setStripePromise(loadStripe(publishableKey));
     }
@@ -23,7 +23,7 @@ function Payment({ amount }) {
   useEffect(() => {
     async function fetchSetSecret() {
       if (amount >= 1) {
-        const res = await axios.post("http://localhost:3000/api/v1/checkout/create-payment-intent", {
+        const res = await axios.post("https://ecommerce-api-kh01.onrender.com/api/v1/checkout/create-payment-intent", {
           amount: amount
         })
         const clientSecret = res.data.clientSecret;
