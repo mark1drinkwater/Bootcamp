@@ -20,9 +20,11 @@ export default function Sidebar() {
     <div className="sidebar">
       <div className="sidebarWrapper">
         <div className="sidebarMenu">
-          <h3 className="sidebarTitle">Dashboard</h3>
+          {/* <h3 className="sidebarTitle">Dashboard</h3> */}
           <ul className="sidebarList">
-            <Link to="/" className="link">
+            
+            
+            {/* <Link to="/" className="link">
             <li className="sidebarListItem active">
               <LineStyle className="sidebarIcon" />
               Home
@@ -35,12 +37,16 @@ export default function Sidebar() {
             <li className="sidebarListItem">
               <TrendingUp className="sidebarIcon" />
               Sales
-            </li>
+            </li> */}
+
+
           </ul>
         </div>
         <div className="sidebarMenu">
           <h3 className="sidebarTitle">Quick Menu</h3>
           <ul className="sidebarList">
+            
+            
             <Link to="/users" className="link">
               <li className="sidebarListItem">
                 <PermIdentity className="sidebarIcon" />
@@ -53,17 +59,21 @@ export default function Sidebar() {
                 Products
               </li>
             </Link>
-            <li className="sidebarListItem">
+
+
+            {/* <li className="sidebarListItem">
               <AttachMoney className="sidebarIcon" />
               Transactions
             </li>
             <li className="sidebarListItem">
               <BarChart className="sidebarIcon" />
               Reports
-            </li>
-          </ul>
+            </li> */}
+
+          </ul>          
         </div>
-        <div className="sidebarMenu">
+
+        {/* <div className="sidebarMenu">
           <h3 className="sidebarTitle">Notifications</h3>
           <ul className="sidebarList">
             <li className="sidebarListItem">
@@ -79,7 +89,7 @@ export default function Sidebar() {
               Messages
             </li>
           </ul>
-        </div>
+        </div> 
         <div className="sidebarMenu">
           <h3 className="sidebarTitle">Staff</h3>
           <ul className="sidebarList">
@@ -95,8 +105,10 @@ export default function Sidebar() {
               <Report className="sidebarIcon" />
               Reports
             </li>
-          </ul>
-        </div>
+          </ul>          
+        </div>*/}
+
+
       </div>
     </div>
   );
