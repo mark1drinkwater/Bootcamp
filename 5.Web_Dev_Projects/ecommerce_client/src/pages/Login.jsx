@@ -76,6 +76,7 @@ const Login = () => {
 
   const handleClick = (e) => {
     e.preventDefault();
+    console.log("Hello from Login.jsx")
     login(dispatch, { username, password });
   }
 

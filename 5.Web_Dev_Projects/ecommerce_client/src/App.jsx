@@ -23,11 +23,12 @@ function App() {
   return (
     <Router>
       <Switch>
+
         <Route exact path="/">
-          <Success/>
+          {user ? <Redirect to="/" /> : <Login />}
         </Route>
 
-        <Route path="/products/:category">
+        <Route exact path="/products/:category">
           <ProductList/>
         </Route>
 
@@ -35,13 +36,12 @@ function App() {
           <Product />
         </Route>
 
-        <Route path="/cart">
+        <Route exact path="/cart">
           <Cart />
         </Route>
 
         <Route path="/login">
           {user ? <Redirect to="/" /> : <Login />}
-          <Login />
         </Route>
 
         <Route path="/register">
