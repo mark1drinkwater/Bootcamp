@@ -97,7 +97,7 @@ const Register = () => {
       // hard copy array
       const errorMessageTemp = [...errorMessage];
       if (!errorMessageTemp.includes("Passwords don't match."))
-        errorMessageTemp.push
+        errorMessageTemp.push("Passwords don't match.")
 
       if (!errorMessage.includes("Passwords don't match"))
         setErrorMessage(prev => {
