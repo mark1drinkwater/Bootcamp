@@ -7,7 +7,7 @@ import java.sql.SQLException;
 public class JDBCTest {
 
     public static void main(String[] args) {
-        Connection con = getconnection();
+            Connection con = getconnection();
     }
 
     private static Connection getconnection()
