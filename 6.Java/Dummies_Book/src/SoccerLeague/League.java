@@ -3,7 +3,7 @@ package SoccerLeague;
 import java.util.*;
 
 public class League {
-    List<TeamScore> teamPoints = new LinkedList<>();
+    List<TeamScore> teamPoints = new ArrayList<>();
     List<Match> matches = new ArrayList<>();
     Set<String> setNames = new HashSet<>();
 
