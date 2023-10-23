@@ -46,5 +46,17 @@ public class O_TextBlocks {
 //                All of the \" escape the ". There is one space of essential whitespace on the doe and deer
 //        lines. All the other leading whitespace is incidental whitespace.
 
+        ////////////////////////////////////////////////////////////////////////////
+//The \s escape sequence simple translates to space (\040, ASCII character 32, white space.)
+//Since escape sequences don't get translated until after incident space stripping, \s can act as fence to prevent the stripping of trailing white space.
+        System.out.println("\n\nAdditional Own Examples:");
+        System.out.println("Space Test ");
+        //Using \s at the end of each line in the following example, guarantees that each line is exactly six characters long.
+        String colors = """
+        red  \s
+        green\s
+        blue \s
+        """;
+        System.out.println(colors);
     }
 }

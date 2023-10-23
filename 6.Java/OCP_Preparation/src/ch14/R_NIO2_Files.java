@@ -20,7 +20,6 @@ public class R_NIO2_Files {
         List<String> lines = Files.readAllLines(input);
         Files.write(output, lines);
     }
-
     private static void readLazily(Path path) throws IOException {
         try (Stream<String> s = Files.lines(path)) {
             s.forEach(System.out::println);
