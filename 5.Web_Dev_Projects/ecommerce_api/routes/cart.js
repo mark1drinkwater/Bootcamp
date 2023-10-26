@@ -1,7 +1,8 @@
 "use strict";
 
 const { verifyToken, verifyTokenAndAuthorization, verifyTokenAndAdmin } = require("./verifyToken");
-const Product = require("../models/Cart")
+const Product = require("../models/Product");
+const Cart = require("../models/Cart");
 const router = require("express").Router();
 
 router.post("/", verifyTokenAndAuthorization, async (req, res) => {

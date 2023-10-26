@@ -7,8 +7,7 @@ const jwt = require('jsonwebtoken');
 router.post("/register", async (req, res) => {
     console.log("Attempting to create new user")
     try {
-        if (req.body?.password !== req.body?.confirmPassword)
-        
+        if (req.body?.password !== req.body?.confirmPassword)        
             throw {response:{data:{errors: { "password": {message:"Passwords do not match"} } }}};
 
         const newUser = new User({
