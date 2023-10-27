@@ -83,7 +83,7 @@ router.get("/", async (req, res) => {
     }
 })
 
-//GET USER STATS
+//GET PRODUCT STATS
 router.get("/stats", verifyTokenAndAdmin, async (req, res) => {
     const date = new Date();
     const lastYear = new Date(date.setFullYear(date.getFullYear() - 1));
