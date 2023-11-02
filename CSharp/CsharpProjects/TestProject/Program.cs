@@ -86,22 +86,42 @@
     Prints the output to the console.
 */
 
-string str = "The quick brown fox jumps over the lazy dog.";
+// string str = "The quick brown fox jumps over the lazy dog.";
 
-char[] charMessage = str.ToCharArray();
-Array.Reverse(charMessage);
+// char[] charMessage = str.ToCharArray();
+// Array.Reverse(charMessage);
 
-int letterCount = 0;
+// int letterCount = 0;
 
-foreach (char i in charMessage) 
-{ 
-    if (i == 'o') 
-    { 
-        letterCount++; 
-    } 
-}
+// foreach (char i in charMessage) 
+// { 
+//     if (i == 'o') 
+//     { 
+//         letterCount++; 
+//     } 
+// }
 
-string new_message = new String(charMessage);
+// string new_message = new String(charMessage);
 
-Console.WriteLine(new_message);
-Console.WriteLine($"'o' appears {letterCount} times.");
+// Console.WriteLine(new_message);
+// Console.WriteLine($"'o' appears {letterCount} times.");
+
+Console.WriteLine("Signed integral types:");
+
+Console.WriteLine($"sbyte  : {sbyte.MinValue} to {sbyte.MaxValue}");
+Console.WriteLine($"short  : {short.MinValue} to {short.MaxValue}");
+Console.WriteLine($"int    : {int.MinValue} to {int.MaxValue}");
+Console.WriteLine($"long   : {long.MinValue} to {long.MaxValue}");
+
+
+Console.WriteLine("");
+Console.WriteLine("Unsigned integral types:");
+Console.WriteLine($"byte   : {byte.MinValue} to {byte.MaxValue}");
+Console.WriteLine($"ushort : {ushort.MinValue} to {ushort.MaxValue}");
+Console.WriteLine($"uint   : {uint.MinValue} to {uint.MaxValue}");
+Console.WriteLine($"ulong  : {ulong.MinValue} to {ulong.MaxValue}");
+
+int[] data = new int[3];
+
+string shortenedString = "Hello World!";
+Console.WriteLine(shortenedString);
