@@ -491,3 +491,52 @@ This C# console application is designed to:
 
 // validNumber = int.TryParse(readResult, out numericValue);
 
+// Code project 1 - write code that validates integer input
+// Console.WriteLine("Please enter an integer value between 5 and 10.");
+
+// string? readResult;
+// bool validEntry = false;
+// int numericValue = 0;
+
+// do
+// {
+//     readResult = Console.ReadLine();
+//     if (readResult != null)
+//     {
+//         validEntry = int.TryParse(readResult, out numericValue);  
+//         if (!validEntry)               
+//         {
+//             Console.WriteLine("Sorry, you entered an invalid number, please try again");
+//         }
+//         else if (numericValue < 5 || numericValue > 10)
+//         {
+//             Console.WriteLine($"You entered {numericValue}. Please enter a number between 5 and 10.");
+//             validEntry = false;   
+//         }
+//     }
+// } while (validEntry == false);
+
+// Console.WriteLine($"Your input ({numericValue}) has been accepted.");
+
+//Code project 2 - write code that validates string input.
+
+Console.WriteLine("Enter your role name (Administrator, Manager, or User)");
+string? readUser;
+bool validInput = false;
+
+do
+{
+    readUser = Console.ReadLine();
+    if (readUser != null)
+    {
+        readUser = readUser.Trim().ToLower();
+        if (readUser == "administrator" || readUser == "manager" || readUser == "user")
+        {
+            validInput = true;
+            continue;
+        }
+    }
+    Console.WriteLine("Enter your role name (Administrator, Manager, or User)");
+} while (validInput == false);
+
+Console.WriteLine($"Your input value ({readUser}) has been accepted.");
