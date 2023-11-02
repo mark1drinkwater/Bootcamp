@@ -439,3 +439,27 @@ This C# console application is designed to:
     
 //     Console.WriteLine(current);
 // } while (current != 7);
+
+// Role playing game battle challenge
+
+int heroHealth = 10;
+int monsterHealth = 10;
+Random rand = new Random();
+
+do
+{
+    int heroAttack = rand.Next(1, 11);
+    monsterHealth -= heroAttack;
+
+    Console.WriteLine($"Monster was damanged and lost {heroAttack} health and now has {monsterHealth} health.");
+
+    // So continue in a while loop, means to skip ahead and re-check the condition
+    if (monsterHealth <= 0) continue;
+
+    int monsterAttack = rand.Next(1, 11);
+    heroHealth -= monsterAttack;
+
+    Console.WriteLine($"Hero was damanged and lost {monsterAttack} health and now has {heroHealth} health.");    
+} while(heroHealth > 0 || monsterHealth > 0);
+
+Console.WriteLine(hero > monster ? "Hero wins!" : "Monster wins!");
