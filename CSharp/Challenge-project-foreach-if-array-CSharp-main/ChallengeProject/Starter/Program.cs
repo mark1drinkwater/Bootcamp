@@ -174,26 +174,122 @@ This C# console application is designed to:
 // int outcome = rand.Next(1,3);
 // Console.WriteLine(outcome == 1 ? "Heads" : "Tails");
 
-string permission = "Admin|Manager";
-int level = 55;
+// string permission = "Admin|Manager";
+// int level = 55;
 
-if (permission.Contains("Admin") && level > 55) 
-{
-    Console.WriteLine("Welcome, Super Admin user.");
-}
-else if (permission.Contains("Admin") && level <= 55) 
-{
-    Console.WriteLine("Welcome, Admin user.");
-}
-else if (permission.Contains("Manager") && level >= 20) 
-{
-    Console.WriteLine("Contact an Admin for access.");
-}
-else if (permission.Contains("Manager") && level < 20) 
-{
-    Console.WriteLine("You do not have sufficient privileges.");
-}
-else if (!permission.Contains("Manager") || !permission.Contains("Admin"))
-{
-    Console.WriteLine("You do not have sufficient privileges.");
-}
+// if (permission.Contains("Admin")) 
+// {
+//     if (level > 55)
+//     {
+//         Console.WriteLine("Welcome, Super Admin user.");
+//     }
+//     else
+//     {
+//         Console.WriteLine("Welcome, Admin user.");
+//     }
+// }
+// else if (permission.Contains("Manager")) 
+// {
+//     if (level >= 20)
+//     {
+//         Console.WriteLine("Contact an Admin for access.");
+//     }
+//     else
+//     {
+//         Console.WriteLine("You do not have sufficient privileges.");
+//     }
+// }
+// else
+// {
+//     Console.WriteLine("You do not have sufficient privileges.");
+// }
+
+// bool flag = true;
+// if (flag)
+// {
+//     int value = 10;
+//     Console.WriteLine($"Inside of code block: {value}");
+// }
+// Console.WriteLine($"Outside of code block: {value}");
+
+// bool flag = true;
+// int value;
+
+// if (flag)
+// {
+//     value = 10;
+//     Console.WriteLine("Inside of code block: " + value);
+// }
+// Console.WriteLine($"Outside of code block: {value}");
+
+// bool flag = true;
+// int value = 0;
+
+// if (flag)
+// {
+//     value = 10;
+//     Console.WriteLine("Inside of code block: " + value);
+// }
+// Console.WriteLine("Outside of code block: " + value);
+
+// bool flag = true;
+// if (flag)
+//     Console.WriteLine(flag);
+
+// // Readibility
+// string name = "steve";
+// if (name == "bob") Console.WriteLine("Found Bob");
+// else if (name == "steve") Console.WriteLine("Found Steve");
+// else Console.WriteLine("Found Chuck");    
+
+// name = "steve";
+
+// if (name == "bob")
+//     Console.WriteLine("Found Bob");
+// else if (name == "steve") 
+//     Console.WriteLine("Found Steve");
+// else
+//     Console.WriteLine("Found Chuck");
+
+// int[] numbers = { 4, 8, 15, 16, 23, 42 };
+
+// int total = 0;
+// bool found = false;
+// foreach (int number in numbers)
+// {
+//     total += number;
+//     if (number == 42)
+//        found = true;
+// }
+
+// if (found) 
+// {
+//     Console.WriteLine("Set contains 42");
+
+// }
+
+// Console.WriteLine($"Total: {total}");
+
+// int employeeLevel = 100;
+// string employeeName = "John Smith";
+
+// string title = "";
+
+// switch (employeeLevel)
+// {
+//     case 100:
+//     case 200:
+//         title = "Senior Associate";
+//         break;
+//     case 300:
+//         title = "Manager";
+//         break;
+//     case 400:
+//         title = "Senior Manager";
+//         break;
+//     default:
+//         title = "Associate";
+//         break;
+// }
+
+// Console.WriteLine($"{employeeName}, {title}");
