@@ -520,23 +520,44 @@ This C# console application is designed to:
 
 //Code project 2 - write code that validates string input.
 
-Console.WriteLine("Enter your role name (Administrator, Manager, or User)");
-string? readUser;
-bool validInput = false;
+// Console.WriteLine("Enter your role name (Administrator, Manager, or User)");
+// string? readUser;
+// bool validInput = false;
 
-do
-{
-    readUser = Console.ReadLine();
-    if (readUser != null)
-    {
-        readUser = readUser.Trim().ToLower();
-        if (readUser == "administrator" || readUser == "manager" || readUser == "user")
-        {
-            validInput = true;
-            continue;
-        }
-    }
-    Console.WriteLine("Enter your role name (Administrator, Manager, or User)");
-} while (validInput == false);
+// do
+// {
+//     readUser = Console.ReadLine();
+//     if (readUser != null)
+//     {
+//         readUser = readUser.Trim().ToLower();
+//         if (readUser == "administrator" || readUser == "manager" || readUser == "user")
+//         {
+//             validInput = true;
+//             continue;
+//         }
+//     }
+//     Console.WriteLine("Enter your role name (Administrator, Manager, or User)");
+// } while (validInput == false);
 
-Console.WriteLine($"Your input value ({readUser}) has been accepted.");
+// Console.WriteLine($"Your input value ({readUser}) has been accepted.");
+
+// Code Project 3 - Write code that processes the contents of a string array
+// string[] myStrings = new string[2] { "I like pizza. I like roast chicken. I like salad", "I like all three of the menu choices" };
+
+// int periodLocation = 0;
+// string workingString = "";
+
+// foreach (string myString in myStrings)
+// {
+//     periodLocation = myString.IndexOf(".");
+//     workingString = myString;   
+
+//     while (periodLocation != -1)
+//     {    
+//         Console.WriteLine(workingString.Substring(0, periodLocation));
+//         workingString = workingString.Remove(0, periodLocation+1).TrimStart();
+//         periodLocation = workingString.IndexOf(".");
+//     } 
+//     Console.WriteLine(workingString);
+// }
+
