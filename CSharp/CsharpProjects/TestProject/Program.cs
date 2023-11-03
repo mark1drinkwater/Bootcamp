@@ -166,16 +166,38 @@ CultureInfo.CurrentCulture = new CultureInfo("en-US");
 // string name = "Bob";
 // Console.WriteLine(int.Parse(name)); // If you want to avoid format exception, use TryParse()
 
-string value = "bad";
-int result = 0;
-if (int.TryParse(value, out result))
+// string value = "bad";
+// int result = 0;
+// if (int.TryParse(value, out result))
+// {
+//     Console.WriteLine($"Measurement: {result}");
+// }
+// else
+// {
+//     Console.WriteLine("Unable to report the measurement.");
+// }
+
+// if (result > 0)
+//     Console.WriteLine($"Measurement (w/ offset): {50 + result}");
+
+string[] values = { "12.3", "45", "ABC", "11", "DEF" };
+string message = "";
+decimal sum = 0;
+decimal num;
+bool validNumber;
+
+for (int i = 0; i < values.Length; i++)
 {
-    Console.WriteLine($"Measurement: {result}");
-}
-else
-{
-    Console.WriteLine("Unable to report the measurement.");
+    validNumber = decimal.TryParse(values[i], out num);
+    if (validNumber)
+    {
+        sum += num;
+    }
+    else
+    {
+        message += values[i];
+    }
 }
 
-if (result > 0)
-    Console.WriteLine($"Measurement (w/ offset): {50 + result}");
+Console.WriteLine("Message: " + message);
+Console.WriteLine("Total: " + sum);
