@@ -5,4 +5,6 @@
 
 //CreateThrowExceptions createThrowExceptions = new();
 
-CreateThrowExceptionsExercise ctee = new();
+//CreateThrowExceptionsExercise ctee = new();
+
+CreateThrowExceptionsChallenge ctec = new CreateThrowExceptionsChallenge();
