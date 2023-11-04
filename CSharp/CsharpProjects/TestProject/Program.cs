@@ -135,7 +135,7 @@ CultureInfo.CurrentCulture = new CultureInfo("en-US");
 // decimal myDecimal = myInt;
 // Console.WriteLine($"decimal: {myDecimal}");
 
-// decimal myDecimal = 3.14m;
+decimal myDecimal = 3.14m;
 // Console.WriteLine($"decimal: {myDecimal}");
 
 // int myInt = (int)myDecimal;
