@@ -7,4 +7,6 @@
 
 //CreateThrowExceptionsExercise ctee = new();
 
-CreateThrowExceptionsChallenge ctec = new CreateThrowExceptionsChallenge();
+//CreateThrowExceptionsChallenge ctec = new CreateThrowExceptionsChallenge();
+
+ExceptionsGuidedProject egp = new ExceptionsGuidedProject();
